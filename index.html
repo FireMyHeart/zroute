@@ -28,9 +28,13 @@
         <button type="button" data-lang="cs">CS</button>
       </div>
     </div>
+    <nav class="site-nav" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" data-page="teleport" class="active" aria-selected="true" data-i18n="navTeleport">Бесплатный телепорт</button>
+      <button type="button" role="tab" data-page="format" aria-selected="false" data-i18n="navFormat">Форматирование текста</button>
+    </nav>
   </header>
 
-  <div class="wrap">
+  <div class="wrap page" id="page-teleport" data-page-panel="teleport">
     <section class="hero" style="background-image: url('assets/hero-banner.jpg')">
       <div class="hero-content">
         <div class="eyebrow" data-i18n="eyebrow">Гайд · Бесплатный телепорт</div>
@@ -160,11 +164,165 @@
     </main>
   </div>
 
+  <div class="wrap page" id="page-format" data-page-panel="format" hidden>
+    <section class="hero" style="background-image: url('assets/hero-banner.jpg')">
+      <div class="hero-content">
+        <div class="eyebrow" data-i18n="fmtEyebrow">Гайд · Чат</div>
+        <h1 data-i18n="fmtHeroTitle">Форматирование текста</h1>
+        <p data-i18n="fmtHeroLead">Перед текстом сообщения напишите тег — и оформление применится к сообщению в игре.</p>
+      </div>
+    </section>
+
+    <main>
+      <section class="panel time-box" aria-labelledby="fmt-how-title">
+        <div>
+          <h2 id="fmt-how-title" data-i18n="fmtHowTitle">Как это работает</h2>
+          <p data-i18n="fmtHowText">В начале сообщения ставите код в виде тегов, затем пишете сам текст. Нажмите «Копировать», вставьте тег в чат и допишите сообщение.</p>
+        </div>
+      </section>
+
+      <h2 class="section-title" data-i18n="fmtListTitle">Возможности</h2>
+      <section class="panel format-list" aria-label="Formatting options">
+        <article class="format-item">
+          <h3 data-i18n="fmtColorTitle">1. Цвет текста</h3>
+          <p data-i18n="fmtColorText">Сообщение определённого цвета. Два варианта записи:</p>
+          <div class="code-block">
+            <div class="code-block-head">
+              <span class="code-label" data-i18n="codeLabel">Код</span>
+              <button type="button" class="copy-btn" data-copy="<color=#FF1493>" data-i18n="copyBtn">Копировать</button>
+            </div>
+            <pre><code>&lt;color=#FF1493&gt;</code></pre>
+          </div>
+          <div class="format-preview">
+            <span class="preview-label" data-i18n="previewLabel">Пример</span>
+            <p class="preview-msg" style="color:#FF1493" data-i18n="previewColorDeep">На этой неделе грабим грузовики 97 сервера.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block-head">
+              <span class="code-label" data-i18n="codeLabel">Код</span>
+              <button type="button" class="copy-btn" data-copy="<#FF9999>" data-i18n="copyBtn">Копировать</button>
+            </div>
+            <pre><code>&lt;#FF9999&gt;</code></pre>
+          </div>
+          <div class="format-preview">
+            <span class="preview-label" data-i18n="previewLabel">Пример</span>
+            <p class="preview-msg" style="color:#FF9999" data-i18n="previewColorSoft">У кого-нибудь есть С?</p>
+          </div>
+          <p style="margin-top:0.85rem;color:#d2c6ba;font-size:0.95rem" data-i18n="fmtRainbowText">Можно сделать радужным — свой цвет на каждую букву:</p>
+          <div class="code-block">
+            <div class="code-block-head">
+              <span class="code-label" data-i18n="codeLabel">Код</span>
+              <button type="button" class="copy-btn" data-copy="<#FF0000>а<#FF3300> <#FF6600>м<#FF9900>о<#FFCC00>ж<#FFFF00>н<#CCFF00>о<#99FF00> <#66FF00>д<#33FF00>е<#00FF00>л<#00FF33>а<#00FF66>т<#00FF99>ь<#00FFCC> <#00FFFF>т<#00CCFF>а<#0099FF>к<#0066FF> <#0033FF>е<#2B00FF>щ<#5500FF>е<#8000FF>" data-i18n="copyBtn">Копировать</button>
+            </div>
+            <pre><code>&lt;#FF0000&gt;а&lt;#FF3300&gt; &lt;#FF6600&gt;м&lt;#FF9900&gt;о&lt;#FFCC00&gt;ж&lt;#FFFF00&gt;н&lt;#CCFF00&gt;о&lt;#99FF00&gt; &lt;#66FF00&gt;д&lt;#33FF00&gt;е&lt;#00FF00&gt;л&lt;#00FF33&gt;а&lt;#00FF66&gt;т&lt;#00FF99&gt;ь&lt;#00FFCC&gt; &lt;#00FFFF&gt;т&lt;#00CCFF&gt;а&lt;#0099FF&gt;к&lt;#0066FF&gt; &lt;#0033FF&gt;е&lt;#2B00FF&gt;щ&lt;#5500FF&gt;е&lt;#8000FF&gt;</code></pre>
+          </div>
+          <div class="format-preview">
+            <span class="preview-label" data-i18n="previewLabel">Пример</span>
+            <p class="preview-msg rainbow" aria-hidden="true">
+              <span style="color:#FF0000">а </span><span style="color:#FF6600">м</span><span style="color:#FF9900">о</span><span style="color:#FFCC00">ж</span><span style="color:#FFFF00">н</span><span style="color:#CCFF00">о</span>
+              <span style="color:#66FF00">д</span><span style="color:#33FF00">е</span><span style="color:#00FF00">л</span><span style="color:#00FF33">а</span><span style="color:#00FF66">т</span><span style="color:#00FF99">ь</span>
+              <span style="color:#00FFFF">т</span><span style="color:#00CCFF">а</span><span style="color:#0099FF">к</span>
+              <span style="color:#0033FF">е</span><span style="color:#2B00FF">щ</span><span style="color:#5500FF">е</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="format-item">
+          <h3 data-i18n="fmtUTitle">2. Подчёркнутый</h3>
+          <p data-i18n="fmtUText">Тег в начале сообщения делает текст подчёркнутым.</p>
+          <div class="code-block">
+            <div class="code-block-head">
+              <span class="code-label" data-i18n="codeLabel">Код</span>
+              <button type="button" class="copy-btn" data-copy="<u>" data-i18n="copyBtn">Копировать</button>
+            </div>
+            <pre><code>&lt;u&gt;</code></pre>
+          </div>
+          <div class="format-preview">
+            <span class="preview-label" data-i18n="previewLabel">Пример</span>
+            <p class="preview-msg preview-underline" data-i18n="previewUnderline">Важно! Свой сервер грабить нельзя!</p>
+          </div>
+        </article>
+
+        <article class="format-item">
+          <h3 data-i18n="fmtNTitle">3. Перенос строки</h3>
+          <p data-i18n="fmtNText">Вставьте \n там, где нужен перенос на новую строку внутри одного сообщения.</p>
+          <div class="code-block">
+            <div class="code-block-head">
+              <span class="code-label" data-i18n="codeLabel">Код</span>
+              <button type="button" class="copy-btn" data-copy="\n" data-i18n="copyBtn">Копировать</button>
+            </div>
+            <pre><code>\n</code></pre>
+          </div>
+          <div class="format-preview">
+            <span class="preview-label" data-i18n="previewLabel">Пример</span>
+            <p class="preview-msg preview-break">
+              <span data-i18n="previewBreak1">текст первой строки</span><br />
+              <span data-i18n="previewBreak2">текст второй строки</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="format-item">
+          <h3 data-i18n="fmtBoldTitle">4. Жирный</h3>
+          <p data-i18n="fmtBoldText">Тег в начале сообщения делает текст жирным.</p>
+          <div class="code-block">
+            <div class="code-block-head">
+              <span class="code-label" data-i18n="codeLabel">Код</span>
+              <button type="button" class="copy-btn" data-copy="<b>" data-i18n="copyBtn">Копировать</button>
+            </div>
+            <pre><code>&lt;b&gt;</code></pre>
+          </div>
+          <div class="format-preview">
+            <span class="preview-label" data-i18n="previewLabel">Пример</span>
+            <p class="preview-msg preview-bold" data-i18n="previewBold">Жирный текст сообщения</p>
+          </div>
+        </article>
+
+        <article class="format-item">
+          <h3 data-i18n="fmtItalicTitle">5. Курсив</h3>
+          <p data-i18n="fmtItalicText">Тег в начале сообщения делает текст курсивом.</p>
+          <div class="code-block">
+            <div class="code-block-head">
+              <span class="code-label" data-i18n="codeLabel">Код</span>
+              <button type="button" class="copy-btn" data-copy="<i>" data-i18n="copyBtn">Копировать</button>
+            </div>
+            <pre><code>&lt;i&gt;</code></pre>
+          </div>
+          <div class="format-preview">
+            <span class="preview-label" data-i18n="previewLabel">Пример</span>
+            <p class="preview-msg preview-italic" data-i18n="previewItalic">Курсивный текст сообщения</p>
+          </div>
+        </article>
+
+        <article class="format-item">
+          <h3 data-i18n="fmtStrikeTitle">6. Зачёркнутый</h3>
+          <p data-i18n="fmtStrikeText">Тег в начале сообщения зачёркивает текст.</p>
+          <div class="code-block">
+            <div class="code-block-head">
+              <span class="code-label" data-i18n="codeLabel">Код</span>
+              <button type="button" class="copy-btn" data-copy="<s>" data-i18n="copyBtn">Копировать</button>
+            </div>
+            <pre><code>&lt;s&gt;</code></pre>
+          </div>
+          <div class="format-preview">
+            <span class="preview-label" data-i18n="previewLabel">Пример</span>
+            <p class="preview-msg preview-strike" data-i18n="previewStrike">Зачёркнутый текст сообщения</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel tip-box" aria-labelledby="fmt-more-title">
+        <h2 id="fmt-more-title" data-i18n="fmtMoreTitle">Нашли ещё тег?</h2>
+        <p data-i18n="fmtMoreText">Если обнаружите другие рабочие теги форматирования — напишите, добавим в гайд.</p>
+      </section>
+    </main>
+  </div>
+
   <footer>
     <div class="wrap">
       <p>
         <span class="game">Трасса-Z: Искупление · Z Route: Redemption</span><br />
-        <span data-i18n="footer">Неофициальный гайд сервера 98. Скриншоты можно заменить в папке assets/screenshots.</span>
+        <span data-i18n="footer">Неофициальный гайд сервера 98.</span>
       </p>
     </div>
   </footer>
@@ -178,7 +336,9 @@
     const I18N = {
       ru: {
         brandTitle: "Сервер 98",
-        brandSub: "Z Route: Redemption · Бесплатный телепорт",
+        brandSub: "Z Route: Redemption · Гайды",
+        navTeleport: "Бесплатный телепорт",
+        navFormat: "Форматирование текста",
         eyebrow: "Гайд · Бесплатный телепорт",
         heroTitle: "Выровнять базу бесплатно",
         heroLead: "В субботу слетайте к врагу — при возвращении на 98-й выбираете место сами и переставляете базу без платного телепорта.",
@@ -215,11 +375,46 @@
         burnTitle: "Если базу сожгли",
         burnText: "Когда базу сжигают дотла и вас кидает на другой конец карты — тот же приём: слетайте к врагу в субботу и при возвращении встаньте обратно к альянсу бесплатно.",
         burnHint: "На ночь с субботы на воскресенье или перед выходом из игры наденьте щит так, чтобы он точно держался до вс 05:00 МСК (вс 00:00 серверного времени).",
-        footer: "Неофициальный гайд сервера 98. Скриншоты можно заменить в папке assets/screenshots."
+        fmtEyebrow: "Гайд · Чат",
+        fmtHeroTitle: "Форматирование текста",
+        fmtHeroLead: "Перед текстом сообщения напишите тег — и оформление применится к сообщению в игре.",
+        fmtHowTitle: "Как это работает",
+        fmtHowText: "В начале сообщения ставите код в виде тегов, затем пишете сам текст. Нажмите «Копировать», вставьте тег в чат и допишите сообщение.",
+        fmtListTitle: "Возможности",
+        fmtColorTitle: "1. Цвет текста",
+        fmtColorText: "Сообщение определённого цвета. Два варианта записи:",
+        fmtRainbowText: "Можно сделать радужным — свой цвет на каждую букву:",
+        fmtUTitle: "2. Подчёркнутый",
+        fmtUText: "Тег в начале сообщения делает текст подчёркнутым.",
+        fmtNTitle: "3. Перенос строки",
+        fmtNText: "Вставьте \\n там, где нужен перенос на новую строку внутри одного сообщения.",
+        fmtBoldTitle: "4. Жирный",
+        fmtBoldText: "Тег в начале сообщения делает текст жирным.",
+        fmtItalicTitle: "5. Курсив",
+        fmtItalicText: "Тег в начале сообщения делает текст курсивом.",
+        fmtStrikeTitle: "6. Зачёркнутый",
+        fmtStrikeText: "Тег в начале сообщения зачёркивает текст.",
+        fmtMoreTitle: "Нашли ещё тег?",
+        fmtMoreText: "Если обнаружите другие рабочие теги форматирования — напишите, добавим в гайд.",
+        codeLabel: "Код",
+        copyBtn: "Копировать",
+        copiedBtn: "Скопировано",
+        previewLabel: "Пример",
+        previewColorDeep: "На этой неделе грабим грузовики 97 сервера.",
+        previewColorSoft: "У кого-нибудь есть С?",
+        previewUnderline: "Важно! Свой сервер грабить нельзя!",
+        previewBreak1: "текст первой строки",
+        previewBreak2: "текст второй строки",
+        previewBold: "Жирный текст сообщения",
+        previewItalic: "Курсивный текст сообщения",
+        previewStrike: "Зачёркнутый текст сообщения",
+        footer: "Неофициальный гайд сервера 98."
       },
       en: {
         brandTitle: "Server 98",
-        brandSub: "Z Route: Redemption · Free teleport",
+        brandSub: "Z Route: Redemption · Guides",
+        navTeleport: "Free teleport",
+        navFormat: "Text formatting",
         eyebrow: "Guide · Free teleport",
         heroTitle: "Align your base for free",
         heroLead: "On Saturday, fly to the enemy — when you return to 98, you pick the spot yourself and relocate without a paid teleport.",
@@ -256,11 +451,46 @@
         burnTitle: "If your base was burned",
         burnText: "If your base is burned down and you get thrown across the map — same trick: fly to the enemy on Saturday and on return stand back with the alliance for free.",
         burnHint: "Overnight Sat→Sun or before you log off, put on a shield that lasts until Sun 05:00 MSK (Sun 00:00 server time).",
-        footer: "Unofficial server 98 guide. Replace screenshots in assets/screenshots."
+        fmtEyebrow: "Guide · Chat",
+        fmtHeroTitle: "Text formatting",
+        fmtHeroLead: "Put a tag before your message text — and the formatting applies in-game.",
+        fmtHowTitle: "How it works",
+        fmtHowText: "At the start of the message, add tag codes, then write your text. Tap Copy, paste the tag into chat, and finish your message.",
+        fmtListTitle: "Options",
+        fmtColorTitle: "1. Text color",
+        fmtColorText: "Make the message a specific color. Two ways to write it:",
+        fmtRainbowText: "You can make it rainbow — a color per letter:",
+        fmtUTitle: "2. Underline",
+        fmtUText: "A tag at the start of the message underlines the text.",
+        fmtNTitle: "3. Line break",
+        fmtNText: "Insert \\n where you need a new line inside one message.",
+        fmtBoldTitle: "4. Bold",
+        fmtBoldText: "A tag at the start of the message makes the text bold.",
+        fmtItalicTitle: "5. Italic",
+        fmtItalicText: "A tag at the start of the message makes the text italic.",
+        fmtStrikeTitle: "6. Strikethrough",
+        fmtStrikeText: "A tag at the start of the message strikes through the text.",
+        fmtMoreTitle: "Found another tag?",
+        fmtMoreText: "If you discover other working formatting tags — tell us and we’ll add them to the guide.",
+        codeLabel: "Code",
+        copyBtn: "Copy",
+        copiedBtn: "Copied",
+        previewLabel: "Example",
+        previewColorDeep: "This week we raid trucks on server 97.",
+        previewColorSoft: "Anyone have S?",
+        previewUnderline: "Important! Don’t raid your own server!",
+        previewBreak1: "first line text",
+        previewBreak2: "second line text",
+        previewBold: "Bold message text",
+        previewItalic: "Italic message text",
+        previewStrike: "Strikethrough message text",
+        footer: "Unofficial server 98 guide."
       },
       es: {
         brandTitle: "Servidor 98",
-        brandSub: "Z Route: Redemption · Teletransporte gratis",
+        brandSub: "Z Route: Redemption · Guías",
+        navTeleport: "Teletransporte gratis",
+        navFormat: "Formato de texto",
         eyebrow: "Guía · Teletransporte gratis",
         heroTitle: "Alinea tu base gratis",
         heroLead: "El sábado vuela al enemigo: al volver al 98 eliges el lugar tú mismo y mueves la base sin teletransporte de pago.",
@@ -297,11 +527,46 @@
         burnTitle: "Si te queman la base",
         burnText: "Si te queman la base por completo y te tiran al otro lado del mapa — el mismo truco: el sábado vuela al enemigo y al volver colócate otra vez con la alianza gratis.",
         burnHint: "En la noche de sábado a domingo o antes de salir del juego, ponte un escudo que dure hasta el dom 05:00 MSK (dom 00:00 hora del servidor).",
-        footer: "Guía no oficial del servidor 98. Sustituye las capturas en assets/screenshots."
+        fmtEyebrow: "Guía · Chat",
+        fmtHeroTitle: "Formato de texto",
+        fmtHeroLead: "Escribe una etiqueta antes del texto del mensaje — y el formato se aplica en el juego.",
+        fmtHowTitle: "Cómo funciona",
+        fmtHowText: "Al inicio del mensaje pones códigos en forma de etiquetas y luego el texto. Pulsa Copiar, pega la etiqueta en el chat y termina el mensaje.",
+        fmtListTitle: "Opciones",
+        fmtColorTitle: "1. Color del texto",
+        fmtColorText: "Un mensaje de un color concreto. Dos formas de escribirlo:",
+        fmtRainbowText: "Puedes hacerlo arcoíris — un color por letra:",
+        fmtUTitle: "2. Subrayado",
+        fmtUText: "Una etiqueta al inicio del mensaje subraya el texto.",
+        fmtNTitle: "3. Salto de línea",
+        fmtNText: "Inserta \\n donde necesites una nueva línea dentro del mismo mensaje.",
+        fmtBoldTitle: "4. Negrita",
+        fmtBoldText: "Una etiqueta al inicio del mensaje pone el texto en negrita.",
+        fmtItalicTitle: "5. Cursiva",
+        fmtItalicText: "Una etiqueta al inicio del mensaje pone el texto en cursiva.",
+        fmtStrikeTitle: "6. Tachado",
+        fmtStrikeText: "Una etiqueta al inicio del mensaje tacha el texto.",
+        fmtMoreTitle: "¿Encontraste otra etiqueta?",
+        fmtMoreText: "Si descubres otras etiquetas de formato que funcionen — avísanos y las añadiremos a la guía.",
+        codeLabel: "Código",
+        copyBtn: "Copiar",
+        copiedBtn: "Copiado",
+        previewLabel: "Ejemplo",
+        previewColorDeep: "Esta semana saqueamos camiones del servidor 97.",
+        previewColorSoft: "¿Alguien tiene S?",
+        previewUnderline: "¡Importante! No se puede saquear el propio servidor!",
+        previewBreak1: "texto de la primera línea",
+        previewBreak2: "texto de la segunda línea",
+        previewBold: "Texto del mensaje en negrita",
+        previewItalic: "Texto del mensaje en cursiva",
+        previewStrike: "Texto del mensaje tachado",
+        footer: "Guía no oficial del servidor 98."
       },
       pl: {
         brandTitle: "Serwer 98",
-        brandSub: "Z Route: Redemption · Darmowy teleport",
+        brandSub: "Z Route: Redemption · Poradniki",
+        navTeleport: "Darmowy teleport",
+        navFormat: "Formatowanie tekstu",
         eyebrow: "Poradnik · Darmowy teleport",
         heroTitle: "Wyrównaj bazę za darmo",
         heroLead: "W sobotę poleć do wroga — po powrocie na 98 sam wybierasz miejsce i przestawiasz bazę bez płatnego teleportu.",
@@ -338,11 +603,46 @@
         burnTitle: "Jeśli bazę spalono",
         burnText: "Gdy bazę spalą do zera i wyrzuci cię na drugi koniec mapy — ten sam trik: w sobotę poleć do wroga i po powrocie stań z powrotem przy sojuszu za darmo.",
         burnHint: "Na noc z soboty na niedzielę lub przed wyjściem z gry załóż tarczę tak, by na pewno trzymała do nd. 05:00 MSK (nd. 00:00 czasu serwera).",
-        footer: "Nieoficjalny poradnik serwera 98. Screenshoty zamień w assets/screenshots."
+        fmtEyebrow: "Poradnik · Czat",
+        fmtHeroTitle: "Formatowanie tekstu",
+        fmtHeroLead: "Przed tekstem wiadomości wpisz tag — a formatowanie zadziała w grze.",
+        fmtHowTitle: "Jak to działa",
+        fmtHowText: "Na początku wiadomości wstawiasz kody w formie tagów, potem piszesz tekst. Kliknij Kopiuj, wklej tag na czacie i dokończ wiadomość.",
+        fmtListTitle: "Możliwości",
+        fmtColorTitle: "1. Kolor tekstu",
+        fmtColorText: "Wiadomość w wybranym kolorze. Dwa sposoby zapisu:",
+        fmtRainbowText: "Można zrobić tęczowo — osobny kolor na każdą literę:",
+        fmtUTitle: "2. Podkreślenie",
+        fmtUText: "Tag na początku wiadomości podkreśla tekst.",
+        fmtNTitle: "3. Złamanie linii",
+        fmtNText: "Wstaw \\n tam, gdzie potrzebujesz nowej linii w jednej wiadomości.",
+        fmtBoldTitle: "4. Pogrubienie",
+        fmtBoldText: "Tag na początku wiadomości pogrubia tekst.",
+        fmtItalicTitle: "5. Kursywa",
+        fmtItalicText: "Tag na początku wiadomości robi tekst kursywą.",
+        fmtStrikeTitle: "6. Przekreślenie",
+        fmtStrikeText: "Tag na początku wiadomości przekreśla tekst.",
+        fmtMoreTitle: "Znalazłeś kolejny tag?",
+        fmtMoreText: "Jeśli znajdziesz inne działające tagi formatowania — napisz, dodamy do poradnika.",
+        codeLabel: "Kod",
+        copyBtn: "Kopiuj",
+        copiedBtn: "Skopiowano",
+        previewLabel: "Przykład",
+        previewColorDeep: "W tym tygodniu grabimy ciężarówki serwera 97.",
+        previewColorSoft: "Czy ktoś ma S?",
+        previewUnderline: "Ważne! Własnego serwera nie wolno grabić!",
+        previewBreak1: "tekst pierwszej linii",
+        previewBreak2: "tekst drugiej linii",
+        previewBold: "Pogrubiony tekst wiadomości",
+        previewItalic: "Kursywa w wiadomości",
+        previewStrike: "Przekreślony tekst wiadomości",
+        footer: "Nieoficjalny poradnik serwera 98."
       },
       cs: {
         brandTitle: "Server 98",
-        brandSub: "Z Route: Redemption · Teleport zdarma",
+        brandSub: "Z Route: Redemption · Návody",
+        navTeleport: "Teleport zdarma",
+        navFormat: "Formátování textu",
         eyebrow: "Návod · Teleport zdarma",
         heroTitle: "Zarovnejte základnu zdarma",
         heroLead: "V sobotu zaletěte k nepříteli — při návratu na 98 si sami vyberete místo a přemístíte základnu bez placeného teleportu.",
@@ -379,7 +679,40 @@
         burnTitle: "Když základnu spálí",
         burnText: "Když základnu spálí do základů a hodí vás na druhý konec mapy — stejný trik: v sobotu zaletěte k nepříteli a při návratu se postavte zpět k alianci zdarma.",
         burnHint: "Na noc ze soboty na neděli nebo před odhlášením nasaďte štít tak, aby vydržel do ne 05:00 MSK (ne 00:00 serverového času).",
-        footer: "Neoficiální návod serveru 98. Screenshoty nahraďte ve složce assets/screenshots."
+        fmtEyebrow: "Návod · Chat",
+        fmtHeroTitle: "Formátování textu",
+        fmtHeroLead: "Před text zprávy napište tag — a formátování se ve hře projeví.",
+        fmtHowTitle: "Jak to funguje",
+        fmtHowText: "Na začátek zprávy dáte kódy ve formě tagů a pak napíšete text. Klepněte na Kopírovat, vložte tag do chatu a dopište zprávu.",
+        fmtListTitle: "Možnosti",
+        fmtColorTitle: "1. Barva textu",
+        fmtColorText: "Zpráva v určité barvě. Dva způsoby zápisu:",
+        fmtRainbowText: "Můžete udělat duhu — barva na každé písmeno:",
+        fmtUTitle: "2. Podtržení",
+        fmtUText: "Tag na začátku zprávy text podtrhne.",
+        fmtNTitle: "3. Zalomení řádku",
+        fmtNText: "Vložte \\n tam, kde potřebujete nový řádek v jedné zprávě.",
+        fmtBoldTitle: "4. Tučné",
+        fmtBoldText: "Tag na začátku zprávy udělá text tučný.",
+        fmtItalicTitle: "5. Kurzíva",
+        fmtItalicText: "Tag na začátku zprávy udělá text kurzívou.",
+        fmtStrikeTitle: "6. Přeškrtnutí",
+        fmtStrikeText: "Tag na začátku zprávy text přeškrtne.",
+        fmtMoreTitle: "Našli jste další tag?",
+        fmtMoreText: "Pokud objevíte další funkční formátovací tagy — napište, přidáme je do návodu.",
+        codeLabel: "Kód",
+        copyBtn: "Kopírovat",
+        copiedBtn: "Zkopírováno",
+        previewLabel: "Příklad",
+        previewColorDeep: "Tento týden drancujeme náklaďáky serveru 97.",
+        previewColorSoft: "Má někdo S?",
+        previewUnderline: "Důležité! Vlastní server se nesmí drancovat!",
+        previewBreak1: "text prvního řádku",
+        previewBreak2: "text druhého řádku",
+        previewBold: "Tučný text zprávy",
+        previewItalic: "Kurzíva ve zprávě",
+        previewStrike: "Přeškrtnutý text zprávy",
+        footer: "Neoficiální návod serveru 98."
       }
     };
 
@@ -430,6 +763,25 @@
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
       localStorage.setItem("guide-lang", lang);
+      updateTitle(lang);
+      refreshCopyButtons(dict);
+    }
+
+    function updateTitle(lang) {
+      const page = document.body.dataset.page || "teleport";
+      if (page === "format") {
+        document.title =
+          lang === "ru"
+            ? "Сервер 98 — Форматирование текста | Трасса-Z: Искупление"
+            : lang === "es"
+            ? "Servidor 98 — Formato de texto | Z Route: Redemption"
+            : lang === "pl"
+            ? "Serwer 98 — Formatowanie tekstu | Z Route: Redemption"
+            : lang === "cs"
+            ? "Server 98 — Formátování textu | Z Route: Redemption"
+            : "Server 98 — Text formatting | Z Route: Redemption";
+        return;
+      }
       document.title =
         lang === "ru"
           ? "Сервер 98 — Выровнять базу бесплатно | Трасса-Z: Искупление"
@@ -441,6 +793,74 @@
           ? "Server 98 — Zarovnejte základnu zdarma | Z Route: Redemption"
           : "Server 98 — Align your base for free | Z Route: Redemption";
     }
+
+    function setPage(page) {
+      const next = page === "format" ? "format" : "teleport";
+      document.body.dataset.page = next;
+      document.querySelectorAll("[data-page-panel]").forEach((panel) => {
+        panel.hidden = panel.getAttribute("data-page-panel") !== next;
+      });
+      document.querySelectorAll(".site-nav [data-page]").forEach((btn) => {
+        const on = btn.dataset.page === next;
+        btn.classList.toggle("active", on);
+        btn.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      localStorage.setItem("guide-page", next);
+      if (location.hash !== "#" + next) {
+        history.replaceState(null, "", "#" + next);
+      }
+      const lang = localStorage.getItem("guide-lang") || "ru";
+      updateTitle(lang);
+      window.scrollTo(0, 0);
+    }
+
+    function refreshCopyButtons(dict) {
+      document.querySelectorAll(".copy-btn").forEach((btn) => {
+        if (!btn.classList.contains("copied")) {
+          btn.textContent = dict.copyBtn || "Copy";
+        }
+      });
+    }
+
+    async function copyText(text, btn) {
+      const lang = localStorage.getItem("guide-lang") || "ru";
+      const dict = I18N[lang] || I18N.ru;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+        }
+        btn.classList.add("copied");
+        btn.textContent = dict.copiedBtn || "Copied";
+        clearTimeout(btn._copyTimer);
+        btn._copyTimer = setTimeout(() => {
+          btn.classList.remove("copied");
+          btn.textContent = dict.copyBtn || "Copy";
+        }, 1600);
+      } catch (err) {
+        btn.textContent = "Error";
+      }
+    }
+
+    document.querySelectorAll(".site-nav [data-page]").forEach((btn) => {
+      btn.addEventListener("click", () => setPage(btn.dataset.page));
+    });
+
+    document.querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const text = btn.getAttribute("data-copy") || "";
+        copyText(text, btn);
+      });
+    });
 
     function tryLoadScreenshots() {
       document.querySelectorAll(".shot[data-shot]").forEach((box) => {
@@ -475,6 +895,22 @@
     const saved = localStorage.getItem("guide-lang");
     const prefer = saved && I18N[saved] ? saved : "ru";
     applyLang(prefer);
+
+    const hashPage = (location.hash || "").replace(/^#/, "");
+    const savedPage = localStorage.getItem("guide-page");
+    const initialPage =
+      hashPage === "format" || hashPage === "teleport"
+        ? hashPage
+        : savedPage === "format"
+        ? "format"
+        : "teleport";
+    setPage(initialPage);
+
+    window.addEventListener("hashchange", () => {
+      const p = (location.hash || "").replace(/^#/, "");
+      if (p === "format" || p === "teleport") setPage(p);
+    });
+
     tryLoadScreenshots();
   </script>
 </body>
