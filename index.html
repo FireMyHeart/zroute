@@ -169,6 +169,11 @@
     </div>
   </footer>
 
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" alt="" />
+  </div>
+
   <script>
     const I18N = {
       ru: {
@@ -379,13 +384,38 @@
     };
 
     const shotFiles = {
-      1: "assets/screenshots/01-vs.png",
-      2: "assets/screenshots/02-raid-tab.png",
-      3: "assets/screenshots/03-forward.png",
+      1: "assets/screenshots/01-vs.jpg",
+      2: "assets/screenshots/02-raid-tab.jpg",
+      3: "assets/screenshots/03-forward.jpg",
       4: "assets/screenshots/04-enemy-map.png",
       5: "assets/screenshots/05-back-arrow-highlight.png",
       6: "assets/screenshots/06-home-align.png"
     };
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxClose = document.getElementById("lightbox-close");
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "";
+      lightbox.hidden = false;
+      document.body.classList.add("lightbox-open");
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightboxImg.removeAttribute("src");
+      document.body.classList.remove("lightbox-open");
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+    });
 
     function applyLang(lang) {
       const dict = I18N[lang] || I18N.ru;
@@ -421,10 +451,18 @@
         img.onload = () => {
           box.classList.add("has-image");
           box.innerHTML = "";
-          img.alt = id === "5"
+          img.alt = id === "1"
+            ? "VS icon in the right vertical row"
+            : id === "2"
+            ? "Raid tab in Alliance Contest"
+            : id === "3"
+            ? "Forward button on Raid tab"
+            : id === "5"
             ? "Боевая зона — стрелка влево слева от кнопки i"
             : "";
+          img.title = "Click to enlarge";
           box.appendChild(img);
+          box.addEventListener("click", () => openLightbox(src, img.alt));
         };
         img.src = src;
       });
