@@ -342,7 +342,7 @@ a:hover { text-decoration: underline; }
   min-height: clamp(240px, 48vw, 420px);
   background: #000 center / cover no-repeat;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .hero::after {
@@ -350,7 +350,7 @@ a:hover { text-decoration: underline; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(8,10,12,0.35) 40%, rgba(8,10,12,0.92) 100%),
+    linear-gradient(180deg, rgba(8,10,12,0.92) 0%, rgba(8,10,12,0.35) 60%, rgba(0,0,0,0.15) 100%),
     linear-gradient(90deg, rgba(8,10,12,0.55), transparent 45%);
 }
 
@@ -419,7 +419,7 @@ main { padding: 1.75rem 0 3.5rem; }
 }
 
 @media (min-width: 700px) {
-  .time-box { grid-template-columns: 1.2fr 1fr; align-items: center; }
+  .time-box { grid-template-columns: 1.2fr 1fr; align-items: start; }
 }
 
 .time-box h2 {
