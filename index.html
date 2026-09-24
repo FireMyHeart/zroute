@@ -31,6 +31,7 @@
     <nav class="site-nav" role="tablist" aria-label="Sections">
       <button type="button" role="tab" data-page="teleport" class="active" aria-selected="true" data-i18n="navTeleport">Бесплатный телепорт</button>
       <button type="button" role="tab" data-page="format" aria-selected="false" data-i18n="navFormat">Форматирование текста</button>
+      <button type="button" role="tab" data-page="promo" aria-selected="false" data-i18n="navPromo">Актуальные промокоды</button>
     </nav>
   </header>
 
@@ -112,23 +113,30 @@
         <article class="step">
           <div class="step-num">6</div>
           <div>
-            <h3 data-i18n="s6Title">Выровняйте базу дома на 98</h3>
-            <p data-i18n="s6Text">Откроется карта своего сервера 98. Поставьте базу впритык к соседним и выровняйте по горизонтали и вертикали. По горизонтали удобно ориентироваться по табличкам с именами.</p>
-            <div class="hint" data-i18n="s6Hint">Сейчас первые 4 вертикальных ряда стоят ровно. В пятом ряду пока немного криво — по возможности подравнивайтесь к аккуратным рядам.</div>
+            <h3 data-i18n="s6Title">Выровняйте базу дома</h3>
+            <p data-i18n="s6Text">Откроется карта домашнего сервера. Поставьте базу впритык к соседним и выровняйте по горизонтали и вертикали. По горизонтали удобно ориентироваться по табличкам с именами.</p>
+            <div class="hint" data-i18n="s6Hint">Если в вашем альянсе еще нет строгого построения, подравнивайтесь к аккуратным рядам и уже выровненным базам.</div>
             <div class="shot" data-shot="6" data-i18n="shotPlaceholder">Скриншот: правильное размещение на 98</div>
           </div>
         </article>
       </section>
 
       <h2 class="section-title" data-i18n="placeTitle">Как выбрать место дома</h2>
-      <section class="two-col">
-        <article class="panel map-card">
-          <img src="assets/map-placement.jpg" alt="" />
-          <div class="caption">
-            <h3 data-i18n="placeCardTitle">Плотность и ровные ряды</h3>
-            <p data-i18n="placeCardText">Дома база должна стоять плотно к соседям и в одной линии с рядом — так альянсу проще защищаться и не терять порядок на карте.</p>
-          </div>
-        </article>
+      <section class="place-block">
+        <div class="place-compare">
+          <article class="panel map-card place-example">
+            <img class="zoomable" src="assets/screenshots/place-bad.jpg" alt="" data-i18n-alt="placeBad" />
+            <div class="caption">
+              <h3><span class="place-label bad" data-i18n="placeBad">Плохо</span></h3>
+            </div>
+          </article>
+          <article class="panel map-card place-example">
+            <img class="zoomable" src="assets/screenshots/place-good.jpg" alt="" data-i18n-alt="placeGood" />
+            <div class="caption">
+              <h3><span class="place-label good" data-i18n="placeGood">Хорошо</span></h3>
+            </div>
+          </article>
+        </div>
 
         <article class="panel">
           <ul class="checklist">
@@ -138,19 +146,11 @@
             </li>
             <li>
               <span class="mark ok">✓</span>
-              <span data-i18n="c2">Выровнять по горизонтали (таблички имён) и вертикали</span>
+              <span data-i18n="c2">Выровнять по вертикали (ориентироваться на таблички имён) и горизонтали</span>
             </li>
             <li>
               <span class="mark ok">✓</span>
-              <span data-i18n="c3">Ориентироваться на ровные ряды 1–4</span>
-            </li>
-            <li>
-              <span class="mark warn">!</span>
-              <span data-i18n="c4">На вражеском сервере без щита — подальше от чужих баз</span>
-            </li>
-            <li>
-              <span class="mark warn">!</span>
-              <span data-i18n="c5">Не забыть вернуться домой до конца бесплатного окна</span>
+              <span data-i18n="c3">Ориентироваться на ровные ряды</span>
             </li>
           </ul>
         </article>
@@ -318,6 +318,61 @@
     </main>
   </div>
 
+  <div class="wrap page" id="page-promo" data-page-panel="promo" hidden>
+    <section class="hero" style="background-image: url('assets/hero-banner.jpg')">
+      <div class="hero-content">
+        <div class="eyebrow" data-i18n="promoEyebrow">Гайд · Промокоды</div>
+        <h1 data-i18n="promoHeroTitle">Актуальные промокоды</h1>
+        <p data-i18n="promoHeroLead">Скопируйте код и введите его в игре — получите бонусы. Ниже — список и пошаговая инструкция.</p>
+      </div>
+    </section>
+
+    <main>
+      <h2 class="section-title" data-i18n="promoListTitle">Актуальные промокоды</h2>
+      <section class="panel promo-codes" aria-label="Promo codes">
+        <div class="promo-grid" id="promo-grid"></div>
+      </section>
+
+      <h2 class="section-title" data-i18n="promoHowTitle">Как вводить промокоды в Z Route: Redemption</h2>
+      <section class="panel steps" aria-label="How to enter promo codes">
+        <article class="step">
+          <div class="step-num">1</div>
+          <div>
+            <p data-i18n-html="promoS1Text">Нажмите на иконку профиля в левом верхнем углу экрана.</p>
+            <div class="shot" data-shot="p1" data-i18n="shotPlaceholder">Скриншот: иконка профиля</div>
+          </div>
+        </article>
+        <article class="step">
+          <div class="step-num">2</div>
+          <div>
+            <p data-i18n-html="promoS2Text">Нажмите на пункт меню <strong>Настройки</strong>.</p>
+            <div class="shot" data-shot="p2" data-i18n="shotPlaceholder">Скриншот: Настройки</div>
+          </div>
+        </article>
+        <article class="step">
+          <div class="step-num">3</div>
+          <div>
+            <p data-i18n-html="promoS3Text">Нажмите на пункт <strong>Ввести код</strong>.</p>
+            <div class="shot" data-shot="p3" data-i18n="shotPlaceholder">Скриншот: Ввести код</div>
+          </div>
+        </article>
+        <article class="step">
+          <div class="step-num">4</div>
+          <div>
+            <p data-i18n-html="promoS4Text">Введите код и нажмите кнопку <strong>Подтвердить</strong>.</p>
+            <div class="shot" data-shot="p4" data-i18n="shotPlaceholder">Скриншот: Подтвердить</div>
+          </div>
+        </article>
+        <article class="step">
+          <div class="step-num">5</div>
+          <div>
+            <p data-i18n-html="promoS5Text">Если промокод актуален, вы получите награды и сможете продолжить игру.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
   <footer>
     <div class="wrap">
       <p>
@@ -339,6 +394,7 @@
         brandSub: "Z Route: Redemption · Гайды",
         navTeleport: "Бесплатный телепорт",
         navFormat: "Форматирование текста",
+        navPromo: "Актуальные промокоды",
         eyebrow: "Гайд · Бесплатный телепорт",
         heroTitle: "Выровнять базу бесплатно",
         heroLead: "В субботу слетайте к врагу — при возвращении на 98-й выбираете место сами и переставляете базу без платного телепорта.",
@@ -360,18 +416,16 @@
         s4Hint: "Если стоит щит — место почти неважно. Если щита нет — ставьте подальше от вражеских баз, чтобы вас не атаковали сразу.",
         s5Title: "Вернитесь на свой сервер",
         s5Text: "Сверху по центру появится строка вроде «Боевая зона S…». Нажмите стрелку влево слева от иконки «i» (выделена на скрине).",
-        s6Title: "Выровняйте базу дома на 98",
-        s6Text: "Откроется карта своего сервера 98. Поставьте базу впритык к соседним и выровняйте по горизонтали и вертикали. По горизонтали удобно ориентироваться по табличкам с именами.",
-        s6Hint: "Сейчас первые 4 вертикальных ряда стоят ровно. В пятом ряду пока немного криво — по возможности подравнивайтесь к аккуратным рядам.",
+        s6Title: "Выровняйте базу дома",
+        s6Text: "Откроется карта домашнего сервера. Поставьте базу впритык к соседним и выровняйте по горизонтали и вертикали. По горизонтали удобно ориентироваться по табличкам с именами.",
+        s6Hint: "Если в вашем альянсе еще нет строгого построения, подравнивайтесь к аккуратным рядам и уже выровненным базам.",
         shotPlaceholder: "Место для скриншота — положите файл в assets/screenshots",
         placeTitle: "Как выбрать место дома",
-        placeCardTitle: "Плотность и ровные ряды",
-        placeCardText: "Дома база должна стоять плотно к соседям и в одной линии с рядом — так альянсу проще защищаться и не терять порядок на карте.",
+        placeBad: "Плохо",
+        placeGood: "Хорошо",
         c1: "Впритык к соседним базам альянса",
-        c2: "Выровнять по горизонтали (таблички имён) и вертикали",
-        c3: "Ориентироваться на ровные ряды 1–4",
-        c4: "На вражеском сервере без щита — подальше от чужих баз",
-        c5: "Не забыть вернуться домой до конца бесплатного окна",
+        c2: "Выровнять по вертикали (ориентироваться на таблички имён) и горизонтали",
+        c3: "Ориентироваться на ровные ряды",
         burnTitle: "Если базу сожгли",
         burnText: "Когда базу сжигают дотла и вас кидает на другой конец карты — тот же приём: слетайте к врагу в субботу и при возвращении встаньте обратно к альянсу бесплатно.",
         burnHint: "На ночь с субботы на воскресенье или перед выходом из игры наденьте щит так, чтобы он точно держался до вс 05:00 МСК (вс 00:00 серверного времени).",
@@ -408,6 +462,17 @@
         previewBold: "Жирный текст сообщения",
         previewItalic: "Курсивный текст сообщения",
         previewStrike: "Зачёркнутый текст сообщения",
+        promoEyebrow: "Гайд · Промокоды",
+        promoHeroTitle: "Актуальные промокоды",
+        promoHeroLead: "Скопируйте код и введите его в игре — получите бонусы. Ниже — список и пошаговая инструкция.",
+        promoListTitle: "Актуальные промокоды",
+        promoHowTitle: "Как вводить промокоды в Z Route: Redemption",
+        promoS1Text: "Нажмите на иконку профиля в левом верхнем углу экрана.",
+        promoS2Text: "Нажмите на пункт меню <strong>Настройки</strong>.",
+        promoS3Text: "Нажмите на пункт <strong>Ввести код</strong>.",
+        promoS4Text: "Введите код и нажмите кнопку <strong>Подтвердить</strong>.",
+        promoS5Text: "Если промокод актуален, вы получите награды и сможете продолжить игру.",
+        copyCodeAria: "Скопировать код",
         footer: "Неофициальный гайд сервера 98."
       },
       en: {
@@ -415,6 +480,7 @@
         brandSub: "Z Route: Redemption · Guides",
         navTeleport: "Free teleport",
         navFormat: "Text formatting",
+        navPromo: "Promo codes",
         eyebrow: "Guide · Free teleport",
         heroTitle: "Align your base for free",
         heroLead: "On Saturday, fly to the enemy — when you return to 98, you pick the spot yourself and relocate without a paid teleport.",
@@ -436,18 +502,16 @@
         s4Hint: "If you have a shield on, placement barely matters. Without a shield, pick a spot away from enemy bases so you are not attacked immediately.",
         s5Title: "Return to your server",
         s5Text: "A bar like “Combat Zone S…” appears at the top center. Tap the left arrow to the left of the info (i) icon (highlighted on the screenshot).",
-        s6Title: "Align your base back on 98",
-        s6Text: "Your own server 98 map opens. Place the base tight against neighbors and align it horizontally and vertically. Use nameplates to line up horizontally.",
-        s6Hint: "Right now the first 4 vertical rows are aligned. The fifth row is a bit crooked — try to match the neat rows when you can.",
+        s6Title: "Align your base at home",
+        s6Text: "Your home server map opens. Place the base tight against neighbors and align it horizontally and vertically. Use nameplates to line up horizontally.",
+        s6Hint: "If your alliance does not have a strict formation yet, align with the neat rows and already aligned bases.",
         shotPlaceholder: "Screenshot placeholder — drop a file into assets/screenshots",
         placeTitle: "How to pick a home spot",
-        placeCardTitle: "Density and clean rows",
-        placeCardText: "At home, keep the base packed next to allies and in line with the row — easier to defend and keeps the alliance map tidy.",
+        placeBad: "Bad",
+        placeGood: "Good",
         c1: "Tight against neighboring alliance bases",
-        c2: "Align horizontally (nameplates) and vertically",
-        c3: "Follow the neat rows 1–4",
-        c4: "On the enemy server without a shield — stay away from their bases",
-        c5: "Return home before the free window ends",
+        c2: "Align vertically (use nameplates) and horizontally",
+        c3: "Follow the neat rows",
         burnTitle: "If your base was burned",
         burnText: "If your base is burned down and you get thrown across the map — same trick: fly to the enemy on Saturday and on return stand back with the alliance for free.",
         burnHint: "Overnight Sat→Sun or before you log off, put on a shield that lasts until Sun 05:00 MSK (Sun 00:00 server time).",
@@ -484,6 +548,17 @@
         previewBold: "Bold message text",
         previewItalic: "Italic message text",
         previewStrike: "Strikethrough message text",
+        promoEyebrow: "Guide · Promo codes",
+        promoHeroTitle: "Current promo codes",
+        promoHeroLead: "Copy a code and enter it in the game to claim bonuses. Below — the list and a step-by-step guide.",
+        promoListTitle: "Current promo codes",
+        promoHowTitle: "How to enter promo codes in Z Route: Redemption",
+        promoS1Text: "Tap the profile icon in the top-left corner of the screen.",
+        promoS2Text: "Tap the menu item <strong>Settings</strong>.",
+        promoS3Text: "Tap <strong>Enter code</strong>.",
+        promoS4Text: "Enter the code and tap <strong>Confirm</strong>.",
+        promoS5Text: "If the promo code is valid, you will receive rewards and can continue playing.",
+        copyCodeAria: "Copy code",
         footer: "Unofficial server 98 guide."
       },
       es: {
@@ -491,6 +566,7 @@
         brandSub: "Z Route: Redemption · Guías",
         navTeleport: "Teletransporte gratis",
         navFormat: "Formato de texto",
+        navPromo: "Códigos promo",
         eyebrow: "Guía · Teletransporte gratis",
         heroTitle: "Alinea tu base gratis",
         heroLead: "El sábado vuela al enemigo: al volver al 98 eliges el lugar tú mismo y mueves la base sin teletransporte de pago.",
@@ -512,18 +588,16 @@
         s4Hint: "Si tienes escudo, el lugar casi no importa. Sin escudo, elige lejos de las bases enemigas para que no te ataquen de inmediato.",
         s5Title: "Vuelve a tu servidor",
         s5Text: "Arriba en el centro aparece una barra tipo «Zona de combate S…». Pulsa la flecha a la izquierda del icono «i» (marcada en la captura).",
-        s6Title: "Alinea la base en casa, en el 98",
-        s6Text: "Se abre el mapa de tu servidor 98. Pon la base pegada a los vecinos y alinéala en horizontal y vertical. En horizontal orientate por las placas con nombres.",
-        s6Hint: "Ahora las primeras 4 filas verticales están rectas. La quinta está un poco torcida: si puedes, ajústate a las filas ordenadas.",
+        s6Title: "Alinea la base en casa",
+        s6Text: "Se abre el mapa del servidor de casa. Pon la base pegada a los vecinos y alinéala en horizontal y vertical. En horizontal orientate por las placas con nombres.",
+        s6Hint: "Si tu alianza aún no tiene una formación estricta, ajústate a las filas ordenadas y a las bases ya alineadas.",
         shotPlaceholder: "Espacio para captura — pon el archivo en assets/screenshots",
         placeTitle: "Cómo elegir el sitio en casa",
-        placeCardTitle: "Densidad y filas rectas",
-        placeCardText: "En casa la base debe estar pegada a los aliados y en línea con la fila: así es más fácil defender y el mapa de la alianza se ve ordenado.",
+        placeBad: "Mal",
+        placeGood: "Bien",
         c1: "Pegada a las bases vecinas de la alianza",
-        c2: "Alinear en horizontal (placas de nombres) y vertical",
-        c3: "Orientarse por las filas rectas 1–4",
-        c4: "En el servidor enemigo sin escudo — lejos de sus bases",
-        c5: "Volver a casa antes de que termine la ventana gratis",
+        c2: "Alinear en vertical (orientarse por las placas de nombres) y horizontal",
+        c3: "Orientarse por las filas rectas",
         burnTitle: "Si te queman la base",
         burnText: "Si te queman la base por completo y te tiran al otro lado del mapa — el mismo truco: el sábado vuela al enemigo y al volver colócate otra vez con la alianza gratis.",
         burnHint: "En la noche de sábado a domingo o antes de salir del juego, ponte un escudo que dure hasta el dom 05:00 MSK (dom 00:00 hora del servidor).",
@@ -560,6 +634,17 @@
         previewBold: "Texto del mensaje en negrita",
         previewItalic: "Texto del mensaje en cursiva",
         previewStrike: "Texto del mensaje tachado",
+        promoEyebrow: "Guía · Códigos promo",
+        promoHeroTitle: "Códigos promocionales actuales",
+        promoHeroLead: "Copia un código e introdúcelo en el juego para recibir bonificaciones. Abajo — la lista y la guía paso a paso.",
+        promoListTitle: "Códigos promocionales actuales",
+        promoHowTitle: "Cómo introducir códigos promo en Z Route: Redemption",
+        promoS1Text: "Toca el icono de perfil en la esquina superior izquierda de la pantalla.",
+        promoS2Text: "Toca el elemento del menú <strong>Ajustes</strong>.",
+        promoS3Text: "Toca <strong>Introducir código</strong>.",
+        promoS4Text: "Introduce el código y pulsa <strong>Confirmar</strong>.",
+        promoS5Text: "Si el código promo es válido, recibirás recompensas y podrás seguir jugando.",
+        copyCodeAria: "Copiar código",
         footer: "Guía no oficial del servidor 98."
       },
       pl: {
@@ -567,6 +652,7 @@
         brandSub: "Z Route: Redemption · Poradniki",
         navTeleport: "Darmowy teleport",
         navFormat: "Formatowanie tekstu",
+        navPromo: "Kody promocyjne",
         eyebrow: "Poradnik · Darmowy teleport",
         heroTitle: "Wyrównaj bazę za darmo",
         heroLead: "W sobotę poleć do wroga — po powrocie na 98 sam wybierasz miejsce i przestawiasz bazę bez płatnego teleportu.",
@@ -588,18 +674,16 @@
         s4Hint: "Jeśli masz tarczę — miejsce prawie nie ma znaczenia. Bez tarczy stawiaj z daleka od baz wroga, żeby od razu nie zaatakowali.",
         s5Title: "Wróć na swój serwer",
         s5Text: "Na górze na środku pojawi się pasek w stylu „Strefa bojowa S…”. Naciśnij strzałkę w lewo na lewo od ikony „i” (zaznaczona na screenie).",
-        s6Title: "Wyrównaj bazę w domu na 98",
-        s6Text: "Otworzy się mapa twojego serwera 98. Postaw bazę ciasno przy sąsiadach i wyrównaj w poziomie i pionie. W poziomie orientuj się po tabliczkach z nickami.",
-        s6Hint: "Obecnie pierwsze 4 pionowe rzędy stoją równo. Piąty jest trochę krzywy — w miarę możliwości trzymaj się równych rzędów.",
+        s6Title: "Wyrównaj bazę w domu",
+        s6Text: "Otworzy się mapa serwera domowego. Postaw bazę ciasno przy sąsiadach i wyrównaj w poziomie i pionie. W poziomie orientuj się po tabliczkach z nickami.",
+        s6Hint: "Jeśli w waszym sojuszu nie ma jeszcze ścisłego ustawienia, wyrównujcie się do równych rzędów i już wyrównanych baz.",
         shotPlaceholder: "Miejsce na screenshot — wrzuć plik do assets/screenshots",
         placeTitle: "Jak wybrać miejsce w domu",
-        placeCardTitle: "Zagęszczenie i równe rzędy",
-        placeCardText: "W domu baza powinna stać ciasno przy sojusznikach i w jednej linii z rzędem — łatwiej bronić i mapa sojuszu wygląda porządnie.",
+        placeBad: "Źle",
+        placeGood: "Dobrze",
         c1: "Ciasno przy sąsiednich bazach sojuszu",
-        c2: "Wyrównać w poziomie (tabliczki nicków) i w pionie",
-        c3: "Orientować się na równe rzędy 1–4",
-        c4: "Na serwerze wroga bez tarczy — z daleka od ich baz",
-        c5: "Wrócić do domu przed końcem darmowego okna",
+        c2: "Wyrównać w pionie (orientować się na tabliczki nicków) i w poziomie",
+        c3: "Orientować się na równe rzędy",
         burnTitle: "Jeśli bazę spalono",
         burnText: "Gdy bazę spalą do zera i wyrzuci cię na drugi koniec mapy — ten sam trik: w sobotę poleć do wroga i po powrocie stań z powrotem przy sojuszu za darmo.",
         burnHint: "Na noc z soboty na niedzielę lub przed wyjściem z gry załóż tarczę tak, by na pewno trzymała do nd. 05:00 MSK (nd. 00:00 czasu serwera).",
@@ -636,6 +720,17 @@
         previewBold: "Pogrubiony tekst wiadomości",
         previewItalic: "Kursywa w wiadomości",
         previewStrike: "Przekreślony tekst wiadomości",
+        promoEyebrow: "Poradnik · Kody promo",
+        promoHeroTitle: "Aktualne kody promocyjne",
+        promoHeroLead: "Skopiuj kod i wpisz go w grze, aby otrzymać bonusy. Poniżej — lista i instrukcja krok po kroku.",
+        promoListTitle: "Aktualne kody promocyjne",
+        promoHowTitle: "Jak wpisywać kody promocyjne w Z Route: Redemption",
+        promoS1Text: "Naciśnij ikonę profilu w lewym górnym rogu ekranu.",
+        promoS2Text: "Naciśnij pozycję menu <strong>Ustawienia</strong>.",
+        promoS3Text: "Naciśnij <strong>Wprowadź kod</strong>.",
+        promoS4Text: "Wpisz kod i naciśnij przycisk <strong>Potwierdź</strong>.",
+        promoS5Text: "Jeśli kod promocyjny jest aktualny, otrzymasz nagrody i będziesz mógł kontynuować grę.",
+        copyCodeAria: "Kopiuj kod",
         footer: "Nieoficjalny poradnik serwera 98."
       },
       cs: {
@@ -643,6 +738,7 @@
         brandSub: "Z Route: Redemption · Návody",
         navTeleport: "Teleport zdarma",
         navFormat: "Formátování textu",
+        navPromo: "Promo kódy",
         eyebrow: "Návod · Teleport zdarma",
         heroTitle: "Zarovnejte základnu zdarma",
         heroLead: "V sobotu zaletěte k nepříteli — při návratu na 98 si sami vyberete místo a přemístíte základnu bez placeného teleportu.",
@@ -664,18 +760,16 @@
         s4Hint: "Pokud máte štít — místo skoro nevadí. Bez štítu stavte dál od nepřátelských základen, ať vás hned nenapadnou.",
         s5Title: "Vraťte se na svůj server",
         s5Text: "Nahoře uprostřed se objeví lišta typu „Bojová zóna S…“. Klepněte na šipku vlevo nalevo od ikony „i“ (zvýrazněná na snímku).",
-        s6Title: "Zarovnejte základnu doma na 98",
-        s6Text: "Otevře se mapa vašeho serveru 98. Postavte základnu těsně k sousedům a zarovnejte vodorovně i svisle. Vodorovně se orientujte podle jmenovek.",
-        s6Hint: "Teď jsou první 4 svislé řady rovné. Pátá je trochu křivá — když to jde, držte se úhledných řad.",
+        s6Title: "Zarovnejte základnu doma",
+        s6Text: "Otevře se mapa domácího serveru. Postavte základnu těsně k sousedům a zarovnejte vodorovně i svisle. Vodorovně se orientujte podle jmenovek.",
+        s6Hint: "Pokud ve vaší alianci ještě není přísné postavení, srovnejte se s úhlednými řadami a už zarovnanými základnami.",
         shotPlaceholder: "Místo pro screenshot — vložte soubor do assets/screenshots",
         placeTitle: "Jak vybrat místo doma",
-        placeCardTitle: "Hustota a rovné řady",
-        placeCardText: "Doma má základna stát těsně u spojenců a v jedné linii s řadou — snáz se brání a mapa aliance vypadá uklizeně.",
+        placeBad: "Špatně",
+        placeGood: "Dobře",
         c1: "Těsně u sousedních základen aliance",
-        c2: "Zarovnat vodorovně (jmenovky) i svisle",
-        c3: "Orientovat se podle rovných řad 1–4",
-        c4: "Na nepřátelském serveru bez štítu — dál od jejich základen",
-        c5: "Vrátit se domů před koncem bezplatného okna",
+        c2: "Zarovnat svisle (orientovat se podle jmenovek) a vodorovně",
+        c3: "Orientovat se podle rovných řad",
         burnTitle: "Když základnu spálí",
         burnText: "Když základnu spálí do základů a hodí vás na druhý konec mapy — stejný trik: v sobotu zaletěte k nepříteli a při návratu se postavte zpět k alianci zdarma.",
         burnHint: "Na noc ze soboty na neděli nebo před odhlášením nasaďte štít tak, aby vydržel do ne 05:00 MSK (ne 00:00 serverového času).",
@@ -712,6 +806,17 @@
         previewBold: "Tučný text zprávy",
         previewItalic: "Kurzíva ve zprávě",
         previewStrike: "Přeškrtnutý text zprávy",
+        promoEyebrow: "Návod · Promo kódy",
+        promoHeroTitle: "Aktuální promo kódy",
+        promoHeroLead: "Zkopírujte kód a zadejte ho ve hře — získáte bonusy. Níže je seznam a návod krok za krokem.",
+        promoListTitle: "Aktuální promo kódy",
+        promoHowTitle: "Jak zadávat promo kódy v Z Route: Redemption",
+        promoS1Text: "Klepněte na ikonu profilu v levém horním rohu obrazovky.",
+        promoS2Text: "Klepněte na položku nabídky <strong>Nastavení</strong>.",
+        promoS3Text: "Klepněte na <strong>Zadat kód</strong>.",
+        promoS4Text: "Zadejte kód a klepněte na <strong>Potvrdit</strong>.",
+        promoS5Text: "Pokud je promo kód platný, získáte odměny a můžete pokračovat ve hře.",
+        copyCodeAria: "Kopírovat kód",
         footer: "Neoficiální návod serveru 98."
       }
     };
@@ -720,10 +825,67 @@
       1: "assets/screenshots/01-vs.jpg",
       2: "assets/screenshots/02-raid-tab.jpg",
       3: "assets/screenshots/03-forward.jpg",
-      4: "assets/screenshots/04-enemy-map.png",
-      5: "assets/screenshots/05-back-arrow-highlight.png",
-      6: "assets/screenshots/06-home-align.png"
+      4: "assets/screenshots/04-enemy-map.jpg",
+      5: "assets/screenshots/05-combat-zone-back.png",
+      6: "assets/screenshots/06-home-align.jpg",
+      p1: "assets/screenshots/promo-01-profile.jpg",
+      p2: "assets/screenshots/promo-02-settings.jpg",
+      p3: "assets/screenshots/promo-03-enter-code.jpg",
+      p4: "assets/screenshots/promo-04-confirm.jpg"
     };
+
+    const PROMO_CODES = [
+      "VK110KQBR",
+      "ZRTSML09",
+      "OKTOBER26",
+      "ZRR6666",
+      "ZRR999",
+      "ZR26PLAY",
+      "ZRRKR617",
+      "ZRDAD26",
+      "LOUNGE619",
+      "WELCOME26",
+      "26CHOCO",
+      "ZRRLW2AC",
+      "ZRR2NX6Q",
+      "ZR26ALLY",
+      "ZRRVJ4YD",
+      "ZRR0ZWEN",
+      "ZRRC7WES",
+      "VK100KLYS",
+      "26SCHOOL",
+      "ZRR2573Q",
+      "DC65KZPW"
+    ];
+
+    const COPY_ICON_SVG =
+      '<span class="icon-copy" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>' +
+      '<span class="icon-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';
+
+    function renderPromoCodes() {
+      const grid = document.getElementById("promo-grid");
+      if (!grid || grid.childElementCount) return;
+      const lang = localStorage.getItem("guide-lang") || "ru";
+      const dict = I18N[lang] || I18N.ru;
+      const frag = document.createDocumentFragment();
+      PROMO_CODES.forEach((code) => {
+        const item = document.createElement("div");
+        item.className = "promo-item";
+        const label = document.createElement("code");
+        label.textContent = code;
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "promo-copy icon-only";
+        btn.setAttribute("data-copy", code);
+        btn.setAttribute("aria-label", dict.copyCodeAria || "Copy code");
+        btn.innerHTML = COPY_ICON_SVG;
+        btn.addEventListener("click", () => copyText(code, btn));
+        item.appendChild(label);
+        item.appendChild(btn);
+        frag.appendChild(item);
+      });
+      grid.appendChild(frag);
+    }
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
@@ -759,9 +921,19 @@
           el.textContent = dict[key];
         }
       });
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-html");
+        if (dict[key] != null) {
+          el.innerHTML = dict[key];
+        }
+      });
       document.querySelectorAll(".lang button").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
+      document.querySelectorAll(".promo-copy.icon-only").forEach((btn) => {
+        btn.setAttribute("aria-label", dict.copyCodeAria || "Copy code");
+      });
+      applyPlaceAlts(dict);
       localStorage.setItem("guide-lang", lang);
       updateTitle(lang);
       refreshCopyButtons(dict);
@@ -782,6 +954,19 @@
             : "Server 98 — Text formatting | Z Route: Redemption";
         return;
       }
+      if (page === "promo") {
+        document.title =
+          lang === "ru"
+            ? "Сервер 98 — Актуальные промокоды | Трасса-Z: Искупление"
+            : lang === "es"
+            ? "Servidor 98 — Códigos promocionales | Z Route: Redemption"
+            : lang === "pl"
+            ? "Serwer 98 — Kody promocyjne | Z Route: Redemption"
+            : lang === "cs"
+            ? "Server 98 — Promo kódy | Z Route: Redemption"
+            : "Server 98 — Promo codes | Z Route: Redemption";
+        return;
+      }
       document.title =
         lang === "ru"
           ? "Сервер 98 — Выровнять базу бесплатно | Трасса-Z: Искупление"
@@ -795,7 +980,8 @@
     }
 
     function setPage(page) {
-      const next = page === "format" ? "format" : "teleport";
+      const allowed = ["teleport", "format", "promo"];
+      const next = allowed.includes(page) ? page : "teleport";
       document.body.dataset.page = next;
       document.querySelectorAll("[data-page-panel]").forEach((panel) => {
         panel.hidden = panel.getAttribute("data-page-panel") !== next;
@@ -816,7 +1002,7 @@
 
     function refreshCopyButtons(dict) {
       document.querySelectorAll(".copy-btn").forEach((btn) => {
-        if (!btn.classList.contains("copied")) {
+        if (!btn.classList.contains("copied") && !btn.classList.contains("icon-only")) {
           btn.textContent = dict.copyBtn || "Copy";
         }
       });
@@ -825,6 +1011,7 @@
     async function copyText(text, btn) {
       const lang = localStorage.getItem("guide-lang") || "ru";
       const dict = I18N[lang] || I18N.ru;
+      const iconOnly = btn.classList.contains("icon-only");
       try {
         if (navigator.clipboard && window.isSecureContext) {
           await navigator.clipboard.writeText(text);
@@ -840,14 +1027,18 @@
           document.body.removeChild(ta);
         }
         btn.classList.add("copied");
-        btn.textContent = dict.copiedBtn || "Copied";
+        if (!iconOnly) {
+          btn.textContent = dict.copiedBtn || "Copied";
+        }
         clearTimeout(btn._copyTimer);
         btn._copyTimer = setTimeout(() => {
           btn.classList.remove("copied");
-          btn.textContent = dict.copyBtn || "Copy";
+          if (!iconOnly) {
+            btn.textContent = dict.copyBtn || "Copy";
+          }
         }, 1600);
       } catch (err) {
-        btn.textContent = "Error";
+        if (!iconOnly) btn.textContent = "Error";
       }
     }
 
@@ -877,14 +1068,41 @@
             ? "Raid tab in Alliance Contest"
             : id === "3"
             ? "Forward button on Raid tab"
+            : id === "4"
+            ? "Enemy server map — place base"
             : id === "5"
             ? "Боевая зона — стрелка влево слева от кнопки i"
+            : id === "6"
+            ? "Home server 98 — align and move base"
+            : id === "p1"
+            ? "Profile icon in the top-left corner"
+            : id === "p2"
+            ? "Settings menu item in profile"
+            : id === "p3"
+            ? "Enter code in Settings"
+            : id === "p4"
+            ? "Gift code input and Confirm button"
             : "";
           img.title = "Click to enlarge";
           box.appendChild(img);
           box.addEventListener("click", () => openLightbox(src, img.alt));
         };
         img.src = src;
+      });
+    }
+
+    function bindZoomable() {
+      document.querySelectorAll("img.zoomable").forEach((img) => {
+        if (img.dataset.zoomBound) return;
+        img.dataset.zoomBound = "1";
+        img.addEventListener("click", () => openLightbox(img.currentSrc || img.src, img.alt));
+      });
+    }
+
+    function applyPlaceAlts(dict) {
+      document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-alt");
+        if (dict[key] != null) el.alt = dict[key];
       });
     }
 
@@ -898,20 +1116,22 @@
 
     const hashPage = (location.hash || "").replace(/^#/, "");
     const savedPage = localStorage.getItem("guide-page");
-    const initialPage =
-      hashPage === "format" || hashPage === "teleport"
-        ? hashPage
-        : savedPage === "format"
-        ? "format"
-        : "teleport";
+    const allowedPages = ["teleport", "format", "promo"];
+    const initialPage = allowedPages.includes(hashPage)
+      ? hashPage
+      : allowedPages.includes(savedPage)
+      ? savedPage
+      : "teleport";
     setPage(initialPage);
 
     window.addEventListener("hashchange", () => {
       const p = (location.hash || "").replace(/^#/, "");
-      if (p === "format" || p === "teleport") setPage(p);
+      if (allowedPages.includes(p)) setPage(p);
     });
 
+    renderPromoCodes();
     tryLoadScreenshots();
+    bindZoomable();
   </script>
 </body>
 </html>

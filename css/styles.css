@@ -278,6 +278,89 @@ a:hover { text-decoration: underline; }
   font-size: 0.95rem;
 }
 
+/* Promo codes */
+.promo-codes {
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  gap: 0.65rem;
+}
+
+.promo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0.7rem 0.65rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 140, 66, 0.22);
+  background: rgba(0, 0, 0, 0.35);
+  min-width: 0;
+}
+
+.promo-item code {
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f0d8c2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.promo-copy {
+  appearance: none;
+  flex-shrink: 0;
+  width: 2.15rem;
+  height: 2.15rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent-2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  padding: 0;
+}
+
+.promo-copy:hover {
+  color: #1a0f08;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  border-color: transparent;
+}
+
+.promo-copy.copied {
+  color: #0d2818;
+  background: var(--ok);
+  border-color: transparent;
+}
+
+.promo-copy .icon-check {
+  display: none;
+}
+
+.promo-copy.copied .icon-copy {
+  display: none;
+}
+
+.promo-copy.copied .icon-check {
+  display: block;
+}
+
+.promo-copy svg {
+  display: block;
+}
+
+.step p strong {
+  color: var(--accent-2);
+  font-weight: 800;
+}
+
 .format-preview {
   margin-top: 0.65rem;
   padding: 0.7rem 0.85rem;
@@ -629,17 +712,67 @@ body.lightbox-open {
   .two-col { grid-template-columns: 1.1fr 0.9fr; align-items: stretch; }
 }
 
+.place-block {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+@media (min-width: 760px) {
+  .place-block {
+    grid-template-columns: 1.35fr 0.85fr;
+    align-items: stretch;
+  }
+}
+
+.place-compare {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 560px) {
+  .place-compare { grid-template-columns: 1fr 1fr; }
+}
+
 .map-card {
   overflow: hidden;
   padding: 0;
+  margin-bottom: 0;
 }
 
-.map-card img {
+.map-card img,
+.place-example img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
-  min-height: 220px;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: zoom-in;
+}
+
+.place-example .caption {
+  padding: 0.75rem 1rem 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.place-label {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+}
+
+.place-label.bad {
+  color: #fff;
+  background: rgba(255, 90, 69, 0.85);
+}
+
+.place-label.good {
+  color: #0d2818;
+  background: var(--ok);
 }
 
 .map-card .caption {
@@ -649,7 +782,7 @@ body.lightbox-open {
 
 .map-card .caption h3 {
   font-size: 1rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0;
 }
 
 .map-card .caption p { color: var(--muted); font-size: 0.9rem; }
@@ -729,7 +862,10 @@ footer .game {
   .wrap { width: min(100% - 1.25rem, var(--max)); }
   .lang button { padding: 0.35rem 0.45rem; font-size: 0.68rem; }
   .site-nav { width: min(100% - 1.25rem, var(--max)); gap: 0.3rem; }
-  .site-nav button { font-size: 0.72rem; padding: 0.5rem 0.45rem; }
+  .site-nav button { font-size: 0.62rem; padding: 0.5rem 0.3rem; line-height: 1.25; }
+  .promo-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .promo-item { padding: 0.55rem 0.5rem 0.55rem 0.65rem; }
+  .promo-item code { font-size: 0.78rem; }
   .step { grid-template-columns: 1fr; }
   .step-num { width: 2.1rem; height: 2.1rem; }
 }
