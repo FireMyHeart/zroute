@@ -1,170 +1,891 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>98 Server — Saturday Raid Teleport Guide | Z Route: Redemption</title>
-  <meta name="description" content="Бесплатный телепорт и выравнивание базы на сервере 98 через субботний рейд. Z Route: Redemption / Трасса-Z: Искупление." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <div class="brand">
-        <div class="brand-mark">98</div>
-        <div class="brand-text">
-          <strong data-i18n="brandTitle">Сервер 98</strong>
-          <span data-i18n="brandSub">Z Route: Redemption · Гайды</span>
-        </div>
-      </div>
-      <div class="lang" role="group" aria-label="Language">
+<!--
+  Tilda HTML-блок: Форматирование текста.
+  Языки: RU / EN / ES / PL / CS (кнопки на hero, справа сверху).
+  Картинки: GitHub raw (https://raw.githubusercontent.com/FireMyHeart/zroute/main/...).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+
+/* Tilda embed: scoped guide block */
+#zroute-guide {
+  position: relative;
+  isolation: isolate;
+  -webkit-text-size-adjust: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+#zroute-guide .page {
+  padding-top: 0.25rem;
+}
+/* Language switcher over hero, top-right at eyebrow level */
+#zroute-guide .hero-lang {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.25rem, 4vw, 2.25rem);
+  right: clamp(1.25rem, 4vw, 2.25rem);
+  justify-content: flex-end;
+  max-width: calc(100% - 2.5rem);
+}
+@media (max-width: 560px) {
+  #zroute-guide .hero-content {
+    padding-top: 3.25rem;
+  }
+  #zroute-guide .hero-lang {
+    top: 0.85rem;
+    right: 0.85rem;
+  }
+}
+
+#zroute-guide{
+  --bg: #0b0d10;
+  --bg-2: #12161c;
+  --panel: rgba(22, 27, 34, 0.92);
+  --line: rgba(255, 140, 66, 0.22);
+  --text: #f3ebe3;
+  --muted: #a89a8d;
+  --accent: #ff8c42;
+  --accent-2: #ffb347;
+  --danger: #ff5a45;
+  --ok: #3dd68c;
+  --glow: rgba(255, 140, 66, 0.35);
+  --radius: 18px;
+  --max: 920px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --font-display: "Oswald", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+}
+
+#zroute-guide, #zroute-guide *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+#zroute-guide{ scroll-behavior: smooth; }
+
+#zroute-guide{
+  font-family: var(--font-body);
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 100, 40, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 20%, rgba(80, 40, 20, 0.25), transparent 50%),
+    linear-gradient(180deg, #0b0d10 0%, #10141a 40%, #0b0d10 100%);
+  min-height: 100vh;
+  line-height: 1.55;
+}
+
+#zroute-guide body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.45), transparent 70%);
+  z-index: 0;
+}
+
+#zroute-guide a{ color: var(--accent-2); text-decoration: none; }
+#zroute-guide a:hover{ text-decoration: underline; }
+
+#zroute-guide .wrap{
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+}
+
+/* Header */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#zroute-guide .lang{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-end;
+}
+
+#zroute-guide .lang button{
+  appearance: none;
+  border: 1px solid rgba(255, 140, 66, 0.25);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.4rem 0.55rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#zroute-guide .lang button:hover{
+  color: var(--text);
+  border-color: rgba(255, 140, 66, 0.55);
+}
+
+#zroute-guide .lang button.active{
+  color: #1a0f08;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  border-color: transparent;
+  box-shadow: 0 0 18px var(--glow);
+}
+
+
+
+
+
+
+
+
+
+#zroute-guide .page[hidden]{
+  display: none;
+}
+
+/* Code blocks */
+#zroute-guide .code-block{
+  margin-top: 0.75rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 140, 66, 0.22);
+  background: rgba(0, 0, 0, 0.38);
+  overflow: hidden;
+}
+
+#zroute-guide .code-block-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 140, 66, 0.14);
+  background: rgba(255, 140, 66, 0.06);
+}
+
+#zroute-guide .code-label{
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+#zroute-guide .copy-btn{
+  appearance: none;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent-2);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+#zroute-guide .copy-btn:hover{
+  color: #1a0f08;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  border-color: transparent;
+}
+
+#zroute-guide .copy-btn.copied{
+  color: #0d2818;
+  background: var(--ok);
+  border-color: transparent;
+}
+
+#zroute-guide .code-block pre{
+  margin: 0;
+  padding: 0.85rem 0.95rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#zroute-guide .code-block code{
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #f0d8c2;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+#zroute-guide .format-list{
+  display: grid;
+  gap: 1rem;
+}
+
+#zroute-guide .format-item h3{
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+  color: var(--accent-2);
+}
+
+#zroute-guide .format-item > p{
+  color: #d2c6ba;
+  font-size: 0.95rem;
+}
+
+/* Promo codes */
+#zroute-guide .promo-codes{
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+#zroute-guide .promo-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  gap: 0.65rem;
+}
+
+#zroute-guide .promo-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0.7rem 0.65rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 140, 66, 0.22);
+  background: rgba(0, 0, 0, 0.35);
+  min-width: 0;
+}
+
+#zroute-guide .promo-item code{
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f0d8c2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#zroute-guide .promo-copy{
+  appearance: none;
+  flex-shrink: 0;
+  width: 2.15rem;
+  height: 2.15rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent-2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  padding: 0;
+}
+
+#zroute-guide .promo-copy:hover{
+  color: #1a0f08;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  border-color: transparent;
+}
+
+#zroute-guide .promo-copy.copied{
+  color: #0d2818;
+  background: var(--ok);
+  border-color: transparent;
+}
+
+#zroute-guide .promo-copy .icon-check{
+  display: none;
+}
+
+#zroute-guide .promo-copy.copied .icon-copy{
+  display: none;
+}
+
+#zroute-guide .promo-copy.copied .icon-check{
+  display: block;
+}
+
+#zroute-guide .promo-copy svg{
+  display: block;
+}
+
+#zroute-guide .step strong{
+  color: var(--accent-2);
+  font-weight: 800;
+}
+
+#zroute-guide .format-preview{
+  margin-top: 0.65rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#zroute-guide .preview-label{
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+#zroute-guide .preview-msg{
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+#zroute-guide .preview-msg.rainbow{
+  letter-spacing: 0.02em;
+}
+
+#zroute-guide .preview-underline{
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+#zroute-guide .preview-bold{
+  font-weight: 800;
+}
+
+#zroute-guide .preview-italic{
+  font-style: italic;
+  font-weight: 600;
+}
+
+#zroute-guide .preview-strike{
+  text-decoration: line-through;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+#zroute-guide .preview-mention{
+  color: #d2c6ba;
+  font-weight: 600;
+}
+
+#zroute-guide .preview-mention .mention-tag{
+  color: #5eb8ff;
+  font-weight: 800;
+}
+
+#zroute-guide .preview-break{
+  font-weight: 700;
+}
+
+/* Hero */
+#zroute-guide .hero{
+  margin-top: 1.25rem;
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: relative;
+  min-height: clamp(240px, 48vw, 420px);
+  background: #000 center / cover no-repeat;
+  display: flex;
+  align-items: flex-start;
+}
+
+#zroute-guide .hero::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,10,12,0.92) 0%, rgba(8,10,12,0.35) 60%, rgba(0,0,0,0.15) 100%),
+    linear-gradient(90deg, rgba(8,10,12,0.55), transparent 45%);
+}
+
+#zroute-guide .hero-content{
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  max-width: 36rem;
+}
+
+#zroute-guide .eyebrow{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 0.65rem;
+}
+
+#zroute-guide .eyebrow::before{
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+#zroute-guide .hero h1{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 8vw, 4.2rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  text-wrap: balance;
+}
+
+#zroute-guide .hero p{
+  color: #d9cfc4;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  max-width: 34ch;
+}
+
+/* Sections */
+#zroute-guide main{ padding: 1.75rem 0 3.5rem; }
+
+#zroute-guide .panel{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.1rem;
+}
+
+#zroute-guide .time-box{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  background:
+    linear-gradient(135deg, rgba(255, 140, 66, 0.12), rgba(255, 90, 69, 0.06)),
+    var(--panel);
+}
+
+@media (min-width: 700px) {
+  #zroute-guide .time-box{ grid-template-columns: 1.2fr 1fr; align-items: start; }
+}
+
+#zroute-guide .time-box h2{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4rem;
+}
+
+#zroute-guide .time-box p{ color: var(--muted); }
+
+#zroute-guide .chips{
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+#zroute-guide .chip{
+  border: 1px solid rgba(255, 140, 66, 0.25);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+#zroute-guide .chip small{
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+#zroute-guide .chip strong{
+  font-size: 1.02rem;
+  font-weight: 800;
+}
+
+#zroute-guide .section-title{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  letter-spacing: 0.03em;
+  margin: 1.6rem 0 0.85rem;
+}
+
+#zroute-guide .steps{ display: grid; gap: 1rem; }
+
+#zroute-guide .step{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem 1rem;
+  align-items: start;
+}
+
+#zroute-guide .step-num{
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08;
+  box-shadow: 0 0 20px var(--glow);
+}
+
+#zroute-guide .step h3{
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+
+#zroute-guide .step p{ color: #d2c6ba; font-size: 0.95rem; }
+
+#zroute-guide .hint{
+  margin: 0 0 0.85rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 140, 66, 0.08);
+  border-radius: 0 10px 10px 0;
+  color: #f0d8c2;
+  font-size: 0.9rem;
+}
+
+#zroute-guide .step .hint{
+  margin-top: 0.55rem;
+  margin-bottom: 0;
+}
+
+#zroute-guide .shot{
+  margin-top: 0.85rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px dashed rgba(255, 140, 66, 0.35);
+  background: rgba(0, 0, 0, 0.35);
+  min-height: 140px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+#zroute-guide .shot img{
+  display: block;
+  width: 33.333%;
+  max-width: 200px;
+  height: auto;
+}
+
+#zroute-guide .shot.has-image{
+  border-style: solid;
+  border-color: var(--line);
+  min-height: 0;
+  padding: 0.5rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  justify-items: center;
+  cursor: zoom-in;
+}
+
+#zroute-guide .shot.has-image img{
+  width: auto;
+  max-width: min(200px, 33.333vw);
+  height: auto;
+}
+
+#zroute-guide .shot.has-image:focus-within, #zroute-guide .shot.has-image:hover{
+  outline: 2px solid rgba(255, 140, 66, 0.45);
+  outline-offset: 2px;
+}
+
+#zroute-guide.lightbox-open{
+  overflow: hidden;
+}
+
+#zroute-guide .lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+#zroute-guide .lightbox[hidden]{
+  display: none;
+}
+
+#zroute-guide .lightbox img{
+  display: block;
+  max-width: min(100%, 960px);
+  max-height: calc(100vh - 2.5rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
+#zroute-guide .lightbox-close{
+  position: fixed;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 1001;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(20, 14, 10, 0.85);
+  color: #fff;
+  font-size: 1.85rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+#zroute-guide .lightbox-close:hover, #zroute-guide .lightbox-close:focus-visible{
+  background: #ff8c42;
+  outline: none;
+}
+
+#zroute-guide .shot.banner.has-image{
+  background: #1a120c;
+  padding: 0.5rem;
+}
+
+#zroute-guide .shot.banner.has-image img{
+  width: auto;
+  max-width: min(200px, 33.333vw);
+  margin: 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+#zroute-guide .two-col{
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 760px) {
+  #zroute-guide .two-col{ grid-template-columns: 1.1fr 0.9fr; align-items: stretch; }
+}
+
+#zroute-guide .place-block{
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+@media (min-width: 760px) {
+  #zroute-guide .place-block{
+    grid-template-columns: 1.35fr 0.85fr;
+    align-items: stretch;
+  }
+}
+
+#zroute-guide .place-compare{
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 560px) {
+  #zroute-guide .place-compare{ grid-template-columns: 1fr 1fr; }
+}
+
+#zroute-guide .map-card{
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+#zroute-guide .map-card img, #zroute-guide .place-example img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: zoom-in;
+}
+
+#zroute-guide .place-example .caption{
+  padding: 0.75rem 1rem 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+#zroute-guide .place-label{
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+}
+
+#zroute-guide .place-label.bad{
+  color: #fff;
+  background: rgba(255, 90, 69, 0.85);
+}
+
+#zroute-guide .place-label.good{
+  color: #0d2818;
+  background: var(--ok);
+}
+
+#zroute-guide .map-card .caption{
+  padding: 1rem 1.15rem 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+#zroute-guide .map-card .caption h3{
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+#zroute-guide .map-card .caption p{ color: var(--muted); font-size: 0.9rem; }
+
+#zroute-guide .checklist{
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+
+#zroute-guide .checklist li{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  align-items: start;
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+#zroute-guide .checklist .mark{
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+#zroute-guide .mark.ok{ background: rgba(61, 214, 140, 0.18); color: var(--ok); }
+#zroute-guide .mark.warn{ background: rgba(255, 90, 69, 0.18); color: var(--danger); }
+
+#zroute-guide .tip-box{
+  margin-top: 1.1rem;
+  background:
+    linear-gradient(135deg, rgba(255, 90, 69, 0.1), rgba(255, 140, 66, 0.06)),
+    var(--panel);
+}
+
+#zroute-guide .tip-box h2{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.45rem, 3.5vw, 1.85rem);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.45rem;
+}
+
+#zroute-guide .tip-box p{ color: #d2c6ba; font-size: 0.95rem; }
+
+#zroute-guide .tip-box .hint{
+  margin-top: 0.7rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid var(--danger);
+  background: rgba(255, 90, 69, 0.08);
+  border-radius: 0 10px 10px 0;
+  color: #f0d8c2;
+  font-size: 0.9rem;
+}
+
+#zroute-guide footer{
+  border-top: 1px solid rgba(255, 140, 66, 0.12);
+  padding: 1.4rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+#zroute-guide footer .game{
+  color: #d9cfc4;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  #zroute-guide .wrap{ width: min(100% - 1.25rem, var(--max)); }
+  #zroute-guide .lang button{ padding: 0.35rem 0.45rem; font-size: 0.68rem; }
+  
+  
+  #zroute-guide .promo-grid{ grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  #zroute-guide .promo-item{ padding: 0.55rem 0.5rem 0.55rem 0.65rem; }
+  #zroute-guide .promo-item code{ font-size: 0.78rem; }
+  #zroute-guide .step{ grid-template-columns: 1fr; }
+  #zroute-guide .step-num{ width: 2.1rem; height: 2.1rem; }
+}
+
+#zroute-guide {
+  /* Отступ под фиксированный хедер сайта (80px) */
+  padding-top: 80px !important;
+}
+/* Lightbox: не заезжать под хедер Tilda */
+#zroute-guide .lightbox {
+  padding-top: calc(80px + 1.25rem);
+  padding-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  align-items: center;
+  justify-items: center;
+}
+#zroute-guide .lightbox img {
+  max-height: calc(100vh - 80px - 2.5rem);
+}
+#zroute-guide .lightbox-close {
+  top: calc(80px + 0.85rem);
+}
+
+body.lightbox-open { overflow: hidden; }
+</style>
+<div id="zroute-guide" lang="ru" data-page="format">
+<div class="wrap page" id="page-format">
+    <section class="hero" style="background-image: url('https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/hero-banner.jpg')">
+      <div class="lang hero-lang" role="group" aria-label="Language">
         <button type="button" data-lang="ru" class="active">RU</button>
         <button type="button" data-lang="en">EN</button>
         <button type="button" data-lang="es">ES</button>
         <button type="button" data-lang="pl">PL</button>
         <button type="button" data-lang="cs">CS</button>
       </div>
-    </div>
-    <nav class="site-nav" role="tablist" aria-label="Sections">
-      <button type="button" role="tab" data-page="teleport" class="active" aria-selected="true" data-i18n="navTeleport">Бесплатный телепорт</button>
-      <button type="button" role="tab" data-page="format" aria-selected="false" data-i18n="navFormat">Форматирование текста</button>
-      <button type="button" role="tab" data-page="promo" aria-selected="false" data-i18n="navPromo">Актуальные промокоды</button>
-    </nav>
-  </header>
 
-  <div class="wrap page" id="page-teleport" data-page-panel="teleport">
-    <section class="hero" style="background-image: url('assets/hero-banner.jpg')">
-      <div class="hero-content">
-        <div class="eyebrow" data-i18n="eyebrow">Гайд · Бесплатный телепорт</div>
-        <h1 data-i18n="heroTitle">Бесплатный телепорт</h1>
-        <p data-i18n="heroLead">Вы можете использовать бесплатный телепорт, чтобы выровнять базу на своём сервере. Для этого в субботу слетайте к врагу, а при возвращении выберите новое место для базы бесплатно. Подробнее ниже.</p>
-      </div>
-    </section>
-
-    <main>
-      <section class="panel time-box" aria-labelledby="when-title">
-        <div>
-          <h2 id="when-title" data-i18n="whenTitle">Когда это работает</h2>
-          <p data-i18n="whenText">Полёт к врагу и возвращение домой бесплатны только в специальном временном окне.</p>
-        </div>
-        <div class="chips">
-          <div class="chip">
-            <small data-i18n="chipServerLabel">Время сервера</small>
-            <strong data-i18n="chipServerValue">сб. 00:00 — вс. 00:00</strong>
-          </div>
-          <div class="chip">
-            <small data-i18n="chipMskLabel">Москва (MSK)</small>
-            <strong data-i18n="chipMskValue">сб. 05:00 — вс. 05:00</strong>
-          </div>
-        </div>
-      </section>
-
-      <h2 class="section-title" data-i18n="stepsTitle">Шаги</h2>
-      <section class="panel steps" aria-label="Steps">
-        <article class="step">
-          <div class="step-num">1</div>
-          <div>
-            <h3 data-i18n="s1Title">В правом вертикальном ряду нажмите на иконку VS (она последняя в списке)</h3>
-            <div class="shot" data-shot="1" data-i18n="shotPlaceholder">Место для скриншота — положите файл в assets/screenshots</div>
-          </div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">2</div>
-          <div>
-            <h3 data-i18n-html="s2Title">Перейдите на третью вкладку <strong>Рейд</strong></h3>
-            <div class="shot" data-shot="2" data-i18n="shotPlaceholder">Место для скриншота — положите файл в assets/screenshots</div>
-          </div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">3</div>
-          <div>
-            <h3 data-i18n-html="s3Title">Нажмите кнопку <strong>Вперёд</strong>. Это переместит вас на сервер противника</h3>
-            <div class="shot" data-shot="3" data-i18n="shotPlaceholder">Место для скриншота — положите файл в assets/screenshots</div>
-          </div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">4</div>
-          <div>
-            <h3 data-i18n="s4Title">Поставьте базу на карте противника</h3>
-            <div class="hint" data-i18n="s4Hint">Если у вас есть щит — место неважно. Если щита нет — ставьте подальше от вражеских баз, чтобы вас не атаковали сразу же.</div>
-            <div class="shot" data-shot="4" data-i18n="shotPlaceholder">Место для скриншота — положите файл в assets/screenshots</div>
-          </div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">5</div>
-          <div>
-            <h3 data-i18n="s5Title">Сверху по центру на надписи «Боевая зона S…» нажмите иконку стрелки назад. Это переместит вас обратно на ваш сервер</h3>
-            <div class="shot banner" data-shot="5" data-i18n="shotPlaceholder">Место для скриншота — положите файл в assets/screenshots</div>
-          </div>
-        </article>
-
-        <article class="step">
-          <div class="step-num">6</div>
-          <div>
-            <h3 data-i18n="s6Title">Поставьте базу на карте своего сервера в желаемом месте</h3>
-            <p data-i18n="s6Text">Откроется карта домашнего сервера. Поставьте вашу базу впритык к соседним базам, выравнивая её по горизонтали и вертикали относительно других баз. Для выравнивания по вертикали удобно ориентироваться по табличкам с именами.</p>
-            <div class="hint" data-i18n="s6Hint">Если в вашем альянсе еще нет строгого построения, ориентируйтесь на первые колонки, так как последние могут быть поставлены неровно и вы лишь продолжите неправильное расположение баз.</div>
-            <div class="shot" data-shot="6" data-i18n="shotPlaceholder">Скриншот: правильное размещение на 98</div>
-          </div>
-        </article>
-      </section>
-
-      <h2 class="section-title" data-i18n="placeTitle">Как выбрать место дома</h2>
-      <section class="place-block">
-        <div class="place-compare">
-          <article class="panel map-card place-example">
-            <img class="zoomable" src="assets/screenshots/place-bad.jpg" alt="" data-i18n-alt="placeBad" />
-            <div class="caption">
-              <h3><span class="place-label bad" data-i18n="placeBad">Плохо</span></h3>
-            </div>
-          </article>
-          <article class="panel map-card place-example">
-            <img class="zoomable" src="assets/screenshots/place-good.jpg" alt="" data-i18n-alt="placeGood" />
-            <div class="caption">
-              <h3><span class="place-label good" data-i18n="placeGood">Хорошо</span></h3>
-            </div>
-          </article>
-        </div>
-
-        <article class="panel">
-          <ul class="checklist">
-            <li>
-              <span class="mark ok">✓</span>
-              <span data-i18n="c1">Впритык к соседним базам альянса</span>
-            </li>
-            <li>
-              <span class="mark ok">✓</span>
-              <span data-i18n="c2">Ровно по горизонтали и вертикали относительно других баз</span>
-            </li>
-            <li>
-              <span class="mark ok">✓</span>
-              <span data-i18n="c3">Ориентируйтесь на первые колонки</span>
-            </li>
-            <li>
-              <span class="mark warn">!</span>
-              <span data-i18n="c5">Не забудьте вернуться домой до конца бесплатного временного окна</span>
-            </li>
-          </ul>
-        </article>
-      </section>
-
-      <section class="panel tip-box" aria-labelledby="burn-title">
-        <h2 id="burn-title" data-i18n="burnTitle">Если базу сожгли</h2>
-        <p data-i18n="burnText">Когда вашу базу сжигают дотла, вы автоматически перемещаетесь в случайное место на карте. Используйте описанный выше порядок действий, чтобы вернуться на прежнее место бесплатно.</p>
-        <div class="hint" data-i18n="burnHint">Чтобы этого избежать, устанавливайте щит так, чтобы он точно держался до вс. 05:00 МСК (вс. 00:00 серверного времени).</div>
-      </section>
-    </main>
-  </div>
-
-  <div class="wrap page" id="page-format" data-page-panel="format" hidden>
-    <section class="hero" style="background-image: url('assets/hero-banner.jpg')">
       <div class="hero-content">
         <div class="eyebrow" data-i18n="fmtEyebrow">Гайд · Форматирование текста</div>
         <h1 data-i18n="fmtHeroTitle">Форматирование текста</h1>
@@ -333,58 +1054,8 @@
     </main>
   </div>
 
-  <div class="wrap page" id="page-promo" data-page-panel="promo" hidden>
-    <section class="hero" style="background-image: url('assets/hero-banner.jpg')">
-      <div class="hero-content">
-        <div class="eyebrow" data-i18n="promoEyebrow">Гайд · Промокоды</div>
-        <h1 data-i18n="promoHeroTitle">Актуальные промокоды</h1>
-        <p data-i18n="promoHeroLead">Скопируйте код и введите его в игре — получите бонусы. Ниже список и пошаговая инструкция.</p>
-      </div>
-    </section>
-
-    <main>
-      <h2 class="section-title" data-i18n="promoListTitle">Актуальные промокоды</h2>
-      <div class="hint" data-i18n="promoListHint">Новые промокоды добавляются в начало списка.</div>
-      <section class="panel promo-codes" aria-label="Promo codes">
-        <div class="promo-grid" id="promo-grid"></div>
-      </section>
-
-      <h2 class="section-title" data-i18n="promoHowTitle">Как вводить промокоды в Z Route: Redemption</h2>
-      <section class="panel steps" aria-label="How to enter promo codes">
-        <article class="step">
-          <div class="step-num">1</div>
-          <div>
-            <p data-i18n="promoS1Text">В левом верхнем углу экрана нажмите на иконку вашего профиля</p>
-            <div class="shot" data-shot="p1" data-i18n="shotPlaceholder">Скриншот: иконка профиля</div>
-          </div>
-        </article>
-        <article class="step">
-          <div class="step-num">2</div>
-          <div>
-            <p data-i18n-html="promoS2Text">Нажмите на пункт меню <strong>Настройки</strong>.</p>
-            <div class="shot" data-shot="p2" data-i18n="shotPlaceholder">Скриншот: Настройки</div>
-          </div>
-        </article>
-        <article class="step">
-          <div class="step-num">3</div>
-          <div>
-            <p data-i18n-html="promoS3Text">Нажмите на пункт <strong>Ввести код</strong>.</p>
-            <div class="shot" data-shot="p3" data-i18n="shotPlaceholder">Скриншот: Ввести код</div>
-          </div>
-        </article>
-        <article class="step">
-          <div class="step-num">4</div>
-          <div>
-            <p data-i18n-html="promoS4Text">Введите код и нажмите кнопку <strong>Подтвердить</strong>.</p>
-            <div class="hint" data-i18n="promoS5Text">Если промокод актуален, вы получите награды и сможете продолжить игру.</div>
-            <div class="shot" data-shot="p4" data-i18n="shotPlaceholder">Скриншот: Подтвердить</div>
-          </div>
-        </article>
-      </section>
-    </main>
-  </div>
-
-  <footer>
+  
+<footer>
     <div class="wrap">
       <p>
         <span class="game">Трасса-Z: Искупление · Z Route: Redemption</span><br />
@@ -392,14 +1063,19 @@
       </p>
     </div>
   </footer>
-
-  <div class="lightbox" id="lightbox" hidden>
-    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+<div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Закрыть">&times;</button>
     <img id="lightbox-img" alt="" />
   </div>
 
-  <script>
-    const I18N = {
+  
+<script>
+(function () {
+  var root = document.getElementById("zroute-guide");
+  if (!root) return;
+
+  var ASSET_BASE = "https://raw.githubusercontent.com/FireMyHeart/zroute/main/";
+  var I18N = {
       // Русский текст живёт в разметке: значения для ключей data-i18n
       // подхватываются из HTML при загрузке. Здесь только то, чего в разметке нет.
       ru: {
@@ -757,340 +1433,168 @@
       }
     };
 
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (I18N.ru[key] == null) I18N.ru[key] = el.textContent.trim();
+  function seedRuFromDom() {
+    root.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (!key || el.classList.contains("has-image")) return;
+      if (I18N.ru[key] == null) I18N.ru[key] = el.textContent;
     });
+    root.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-html");
+      if (!key) return;
+      if (I18N.ru[key] == null) I18N.ru[key] = el.innerHTML;
+    });
+  }
 
-    const shotFiles = {
-      1: "assets/screenshots/01-vs.jpg",
-      2: "assets/screenshots/02-raid-tab.jpg",
-      3: "assets/screenshots/03-forward.jpg",
-      4: "assets/screenshots/04-enemy-map.jpg",
-      5: "assets/screenshots/05-combat-zone-back.png",
-      6: "assets/screenshots/06-home-align.jpg",
-      p1: "assets/screenshots/promo-01-profile.jpg",
-      p2: "assets/screenshots/promo-02-settings.jpg",
-      p3: "assets/screenshots/promo-03-enter-code.jpg",
-      p4: "assets/screenshots/promo-04-confirm.jpg"
-    };
+  function applyPlaceAlts(dict) {
+    root.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-alt");
+      if (dict[key] != null) el.alt = dict[key];
+    });
+  }
 
-    const PROMO_CODES = [
-      "VK110KQBR",
-      "ZRTSML09",
-      "OKTOBER26",
-      "ZRR6666",
-      "ZRR999",
-      "ZR26PLAY",
-      "ZRRKR617",
-      "ZRDAD26",
-      "LOUNGE619",
-      "WELCOME26",
-      "26CHOCO",
-      "ZRRLW2AC",
-      "ZRR2NX6Q",
-      "ZR26ALLY",
-      "ZRRVJ4YD",
-      "ZRR0ZWEN",
-      "ZRRC7WES",
-      "VK100KLYS",
-      "26SCHOOL",
-      "ZRR2573Q",
-      "DC65KZPW"
-    ];
+  function refreshCopyButtons(dict) {
+    root.querySelectorAll(".copy-btn").forEach(function (btn) {
+      if (!btn.classList.contains("copied") && !btn.classList.contains("icon-only")) {
+        btn.textContent = dict.copyBtn || "Copy";
+      }
+    });
+  }
 
-    const COPY_ICON_SVG =
-      '<span class="icon-copy" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>' +
-      '<span class="icon-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';
+  function applyLang(lang) {
+    var dict = I18N[lang] || I18N.ru;
+    root.setAttribute("lang", lang);
+    root.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (dict[key] != null && !el.classList.contains("has-image")) {
+        el.textContent = dict[key];
+      }
+    });
+    root.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-html");
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
+    root.querySelectorAll(".lang button").forEach(function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    });
+    root.querySelectorAll(".promo-copy.icon-only").forEach(function (btn) {
+      btn.setAttribute("aria-label", dict.copyCodeAria || "Copy code");
+    });
+    applyPlaceAlts(dict);
+    try { localStorage.setItem("guide-lang", lang); } catch (e) {}
+    refreshCopyButtons(dict);
+  }
 
-    function renderPromoCodes() {
-      const grid = document.getElementById("promo-grid");
-      if (!grid || grid.childElementCount) return;
-      const lang = localStorage.getItem("guide-lang") || "ru";
-      const dict = I18N[lang] || I18N.ru;
-      const frag = document.createDocumentFragment();
-      PROMO_CODES.forEach((code) => {
-        const item = document.createElement("div");
-        item.className = "promo-item";
-        const label = document.createElement("code");
-        label.textContent = code;
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "promo-copy icon-only";
-        btn.setAttribute("data-copy", code);
-        btn.setAttribute("aria-label", dict.copyCodeAria || "Copy code");
-        btn.innerHTML = COPY_ICON_SVG;
-        btn.addEventListener("click", () => copyText(code, btn));
-        item.appendChild(label);
-        item.appendChild(btn);
-        frag.appendChild(item);
-      });
-      grid.appendChild(frag);
-    }
+  var lightbox = root.querySelector("#lightbox");
+  var lightboxImg = root.querySelector("#lightbox-img");
+  var lightboxClose = root.querySelector("#lightbox-close");
 
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const lightboxClose = document.getElementById("lightbox-close");
+  function openLightbox(src, alt) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.hidden = false;
+    root.classList.add("lightbox-open");
+    document.body.classList.add("lightbox-open");
+  }
 
-    function openLightbox(src, alt) {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || "";
-      lightbox.hidden = false;
-      document.body.classList.add("lightbox-open");
-    }
+  function closeLightbox() {
+    if (!lightbox || !lightboxImg) return;
+    lightbox.hidden = true;
+    lightboxImg.removeAttribute("src");
+    root.classList.remove("lightbox-open");
+    document.body.classList.remove("lightbox-open");
+  }
 
-    function closeLightbox() {
-      lightbox.hidden = true;
-      lightboxImg.removeAttribute("src");
-      document.body.classList.remove("lightbox-open");
-    }
-
-    lightboxClose.addEventListener("click", closeLightbox);
-    lightbox.addEventListener("click", (e) => {
+  if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener("click", function (e) {
       if (e.target === lightbox) closeLightbox();
     });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
-    });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
+  });
 
-    function seedRuFromDom() {
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        if (!key || el.classList.contains("has-image")) return;
-        if (I18N.ru[key] == null) {
-          I18N.ru[key] = el.textContent;
-        }
-      });
-      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-        const key = el.getAttribute("data-i18n-html");
-        if (!key) return;
-        if (I18N.ru[key] == null) {
-          I18N.ru[key] = el.innerHTML;
-        }
-      });
-    }
-
-    function applyLang(lang) {
-      const dict = I18N[lang] || I18N.ru;
-      document.documentElement.lang = lang;
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        if (dict[key] != null && !el.classList.contains("has-image")) {
-          el.textContent = dict[key];
-        }
-      });
-      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
-        const key = el.getAttribute("data-i18n-html");
-        if (dict[key] != null) {
-          el.innerHTML = dict[key];
-        }
-      });
-      document.querySelectorAll(".lang button").forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.lang === lang);
-      });
-      document.querySelectorAll(".promo-copy.icon-only").forEach((btn) => {
-        btn.setAttribute("aria-label", dict.copyCodeAria || "Copy code");
-      });
-      applyPlaceAlts(dict);
-      localStorage.setItem("guide-lang", lang);
-      updateTitle(lang);
-      refreshCopyButtons(dict);
-    }
-
-    function updateTitle(lang) {
-      const page = document.body.dataset.page || "teleport";
-      if (page === "format") {
-        document.title =
-          lang === "ru"
-            ? "Сервер 98 — Форматирование текста | Трасса-Z: Искупление"
-            : lang === "es"
-            ? "Servidor 98 — Formato de texto | Z Route: Redemption"
-            : lang === "pl"
-            ? "Serwer 98 — Formatowanie tekstu | Z Route: Redemption"
-            : lang === "cs"
-            ? "Server 98 — Formátování textu | Z Route: Redemption"
-            : "Server 98 — Text formatting | Z Route: Redemption";
-        return;
+  async function copyText(text, btn) {
+    var lang = "ru";
+    try { lang = localStorage.getItem("guide-lang") || "ru"; } catch (e) {}
+    var dict = I18N[lang] || I18N.ru;
+    var iconOnly = btn.classList.contains("icon-only");
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
       }
-      if (page === "promo") {
-        document.title =
-          lang === "ru"
-            ? "Сервер 98 — Актуальные промокоды | Трасса-Z: Искупление"
-            : lang === "es"
-            ? "Servidor 98 — Códigos promocionales | Z Route: Redemption"
-            : lang === "pl"
-            ? "Serwer 98 — Kody promocyjne | Z Route: Redemption"
-            : lang === "cs"
-            ? "Server 98 — Promo kódy | Z Route: Redemption"
-            : "Server 98 — Promo codes | Z Route: Redemption";
-        return;
-      }
-      document.title =
-        lang === "ru"
-          ? "Сервер 98 — Выровнять базу бесплатно | Трасса-Z: Искупление"
-          : lang === "es"
-          ? "Servidor 98 — Alinea tu base gratis | Z Route: Redemption"
-          : lang === "pl"
-          ? "Serwer 98 — Wyrównaj bazę za darmo | Z Route: Redemption"
-          : lang === "cs"
-          ? "Server 98 — Zarovnejte základnu zdarma | Z Route: Redemption"
-          : "Server 98 — Align your base for free | Z Route: Redemption";
+      btn.classList.add("copied");
+      if (!iconOnly) btn.textContent = dict.copiedBtn || "Copied";
+      clearTimeout(btn._copyTimer);
+      btn._copyTimer = setTimeout(function () {
+        btn.classList.remove("copied");
+        if (!iconOnly) btn.textContent = dict.copyBtn || "Copy";
+      }, 1600);
+    } catch (err) {
+      if (!iconOnly) btn.textContent = "Error";
     }
+  }
 
-    function setPage(page) {
-      const allowed = ["teleport", "format", "promo"];
-      const next = allowed.includes(page) ? page : "teleport";
-      document.body.dataset.page = next;
-      document.querySelectorAll("[data-page-panel]").forEach((panel) => {
-        panel.hidden = panel.getAttribute("data-page-panel") !== next;
-      });
-      document.querySelectorAll(".site-nav [data-page]").forEach((btn) => {
-        const on = btn.dataset.page === next;
-        btn.classList.toggle("active", on);
-        btn.setAttribute("aria-selected", on ? "true" : "false");
-      });
-      localStorage.setItem("guide-page", next);
-      if (location.hash !== "#" + next) {
-        history.replaceState(null, "", "#" + next);
-      }
-      const lang = localStorage.getItem("guide-lang") || "ru";
-      updateTitle(lang);
-      window.scrollTo(0, 0);
-    }
-
-    function refreshCopyButtons(dict) {
-      document.querySelectorAll(".copy-btn").forEach((btn) => {
-        if (!btn.classList.contains("copied") && !btn.classList.contains("icon-only")) {
-          btn.textContent = dict.copyBtn || "Copy";
-        }
-      });
-    }
-
-    async function copyText(text, btn) {
-      const lang = localStorage.getItem("guide-lang") || "ru";
-      const dict = I18N[lang] || I18N.ru;
-      const iconOnly = btn.classList.contains("icon-only");
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(text);
-        } else {
-          const ta = document.createElement("textarea");
-          ta.value = text;
-          ta.setAttribute("readonly", "");
-          ta.style.position = "fixed";
-          ta.style.left = "-9999px";
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-        }
-        btn.classList.add("copied");
-        if (!iconOnly) {
-          btn.textContent = dict.copiedBtn || "Copied";
-        }
-        clearTimeout(btn._copyTimer);
-        btn._copyTimer = setTimeout(() => {
-          btn.classList.remove("copied");
-          if (!iconOnly) {
-            btn.textContent = dict.copyBtn || "Copy";
-          }
-        }, 1600);
-      } catch (err) {
-        if (!iconOnly) btn.textContent = "Error";
-      }
-    }
-
-    document.querySelectorAll(".site-nav [data-page]").forEach((btn) => {
-      btn.addEventListener("click", () => setPage(btn.dataset.page));
+  root.querySelectorAll(".copy-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      copyText(btn.getAttribute("data-copy") || "", btn);
     });
+  });
 
-    document.querySelectorAll(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const text = btn.getAttribute("data-copy") || "";
-        copyText(text, btn);
+  root.querySelectorAll(".lang button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      applyLang(btn.getAttribute("data-lang"));
+    });
+  });
+
+  function tryLoadScreenshots(shotFiles) {
+    root.querySelectorAll(".shot[data-shot]").forEach(function (box) {
+      var id = box.getAttribute("data-shot");
+      var src = shotFiles[id];
+      if (!src) return;
+      var img = new Image();
+      img.onload = function () {
+        box.classList.add("has-image");
+        box.innerHTML = "";
+        img.alt = "";
+        img.title = "Click to enlarge";
+        box.appendChild(img);
+        box.addEventListener("click", function () { openLightbox(src, img.alt); });
+      };
+      img.src = src;
+    });
+  }
+
+  function bindZoomable() {
+    root.querySelectorAll("img.zoomable").forEach(function (img) {
+      if (img.dataset.zoomBound) return;
+      img.dataset.zoomBound = "1";
+      img.addEventListener("click", function () {
+        openLightbox(img.currentSrc || img.src, img.alt);
       });
     });
+  }
 
-    function tryLoadScreenshots() {
-      document.querySelectorAll(".shot[data-shot]").forEach((box) => {
-        const id = box.getAttribute("data-shot");
-        const src = shotFiles[id];
-        if (!src) return;
-        const img = new Image();
-        img.onload = () => {
-          box.classList.add("has-image");
-          box.innerHTML = "";
-          img.alt = id === "1"
-            ? "VS icon in the right vertical row"
-            : id === "2"
-            ? "Raid tab in Alliance Contest"
-            : id === "3"
-            ? "Forward button on Raid tab"
-            : id === "4"
-            ? "Enemy server map — place base"
-            : id === "5"
-            ? "Боевая зона — стрелка влево слева от кнопки i"
-            : id === "6"
-            ? "Home server 98 — align and move base"
-            : id === "p1"
-            ? "Profile icon in the top-left corner"
-            : id === "p2"
-            ? "Settings menu item in profile"
-            : id === "p3"
-            ? "Enter code in Settings"
-            : id === "p4"
-            ? "Gift code input and Confirm button"
-            : "";
-          img.title = "Click to enlarge";
-          box.appendChild(img);
-          box.addEventListener("click", () => openLightbox(src, img.alt));
-        };
-        img.src = src;
-      });
-    }
+  seedRuFromDom();
+  var saved = null;
+  try { saved = localStorage.getItem("guide-lang"); } catch (e) {}
+  var prefer = saved && I18N[saved] ? saved : "ru";
+  applyLang(prefer);
 
-    function bindZoomable() {
-      document.querySelectorAll("img.zoomable").forEach((img) => {
-        if (img.dataset.zoomBound) return;
-        img.dataset.zoomBound = "1";
-        img.addEventListener("click", () => openLightbox(img.currentSrc || img.src, img.alt));
-      });
-    }
 
-    function applyPlaceAlts(dict) {
-      document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
-        const key = el.getAttribute("data-i18n-alt");
-        if (dict[key] != null) el.alt = dict[key];
-      });
-    }
+})();
+</script>
 
-    document.querySelectorAll(".lang button").forEach((btn) => {
-      btn.addEventListener("click", () => applyLang(btn.dataset.lang));
-    });
-
-    const saved = localStorage.getItem("guide-lang");
-    const prefer = saved && I18N[saved] ? saved : "ru";
-    seedRuFromDom();
-    applyLang(prefer);
-
-    const hashPage = (location.hash || "").replace(/^#/, "");
-    const savedPage = localStorage.getItem("guide-page");
-    const allowedPages = ["teleport", "format", "promo"];
-    const initialPage = allowedPages.includes(hashPage)
-      ? hashPage
-      : allowedPages.includes(savedPage)
-      ? savedPage
-      : "teleport";
-    setPage(initialPage);
-
-    window.addEventListener("hashchange", () => {
-      const p = (location.hash || "").replace(/^#/, "");
-      if (allowedPages.includes(p)) setPage(p);
-    });
-
-    renderPromoCodes();
-    tryLoadScreenshots();
-    bindZoomable();
-  </script>
-</body>
-</html>
+</div>
