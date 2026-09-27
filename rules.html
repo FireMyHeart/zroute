@@ -16,6 +16,17 @@
   --line: rgba(255, 140, 66, 0.22);
   --text: #f3ebe3;
   --muted: #a89a8d;
+  --text-soft: #d2c6ba;
+  --text-hint: #f0d8c2;
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 100, 40, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 20%, rgba(80, 40, 20, 0.25), transparent 50%),
+    linear-gradient(180deg, #0b0d10 0%, #10141a 40%, #0b0d10 100%);
+  --hint-bg: rgba(255, 140, 66, 0.08);
+  --chip-bg: rgba(0, 0, 0, 0.22);
+  --surface: rgba(0, 0, 0, 0.28);
+  --surface-2: rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
   --accent: #ff8c42;
   --accent-2: #ffb347;
   --danger: #ff5a45;
@@ -30,16 +41,45 @@
   --new-line: rgba(61, 214, 140, 0.7);
   --font-display: "Oswald", system-ui, sans-serif;
   --font-body: "Manrope", system-ui, sans-serif;
+  --font-size-body: 19px;
 }
+html[data-theme="light"] {
+  --bg: #f3eee7;
+  --bg-2: #e8e1d7;
+  --panel: rgba(255, 252, 248, 0.96);
+  --line: rgba(196, 95, 26, 0.28);
+  --text: #1a1410;
+  --muted: #6b5e52;
+  --text-soft: #4a4038;
+  --text-hint: #3d342c;
+  --accent: #e06a28;
+  --accent-2: #c45a1a;
+  --danger: #c73a2c;
+  --ok: #1f9a5b;
+  --glow: rgba(224, 106, 40, 0.28);
+  --shadow: 0 14px 36px rgba(60, 35, 15, 0.12);
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(224, 106, 40, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 15%, rgba(180, 120, 70, 0.12), transparent 50%),
+    linear-gradient(180deg, #f6f1ea 0%, #ebe4da 45%, #f6f1ea 100%);
+  --hint-bg: rgba(224, 106, 40, 0.1);
+  --chip-bg: rgba(255, 255, 255, 0.78);
+  --surface: rgba(28, 20, 14, 0.05);
+  --surface-2: rgba(28, 20, 14, 0.07);
+  --changed-bg: rgba(224, 106, 40, 0.12);
+  --changed-line: rgba(196, 95, 26, 0.65);
+  --new-bg: rgba(31, 154, 91, 0.12);
+  --new-line: rgba(31, 154, 91, 0.65);
+  color-scheme: light;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
+  font-size: var(--font-size-body);
   color: var(--text);
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 100, 40, 0.18), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 100% 20%, rgba(80, 40, 20, 0.25), transparent 50%),
-    linear-gradient(180deg, #0b0d10 0%, #10141a 40%, #0b0d10 100%);
+  background: var(--page-bg);
   min-height: 100vh;
   line-height: 1.55;
   padding-top: 80px !important;
@@ -83,21 +123,16 @@ body::before {
     linear-gradient(90deg, rgba(8,10,12,0.55), transparent 45%);
 }
 .hero-lang {
-  position: absolute;
-  z-index: 2;
-  top: clamp(1.25rem, 4vw, 2.25rem);
-  right: clamp(1.25rem, 4vw, 2.25rem);
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
   justify-content: flex-end;
-  max-width: calc(100% - 2.5rem);
 }
 .lang button {
   appearance: none;
   border: 1px solid rgba(255, 140, 66, 0.25);
   background: rgba(255, 255, 255, 0.03);
-  color: var(--muted);
+  color: #a89a8d;
   font: inherit;
   font-size: 0.75rem;
   font-weight: 700;
@@ -108,14 +143,14 @@ body::before {
   transition: 0.2s ease;
 }
 .lang button:hover {
-  color: var(--text);
+  color: #f3ebe3;
   border-color: rgba(255, 140, 66, 0.55);
 }
 .lang button.active {
   color: #1a0f08;
-  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  background: linear-gradient(135deg, #ffb347, #ff8c42);
   border-color: transparent;
-  box-shadow: 0 0 18px var(--glow);
+  box-shadow: 0 0 18px rgba(255, 140, 66, 0.35);
 }
 .hero-content {
   position: relative;
@@ -127,7 +162,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.72rem;
+  font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -143,6 +178,7 @@ body::before {
   box-shadow: 0 0 12px var(--accent);
 }
 .hero h1 {
+  color: #f3ebe3;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(2rem, 7vw, 3.4rem);
@@ -153,7 +189,7 @@ body::before {
 }
 .hero p {
   color: #d9cfc4;
-  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  font-size: 1em;
   max-width: 42ch;
 }
 main { position: relative; z-index: 1; padding: 1.35rem 0 3.5rem; }
@@ -228,8 +264,8 @@ main { position: relative; z-index: 1; padding: 1.35rem 0 3.5rem; }
   border-radius: var(--radius);
   padding: 0.95rem 1.1rem;
   margin-bottom: 1.1rem;
-  color: #f0d8c2;
-  font-size: 0.95rem;
+  color: var(--text-hint);
+  font-size: 1em;
   box-shadow: var(--shadow);
 }
 .panel {
@@ -261,8 +297,8 @@ main { position: relative; z-index: 1; padding: 1.35rem 0 3.5rem; }
   gap: 0.45rem;
 }
 .panel p {
-  color: #d2c6ba;
-  font-size: 0.98rem;
+  color: var(--text-soft);
+  font-size: 1em;
   margin: 0.55rem 0;
 }
 .badge {
@@ -312,18 +348,83 @@ footer {
 @media (max-width: 560px) {
   .wrap { width: min(100% - 1.25rem, var(--max)); }
   .hero-content { padding-top: 3.25rem; }
-  .hero-lang { top: 0.85rem; right: 0.85rem; }
   .lang button { padding: 0.35rem 0.45rem; font-size: 0.68rem; }
   .group button { padding: 0.4rem 0.6rem; font-size: 0.72rem; }
+}
+
+.hero-controls {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.25rem, 4vw, 2.25rem);
+  right: clamp(1.25rem, 4vw, 2.25rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  max-width: calc(100% - 2.5rem);
+}
+.theme-toggle {
+  appearance: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffb347;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: rgba(255, 140, 66, 0.7);
+  box-shadow: 0 0 16px var(--glow);
+}
+html[data-theme="light"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  color: #c45a1a;
+  border-color: rgba(196, 95, 26, 0.35);
+}
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+@media (max-width: 560px) {
+  .hero-controls { top: 0.85rem; right: 0.85rem; }
+  .hero-content { padding-top: 3.25rem; }
+}
+html[data-theme="light"] .chip { background: var(--chip-bg); }
+html[data-theme="light"] .hint {
+  background: var(--hint-bg);
+  color: var(--text-hint);
+}
+html[data-theme="light"] .shot { background: var(--surface-2); }
+html[data-theme="light"] .acc { background: var(--panel); }
+html[data-theme="light"] .score-row,
+html[data-theme="light"] .weekday article {
+  background: var(--surface);
+}
+html[data-theme="light"] .info {
+  color: var(--text-hint);
 }
   </style>
 </head>
 <body>
   <div class="wrap" id="top">
     <section class="hero" style="background-image: url('https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/hero-banner.jpg')">
-      <div class="lang hero-lang" role="group" aria-label="Language">
-        <button type="button" id="btn-ru" data-key="lang" data-val="ru" class="active">RU</button>
-        <button type="button" id="btn-en" data-key="lang" data-val="en">EN</button>
+      <div class="hero-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Тема" title="Тема">
+          <span class="icon-moon" aria-hidden="true">&#9790;</span>
+          <span class="icon-sun" aria-hidden="true">&#9728;</span>
+        </button>
+        <div class="lang hero-lang" role="group" aria-label="Language">
+          <button type="button" id="btn-ru" data-key="lang" data-val="ru" class="active">RU</button>
+          <button type="button" id="btn-en" data-key="lang" data-val="en">EN</button>
+        </div>
       </div>
       <div class="hero-content">
         <div class="eyebrow" id="page-eyebrow">Гайд · Правила</div>
@@ -380,6 +481,7 @@ function render() {
   const items = DATA[state.lang][state.version][state.mode];
   const ru = state.lang === "ru";
   document.documentElement.lang = state.lang;
+  if (window.__zrouteApplyTheme) window.__zrouteApplyTheme(document.documentElement.getAttribute("data-theme") || "dark");
 
   document.getElementById("page-eyebrow").textContent = ru ? "Гайд · Правила" : "Guide · Rules";
   document.getElementById("page-title").textContent = ru
@@ -477,5 +579,37 @@ document.querySelectorAll("[data-key]").forEach(function (btn) {
   render();
 })();
   </script>
+
+<script>
+(function () {
+  function applyTheme(theme) {
+    var next = theme === "light" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("guide-theme", next); } catch (e) {}
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    var ru = (document.documentElement.lang || "ru") === "ru";
+    var label = next === "light"
+      ? (ru ? "Тёмная тема" : "Dark theme")
+      : (ru ? "Светлая тема" : "Light theme");
+    btn.setAttribute("aria-label", label);
+    btn.title = label;
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("guide-theme"); } catch (e) {}
+  if (!saved && window.matchMedia) {
+    saved = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  applyTheme(saved || "dark");
+  var btn = document.getElementById("theme-toggle");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      var cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      applyTheme(cur === "light" ? "dark" : "light");
+    });
+  }
+  window.__zrouteApplyTheme = applyTheme;
+})();
+</script>
 </body>
 </html>

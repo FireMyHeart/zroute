@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Готовность к миссии | Сервер 98 · Z Route: Redemption</title>
+  <meta name="description" content="Гайд по Готовности к миссии (ГкМ) на сервере 98: фазы, награды, совмещение с VS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #0b0d10;
+  --panel: rgba(22, 27, 34, 0.92);
+  --line: rgba(255, 140, 66, 0.22);
+  --text: #f3ebe3;
+  --muted: #a89a8d;
+  --text-soft: #d2c6ba;
+  --text-hint: #f0d8c2;
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 100, 40, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 20%, rgba(80, 40, 20, 0.25), transparent 50%),
+    linear-gradient(180deg, #0b0d10 0%, #10141a 40%, #0b0d10 100%);
+  --hint-bg: rgba(255, 140, 66, 0.08);
+  --chip-bg: rgba(0, 0, 0, 0.22);
+  --surface: rgba(0, 0, 0, 0.28);
+  --surface-2: rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+  --accent: #ff8c42;
+  --accent-2: #ffb347;
+  --ok: #3dd68c;
+  --glow: rgba(255, 140, 66, 0.35);
+  --radius: 18px;
+  --max: 920px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --font-display: "Oswald", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-size-body: 19px;
+}
+html[data-theme="light"] {
+  --bg: #f3eee7;
+  --bg-2: #e8e1d7;
+  --panel: rgba(255, 252, 248, 0.96);
+  --line: rgba(196, 95, 26, 0.28);
+  --text: #1a1410;
+  --muted: #6b5e52;
+  --text-soft: #4a4038;
+  --text-hint: #3d342c;
+  --accent: #e06a28;
+  --accent-2: #c45a1a;
+  --danger: #c73a2c;
+  --ok: #1f9a5b;
+  --glow: rgba(224, 106, 40, 0.28);
+  --shadow: 0 14px 36px rgba(60, 35, 15, 0.12);
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(224, 106, 40, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 15%, rgba(180, 120, 70, 0.12), transparent 50%),
+    linear-gradient(180deg, #f6f1ea 0%, #ebe4da 45%, #f6f1ea 100%);
+  --hint-bg: rgba(224, 106, 40, 0.1);
+  --chip-bg: rgba(255, 255, 255, 0.78);
+  --surface: rgba(28, 20, 14, 0.05);
+  --surface-2: rgba(28, 20, 14, 0.07);
+  --changed-bg: rgba(224, 106, 40, 0.12);
+  --changed-line: rgba(196, 95, 26, 0.65);
+  --new-bg: rgba(31, 154, 91, 0.12);
+  --new-line: rgba(31, 154, 91, 0.65);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  color: var(--text);
+  background: var(--page-bg);
+  min-height: 100vh;
+  line-height: 1.55;
+  padding-top: 80px !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.45), transparent 70%);
+  z-index: 0;
+}
+body.lightbox-open { overflow: hidden; }
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+}
+
+.hero {
+  margin-top: 1.25rem;
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: relative;
+  min-height: clamp(200px, 36vw, 320px);
+  background: #000 center / cover no-repeat;
+  background-image: url("assets/screenshots/mission-ready/intro.webp");
+  display: flex;
+  align-items: flex-start;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,10,12,0.92) 0%, rgba(8,10,12,0.4) 60%, rgba(0,0,0,0.2) 100%),
+    linear-gradient(90deg, rgba(8,10,12,0.55), transparent 45%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  max-width: 40rem;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 0.65rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+.hero h1 {
+  color: #f3ebe3;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+.hero p {
+  color: #d9cfc4;
+  font-size: 1em;
+  max-width: 44ch;
+}
+
+main { padding: 1.35rem 0 3.5rem; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.1rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.55rem, 3.5vw, 2rem);
+  letter-spacing: 0.03em;
+  margin: 1.4rem 0 0.85rem;
+  color: var(--text);
+}
+.panel h2, .acc-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  letter-spacing: 0.03em;
+  color: var(--accent-2);
+  margin-bottom: 0.55rem;
+}
+.panel p, .acc-body p, .acc-body li {
+  color: var(--text-soft);
+  font-size: 1em;
+}
+.panel p + p, .acc-body p + p { margin-top: 0.55rem; }
+.panel ul, .acc-body ul {
+  margin: 0.55rem 0 0.2rem 1.1rem;
+  color: var(--text-soft);
+}
+.panel li, .acc-body li { margin: 0.28rem 0; }
+.panel ul.reward-lines {
+  margin: 0.35rem 0 0.15rem 0;
+  padding: 0;
+  list-style: none;
+}
+.panel ul.reward-lines li {
+  margin: 0.2rem 0;
+}
+
+.chips {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+.chip {
+  border: 1px solid rgba(255, 140, 66, 0.25);
+  border-radius: 14px;
+  padding: 0.7rem 0.95rem;
+  background: rgba(0, 0, 0, 0.22);
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--text-hint);
+  line-height: 1.45;
+}
+.chip small {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 800;
+  color: var(--accent-2);
+  margin-bottom: 0.35rem;
+}
+
+.hint {
+  margin-top: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 140, 66, 0.08);
+  border-radius: 0 10px 10px 0;
+  color: var(--text-hint);
+  font-size: 1em;
+}
+.hint.strong { border-left-color: var(--ok); background: rgba(61, 214, 140, 0.08); }
+
+.shots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+.shot {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.45rem;
+  cursor: zoom-in;
+  width: fit-content;
+  max-width: 100%;
+}
+.shot img {
+  display: block;
+  width: auto;
+  max-width: min(180px, 42vw);
+  height: auto;
+  border-radius: 8px;
+}
+.shot:hover, .shot:focus-within {
+  outline: 2px solid rgba(255, 140, 66, 0.45);
+  outline-offset: 2px;
+}
+.shot-caption {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+  max-width: min(180px, 42vw);
+}
+
+.shots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.shots-grid .shot {
+  width: 100%;
+  max-width: none;
+}
+.shots-grid .shot img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.shots-grid .shot-caption {
+  max-width: none;
+}
+
+.shots-featured {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.shots-featured .shot {
+  width: min(100%, 420px);
+  max-width: 100%;
+}
+.shots-featured .shot img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.shots-featured .shot-caption {
+  max-width: none;
+}
+
+/* Статичная картинка: чуть меньше исходника, без lightbox */
+.shot-static {
+  display: block;
+  width: fit-content;
+  max-width: min(72%, 560px);
+  margin: 0.95rem auto 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.45rem;
+  cursor: default;
+}
+.shot-static img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.shot-static .shot-caption {
+  max-width: none;
+}
+
+/* В аккордеоне — около половины ширины + клик для увеличения */
+.acc-body .shots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+.acc-body .shot {
+  width: min(50%, 420px);
+  max-width: 100%;
+  cursor: zoom-in;
+  padding: 0.45rem;
+  margin-inline: auto;
+}
+.acc-body .shot img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.acc-body .shot:hover,
+.acc-body .shot:focus-within {
+  outline: 2px solid rgba(255, 140, 66, 0.45);
+  outline-offset: 2px;
+}
+.acc-body .shot-caption {
+  max-width: none;
+}
+
+/* Accordion */
+.accordion { display: grid; gap: 0.75rem; margin-bottom: 1.1rem; }
+.acc {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.acc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem;
+  user-select: none;
+}
+.acc > summary::-webkit-details-marker { display: none; }
+.acc-num {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08;
+  box-shadow: 0 0 16px var(--glow);
+}
+.acc-summary-text { flex: 1; min-width: 0; }
+.acc-summary-text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: var(--accent-2);
+}
+.acc-summary-text span {
+  display: block;
+  font-size: 19px;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+.acc-chevron {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  display: grid;
+  place-items: center;
+  color: var(--accent-2);
+  transition: transform 0.2s ease;
+  font-size: 0.85rem;
+}
+.acc[open] > summary { border-bottom: 1px solid rgba(255, 140, 66, 0.14); }
+.acc[open] .acc-chevron { transform: rotate(180deg); }
+.acc-body { padding: 1rem 1.15rem 1.25rem; }
+.acc-body .nested {
+  margin-top: 0.85rem;
+  border: 1px solid rgba(255, 140, 66, 0.18);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+.acc-body .nested > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.75rem 0.9rem;
+  font-weight: 800;
+  color: var(--accent-2);
+  font-size: 0.92rem;
+}
+.acc-body .nested > summary::-webkit-details-marker { display: none; }
+.acc-body .nested-body { padding: 0 0.9rem 0.9rem; }
+.acc-body ul.lifehack-steps {
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-soft);
+}
+.acc-body ul.lifehack-steps li {
+  margin: 0.35rem 0;
+}
+
+.score-grid {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.75rem 0;
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 1em;
+}
+.score-row span { color: var(--text-soft); }
+.score-row strong { color: var(--accent-2); font-weight: 800; white-space: nowrap; }
+
+.score-example {
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 1em;
+  color: var(--text-soft);
+}
+.score-example > strong {
+  display: block;
+  color: var(--accent-2);
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+.score-example p {
+  margin: 0.2rem 0;
+  color: var(--text-soft);
+}
+.score-example .pts {
+  color: var(--accent-2);
+  font-weight: 800;
+}
+html[data-theme="light"] .score-example {
+  background: var(--surface);
+}
+
+.weekday {
+  display: grid;
+  gap: 0.55rem;
+}
+.weekday article {
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.weekday h3 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--accent-2);
+  margin-bottom: 0.25rem;
+}
+.weekday p { font-size: 1em; color: var(--text-soft); }
+
+.takeaway {
+  background:
+    linear-gradient(135deg, rgba(255, 140, 66, 0.12), rgba(255, 90, 69, 0.06)),
+    var(--panel);
+}
+.takeaway ul {
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-soft);
+}
+.takeaway li { margin: 0.4rem 0; }
+
+footer {
+  border-top: 1px solid rgba(255, 140, 66, 0.12);
+  padding: 1.4rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: calc(80px + 1.25rem) 1.25rem 1.25rem;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  display: block;
+  max-width: min(100%, 960px);
+  max-height: calc(100vh - 80px - 2.5rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+.lightbox-close {
+  position: fixed;
+  top: calc(80px + 0.85rem);
+  right: 0.85rem;
+  z-index: 1001;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(20, 14, 10, 0.85);
+  color: #fff;
+  font-size: 1.85rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lightbox-close:hover { background: #ff8c42; }
+
+@media (max-width: 560px) {
+  .wrap { width: min(100% - 1.25rem, var(--max)); }
+  .acc > summary { padding: 0.85rem; }
+  .shot img, .shot-caption { max-width: min(150px, 46vw); }
+  .acc-body .shot { width: min(70%, 100%); }
+  .acc-body .shot img, .acc-body .shot-caption { max-width: 100%; }
+}
+
+.hero-controls {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.25rem, 4vw, 2.25rem);
+  right: clamp(1.25rem, 4vw, 2.25rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  max-width: calc(100% - 2.5rem);
+}
+.theme-toggle {
+  appearance: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffb347;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: rgba(255, 140, 66, 0.7);
+  box-shadow: 0 0 16px var(--glow);
+}
+html[data-theme="light"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  color: #c45a1a;
+  border-color: rgba(196, 95, 26, 0.35);
+}
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+@media (max-width: 560px) {
+  .hero-controls { top: 0.85rem; right: 0.85rem; }
+  .hero-content { padding-top: 3.25rem; }
+}
+html[data-theme="light"] .chip { background: var(--chip-bg); }
+html[data-theme="light"] .hint {
+  background: var(--hint-bg);
+  color: var(--text-hint);
+}
+html[data-theme="light"] .shot { background: var(--surface-2); }
+html[data-theme="light"] .acc { background: var(--panel); }
+html[data-theme="light"] .score-row,
+html[data-theme="light"] .weekday article {
+  background: var(--surface);
+}
+html[data-theme="light"] .info {
+  color: var(--text-hint);
+}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <section class="hero">
+      <div class="hero-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Тема" title="Тема">
+          <span class="icon-moon" aria-hidden="true">&#9790;</span>
+          <span class="icon-sun" aria-hidden="true">&#9728;</span>
+        </button>
+      </div>
+      <div class="hero-content">
+        <div class="eyebrow">Гайд · Сервер 98</div>
+        <h1>Готовность к миссии</h1>
+        <p>Короткий гайд по ГкМ: какие фазы закрывать, когда совмещать с VS и как не сливать ресурсы зря.</p>
+      </div>
+    </section>
+
+    <main>
+      <section class="panel" id="begin">
+        <p>ГкМ проходит каждые <strong>4 часа</strong> и даёт награды + очки Безумия экспедиции.</p>
+        <div class="chips">
+          <div class="chip">
+            <small>⏰ Старт фаз по МСК:</small>
+            05:00 · 09:00 · 13:00 · 17:00 · 21:00 · 01:00
+          </div>
+          <div class="chip">
+            <small>5 типов фаз:</small>
+            🏗 стройка · 🪖 солдаты · 🔬 исследования · ⚡ боец · ⭐ герой
+          </div>
+        </div>
+        <div class="hint">
+          💡 Не сливайте ресурсы только ради ГкМ. Самые дорогие задания совмещайте с нужным днём <strong>VS</strong> — одна трата даёт очки сразу в двух событиях.
+        </div>
+      </section>
+
+      <h2 class="section-title">🎁 Награды</h2>
+      <section class="panel">
+        <p>Цель дня — закрыть <strong>3 самые выгодные фазы</strong>, а не всё подряд. За это открываются ежедневные сундуки и награда за сами фазы.</p>
+        <ul>
+          <li>
+            Ежедневные сундуки:
+            <ul class="reward-lines">
+              <li>🟡 2 золотых фрагмента</li>
+              <li>🟣 7 фиолетовых фрагментов</li>
+              <li>🎫 10 карт найма</li>
+              <li>💎 350 алмазов</li>
+            </ul>
+          </li>
+          <li>
+            За 3 фазы:
+            <ul class="reward-lines">
+              <li>📚 3600 книг навыков</li>
+              <li>⌚ 150 ускорений ×5 мин</li>
+              <li>📦 по 72 сундука пищи/металла/нефти</li>
+              <li>🏅 18 ежедневных медалей</li>
+            </ul>
+          </li>
+          <li>В каждой фазе попутно можно забрать до 4 сундуков (обнуляются каждые 4 часа) 👇</li>
+        </ul>
+        <p>Алмазами игра помечает ценность наград внутри.</p>
+        <div class="shots shots-grid">
+          <figure class="shot" data-full="assets/screenshots/mission-ready/rewards-overview.webp">
+            <img src="assets/screenshots/mission-ready/rewards-overview.webp" alt="Награды ГкМ" loading="lazy" />
+            <figcaption class="shot-caption">Обзор наград</figcaption>
+          </figure>
+          <figure class="shot" data-full="assets/screenshots/mission-ready/rewards-daily.webp">
+            <img src="assets/screenshots/mission-ready/rewards-daily.webp" alt="Ежедневные сундуки" loading="lazy" />
+            <figcaption class="shot-caption">3 ежедневных сундука</figcaption>
+          </figure>
+          <figure class="shot" data-full="assets/screenshots/mission-ready/rewards-phase-chests.webp">
+            <img src="assets/screenshots/mission-ready/rewards-phase-chests.webp" alt="Сундуки фазы" loading="lazy" />
+            <figcaption class="shot-caption">Сундуки фазы</figcaption>
+          </figure>
+          <figure class="shot" data-full="assets/screenshots/mission-ready/rewards-medals.webp">
+            <img src="assets/screenshots/mission-ready/rewards-medals.webp" alt="Медали за фазы" loading="lazy" />
+            <figcaption class="shot-caption">Медали и ресурсы</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <h2 class="section-title">Фазы ГкМ</h2>
+
+      <div class="accordion">
+        <details class="acc" open>
+          <summary>
+            <span class="acc-num">1</span>
+            <span class="acc-summary-text">
+              <strong>🏗 Строительство базы</strong>
+              <span>🔥 Лучший день — вторник (совпадение с VS)</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <div class="score-grid">
+              <div class="score-row"><span>⌚ 1 минута ускорения</span><strong>10 очков</strong></div>
+              <div class="score-row"><span>🏗 +10 мощи здания</span><strong>1 очко</strong></div>
+              <div class="score-example">
+                <strong>Например:</strong>
+                <p>1 час ускорений = <span class="pts">600 очков</span></p>
+                <p>+1000 мощи здания = <span class="pts">100 очков</span></p>
+              </div>
+            </div>
+            <div class="hint">💡 Можно заранее построить здания и <strong>не нажимать галочки</strong>, пока не начнётся нужная фаза.</div>
+            <div class="hint strong">🔥 Во вторник прожимаем галочки готовых зданий.<br>❗ В другие дни не стоит сливать ускорения только ради ГкМ.</div>
+            <div class="shots">
+              <figure class="shot" data-full="assets/screenshots/mission-ready/phase-build.webp">
+                <img src="assets/screenshots/mission-ready/phase-build.webp" alt="Фаза строительства" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="acc-num">2</span>
+            <span class="acc-summary-text">
+              <strong>🪖 Обучение солдат</strong>
+              <span>Готовьте заранее · «лесенка» экономит ускорения</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <div class="score-grid">
+              <div class="score-row"><span>⌚ 1 минута ускорения тренировок</span><strong>10 очков</strong></div>
+              <div class="score-row"><span>💎 1 алмаз набора</span><strong>30 очков</strong></div>
+            </div>
+            <p>🪖 Шкала за обучение солдат:</p>
+            <div class="score-grid">
+              <div class="score-row"><span>Солдат T1</span><strong>5 очков</strong></div>
+              <div class="score-row"><span>Солдат T2</span><strong>6 очков</strong></div>
+              <div class="score-row"><span>Солдат T3</span><strong>7 очков</strong></div>
+              <div class="score-row"><span>Солдат T4</span><strong>13 очков</strong></div>
+              <div class="score-row"><span>Солдат T5</span><strong>15 очков</strong></div>
+              <div class="score-row"><span>Солдат T6</span><strong>19 очков</strong></div>
+              <div class="score-row"><span>Солдат T7</span><strong>22 очка</strong></div>
+              <div class="score-row"><span>Солдат T8</span><strong>25 очков</strong></div>
+              <div class="score-row"><span>Солдат T9</span><strong>28 очков</strong></div>
+              <div class="score-row"><span>Солдат T10</span><strong>31 очко</strong></div>
+            </div>
+            <div class="hint">💡 Запускайте обучение заранее к старту ГкМ. «Лесенка»: обучайте низкий T и повышайте — один солдат даёт очки несколько раз.</div>
+            <div class="shots">
+              <figure class="shot" data-full="assets/screenshots/mission-ready/phase-soldiers.webp">
+                <img src="assets/screenshots/mission-ready/phase-soldiers.webp" alt="Фаза солдат" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="acc-num">3</span>
+            <span class="acc-summary-text">
+              <strong>🔬 Исследования</strong>
+              <span>🔥 Лучший день — среда · ⏰ 09:00–12:59 МСК</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <div class="score-grid">
+              <div class="score-row"><span>⌚ 1 минута ускорения</span><strong>10 очков</strong></div>
+              <div class="score-row"><span>🔬 +10 силы исследования</span><strong>1 очко</strong></div>
+            </div>
+            <div class="hint strong">🔥 Готовые исследования выгоднее снимать <strong>⏰ 09:00–12:59 МСК</strong> в среду.<br>❗ В остальные дни специально закрывать ими ГкМ обычно невыгодно.</div>
+            <div class="shots">
+              <figure class="shot" data-full="assets/screenshots/mission-ready/phase-research.webp">
+                <img src="assets/screenshots/mission-ready/phase-research.webp" alt="Фаза исследований" loading="lazy" />
+              </figure>
+            </div>
+
+            <details class="nested">
+              <summary>🧠 Лайфхак: как ускорить исследования в двух центрах</summary>
+              <div class="nested-body">
+                <p>❗ Выжившие влияют на время <strong><u>в момент запуска</u></strong> исследования.</p>
+                <p>После того как исследование уже запущено, время <strong><u>зафиксировано</u></strong>. Выживших можно убрать и переставить во второй центр. Текущее исследование от этого дольше не станет.</p>
+                <ul class="lifehack-steps">
+                  <li>1️⃣ Разместите в Центре №1 лучших UR-выживших.</li>
+                  <li>2️⃣ Запустите исследование.</li>
+                  <li>3️⃣ Нажмите на Центр №1 → <strong>Выжившие</strong></li>
+                  <li>4️⃣ Нажмите на каждого UR-выжившего отдельно и поменяйте на других (синих/зеленых) — время выполнения исследования <strong><u>не изменится</u></strong>.</li>
+                  <li>5️⃣ Через «Быстрое развертывание» поставьте UR в Центр №2.</li>
+                  <li>6️⃣ Только после этого запускайте исследование в Центре №2.</li>
+                </ul>
+                <p style="margin-top:0.55rem">🔄 Дальше гоняйте лучших выживших между центрами перед каждым новым запуском.</p>
+                <p>❗ Аналогично работает ускорение министра:</p>
+                <p>Поставьте максимальное ускорение → запустите исследование → Время <strong><u>зафиксируется</u></strong> → Заберите ускорение → Используйте его для следующего исследования.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="acc-num">4</span>
+            <span class="acc-summary-text">
+              <strong>⚡ Улучшение бойца</strong>
+              <span>🔧 Чипы использовать только в понедельник. В остальные дни набивать сундуки выносливостью</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <div class="score-grid">
+              <div class="score-row"><span>⚡ 1 выносливость</span><strong>100 очков</strong></div>
+              <div class="score-row"><span>🔧 10 боевых чипов</span><strong>1 очко</strong></div>
+              <div class="score-row"><span>15 элитных зомби</span><strong>фаза закрыта</strong></div>
+            </div>
+            <div class="hint">💡 Берите бесплатную выносливость + восстановление + банки по 10. ❗ Чипы ради ГкМ не тратьте: 22k чипов ≈ 2200 ГкМ, а в VS те же чипы — десятки/сотни тысяч очков.</div>
+            <div class="hint strong">🔥 Исключение — <strong>понедельник</strong>: улучшение бойца совпадает с VS, тогда тратить можно и нужно чипы и части.</div>
+            <div class="shots">
+              <figure class="shot" data-full="assets/screenshots/mission-ready/phase-fighter.webp">
+                <img src="assets/screenshots/mission-ready/phase-fighter.webp" alt="Фаза бойца" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="acc-num">5</span>
+            <span class="acc-summary-text">
+              <strong>⭐ Улучшение героя</strong>
+              <span>Самый быстрый способ закрыть фазу ⌚ ~1 мин</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Самый простой способ закрыть фазу — поднять уровень героя. Для полного закрытия понадобится около 24 млн опыта. Для высокого уровня героя будет достаточно сделать один раз.</p>
+            <div class="score-grid">
+              <div class="score-row"><span>🎫 1 карта найма</span><strong>400 очков</strong></div>
+              <div class="score-row"><span>✨ 2000 опыта героя</span><strong>1 очко</strong></div>
+              <div class="score-row"><span>Полное закрытие опытом</span><strong>~24 млн</strong></div>
+            </div>
+            <div class="hint strong">
+              🔥 ПН — опыт + VS.<br>
+              🔥 ЧТ — опыт + карты + тренировка героев VS.<br>
+              ❗ В четверг сначала используйте карты найма, а уже потом универсальные фрагменты на звёзды, т.к. из найма могут выпасть нужные персональные осколки.
+            </div>
+            <div class="shots">
+              <figure class="shot" data-full="assets/screenshots/mission-ready/phase-hero.webp">
+                <img src="assets/screenshots/mission-ready/phase-hero.webp" alt="Фаза героя" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <h2 class="section-title">📅 ГкМ + VS — шпаргалка</h2>
+      <section class="panel">
+        <div class="weekday">
+          <article>
+            <h3>ПН — Радар</h3>
+            <p>⭐ Опыт героя · ⚡ Выносливость · 🔧 Боец: чипы + части</p>
+          </article>
+          <article>
+            <h3>ВТ — Строительство</h3>
+            <p>🏗 Галочки зданий · ⌚ Строительные ускорения</p>
+          </article>
+          <article>
+            <h3>СР — Исследования</h3>
+            <p>🔬 Галочки исследований · ⌚ Ускорения исследований</p>
+          </article>
+          <article>
+            <h3>ЧТ — Герои</h3>
+            <p>🎫 Карты найма · ⭐ Опыт героя · 💎 Затем прокачка звёзд</p>
+          </article>
+          <article>
+            <h3>ПТ — Военная подготовка</h3>
+            <p>🪖 Обучение/повышение солдат · ⏰ Лучше 17:00–20:59 МСК. Стройку и исследования — только если не хватает очков VS.</p>
+          </article>
+          <article>
+            <h3>СБ — Нападение</h3>
+            <p>⌚ Ускорения дают очки, но специально сливать запасы ради ГкМ не стоит.</p>
+          </article>
+        </div>
+        <div class="shots shots-featured">
+          <figure class="shot" data-full="assets/screenshots/mission-ready/cheat-sheet.webp">
+            <img src="assets/screenshots/mission-ready/cheat-sheet.webp" alt="Шпаргалка ГкМ и VS" loading="lazy" />
+            <figcaption class="shot-caption">Шпаргалка</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <h2 class="section-title">🏆 Маленький буст</h2>
+      <section class="panel">
+        <p>Если можете, то заранее займите очередь на нужного министра:</p>
+        <ul>
+          <li>🏗 Строительство → Министр строительства</li>
+          <li>🔬 Исследования → Министр исследований</li>
+          <li>🪖 Солдаты → Министр обороны</li>
+        </ul>
+        <div class="shots shots-featured">
+          <figure class="shot" data-full="assets/screenshots/mission-ready/ministers.webp">
+            <img src="assets/screenshots/mission-ready/ministers.webp" alt="Министры" loading="lazy" />
+            <figcaption class="shot-caption">Очередь министров</figcaption>
+          </figure>
+        </div>
+        <p>Это бесплатный бонус игры, который помогает экономить ресурсы.</p>
+        <p>Наглядное сравнение количества солдат без должности и с должностью:</p>
+        <div class="shots shots-featured">
+          <figure class="shot" data-full="assets/screenshots/mission-ready/minister-soldiers-compare.webp">
+            <img src="assets/screenshots/mission-ready/minister-soldiers-compare.webp" alt="Сравнение солдат без министра и с министром обороны" loading="lazy" />
+            <figcaption class="shot-caption">Без министра / с министром обороны</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel takeaway">
+        <h2>🔥 Самое главное</h2>
+        <ul>
+          <li><strong>Каждый день закрываем 3 выгодные фазы ради наград.</strong></li>
+          <li>⭐ Герой — быстро и просто</li>
+          <li>⚡ Боец — выносливостью</li>
+          <li>🪖 Солдат — готовим заранее</li>
+          <li>А стройку, исследования, чипы, части и большие запасы ускорений не сливаем просто ради ГкМ — ждём совпадения с VS.</li>
+          <li>👉 Одна трата → ГкМ + VS → двойная выгода.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">Неофициальный гайд сервера 98 · Z Route: Redemption</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Закрыть">&times;</button>
+    <img id="lightbox-img" alt="" />
+  </div>
+
+  <script>
+(function () {
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  var lightboxClose = document.getElementById("lightbox-close");
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+  }
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lightboxImg.removeAttribute("src");
+    document.body.classList.remove("lightbox-open");
+  }
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+
+  document.querySelectorAll(".shot").forEach(function (box) {
+    box.addEventListener("click", function () {
+      var img = box.querySelector("img");
+      var src = box.getAttribute("data-full") || (img && (img.currentSrc || img.src));
+      if (src) openLightbox(src, img ? img.alt : "");
+    });
+  });
+})();
+  </script>
+
+<script>
+(function () {
+  function applyTheme(theme) {
+    var next = theme === "light" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("guide-theme", next); } catch (e) {}
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    var ru = (document.documentElement.lang || "ru") === "ru";
+    var label = next === "light"
+      ? (ru ? "Тёмная тема" : "Dark theme")
+      : (ru ? "Светлая тема" : "Light theme");
+    btn.setAttribute("aria-label", label);
+    btn.title = label;
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("guide-theme"); } catch (e) {}
+  if (!saved && window.matchMedia) {
+    saved = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  applyTheme(saved || "dark");
+  var btn = document.getElementById("theme-toggle");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      var cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      applyTheme(cur === "light" ? "dark" : "light");
+    });
+  }
+  window.__zrouteApplyTheme = applyTheme;
+})();
+</script>
+</body>
+</html>

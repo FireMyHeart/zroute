@@ -20,12 +20,18 @@
           <span data-i18n="brandSub">Z Route: Redemption · Гайды</span>
         </div>
       </div>
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="ru" class="active">RU</button>
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="es">ES</button>
-        <button type="button" data-lang="pl">PL</button>
-        <button type="button" data-lang="cs">CS</button>
+      <div class="topbar-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Тема" title="Тема">
+          <span class="icon-moon" aria-hidden="true">&#9790;</span>
+          <span class="icon-sun" aria-hidden="true">&#9728;</span>
+        </button>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="ru" class="active">RU</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="es">ES</button>
+          <button type="button" data-lang="pl">PL</button>
+          <button type="button" data-lang="cs">CS</button>
+        </div>
       </div>
     </div>
     <nav class="site-nav" role="tablist" aria-label="Sections">
@@ -207,7 +213,7 @@
             <span class="preview-label" data-i18n="previewLabel">Пример</span>
             <p class="preview-msg" style="color:#FF9999" data-i18n="previewColorSoft">У кого-нибудь есть С?</p>
           </div>
-          <p style="margin-top:0.85rem;color:#d2c6ba;font-size:0.95rem" data-i18n="fmtRainbowText">Можно использовать несколько тегов в одном сообщении, например сделать градиент:</p>
+          <p style="margin-top:0.85rem;color:#d2c6ba;font-size:1em" data-i18n="fmtRainbowText">Можно использовать несколько тегов в одном сообщении, например сделать градиент:</p>
           <div class="code-block">
             <div class="code-block-head">
               <span class="code-label" data-i18n="codeLabel">Код</span>
@@ -403,11 +409,15 @@
       // Русский текст живёт в разметке: значения для ключей data-i18n
       // подхватываются из HTML при загрузке. Здесь только то, чего в разметке нет.
       ru: {
+        themeToLight: "Светлая тема",
+        themeToDark: "Тёмная тема",
         // Остальные ключи подхватываются из HTML при загрузке (seedRuFromDom).
         copiedBtn: "Скопировано",
         copyCodeAria: "Скопировать код"
       },
       en: {
+        themeToLight: "Light theme",
+        themeToDark: "Dark theme",
         brandTitle: "Server 98",
         brandSub: "Z Route: Redemption · Guides",
         navTeleport: "Free teleport",
@@ -495,6 +505,8 @@
         footer: "Unofficial server 98 guide."
       },
       es: {
+        themeToLight: "Tema claro",
+        themeToDark: "Tema oscuro",
         brandTitle: "Servidor 98",
         brandSub: "Z Route: Redemption · Guías",
         navTeleport: "Teletransporte gratis",
@@ -582,6 +594,8 @@
         footer: "Guía no oficial del servidor 98."
       },
       pl: {
+        themeToLight: "Jasny motyw",
+        themeToDark: "Ciemny motyw",
         brandTitle: "Serwer 98",
         brandSub: "Z Route: Redemption · Poradniki",
         navTeleport: "Darmowy teleport",
@@ -669,6 +683,8 @@
         footer: "Nieoficjalny poradnik serwera 98."
       },
       cs: {
+        themeToLight: "Světlý režim",
+        themeToDark: "Tmavý režim",
         brandTitle: "Server 98",
         brandSub: "Z Route: Redemption · Návody",
         navTeleport: "Teleport zdarma",
@@ -853,6 +869,23 @@
       if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
     });
 
+    
+    function applyTheme(theme) {
+      const next = theme === "light" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("guide-theme", next); } catch (e) {}
+      const btn = document.getElementById("theme-toggle");
+      if (btn) {
+        const lang = document.documentElement.lang || "ru";
+        const dict = I18N[lang] || I18N.ru;
+        const label = next === "light"
+          ? (dict.themeToDark || "Тёмная тема")
+          : (dict.themeToLight || "Светлая тема");
+        btn.setAttribute("aria-label", label);
+        btn.title = label;
+      }
+    }
+
     function seedRuFromDom() {
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
@@ -895,6 +928,7 @@
       localStorage.setItem("guide-lang", lang);
       updateTitle(lang);
       refreshCopyButtons(dict);
+      applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
     }
 
     function updateTitle(lang) {
@@ -1072,6 +1106,20 @@
     const prefer = saved && I18N[saved] ? saved : "ru";
     seedRuFromDom();
     applyLang(prefer);
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem("guide-theme"); } catch (e) {}
+    if (!savedTheme && window.matchMedia) {
+      savedTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    }
+    applyTheme(savedTheme || "dark");
+    const themeBtn = document.getElementById("theme-toggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+        applyTheme(cur === "light" ? "dark" : "light");
+      });
+    }
+
 
     const hashPage = (location.hash || "").replace(/^#/, "");
     const savedPage = localStorage.getItem("guide-page");
