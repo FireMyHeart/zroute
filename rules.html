@@ -422,6 +422,12 @@ html[data-theme="light"] .weekday article {
 html[data-theme="light"] .info {
   color: var(--text-hint);
 }
+html[data-theme="light"] .changed-badge,
+html[data-theme="light"] .new-badge,
+html[data-theme="light"] .lg-changed,
+html[data-theme="light"] .lg-new {
+  color: var(--text);
+}
   </style>
 </head>
 <body>
@@ -470,23 +476,41 @@ html[data-theme="light"] .info {
   <footer>
     <div class="wrap"><p id="footer-text"></p></div>
   </footer>
-  <a class="top-link" href="#top" id="top-link" aria-label="Up">↑</a>
+  <a class="top-link" href="#" id="top-link" aria-label="Up">↑</a>
 
   <script>
 (function () {
   var btn = document.getElementById("top-link");
   if (!btn) return;
-  var HEADER = 80;
-  function syncTopLink() {
-    var threshold = Math.max(window.innerHeight - HEADER, 400);
-    btn.classList.toggle("is-visible", window.scrollY >= threshold);
+  function scrollTopY() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
   }
-  btn.addEventListener("click", function (e) {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  function syncTopLink() {
+    // Show only after roughly one full viewport of scroll (content below the fold).
+    var threshold = Math.max(window.innerHeight, 500);
+    btn.classList.toggle("is-visible", scrollTopY() >= threshold);
+  }
+  function goTop(e) {
+    if (e) e.preventDefault();
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    // Absolute top: body padding-top (80px) keeps content below the fixed header.
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    // Fallback if smooth scroll is interrupted / hash leftovers.
+    setTimeout(function () {
+      if (scrollTopY() > 0) window.scrollTo(0, 0);
+      syncTopLink();
+    }, 400);
+  }
+  btn.addEventListener("click", goTop);
   window.addEventListener("scroll", syncTopLink, { passive: true });
   window.addEventListener("resize", syncTopLink);
+  // Old #top hash scrolled content under the header and left the button visible.
+  if (window.location.hash === "#top") {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+    window.scrollTo(0, 0);
+  }
   syncTopLink();
 })();
   </script>

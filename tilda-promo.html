@@ -962,6 +962,35 @@
 }
 
 body.lightbox-open { overflow: hidden; }
+
+#zroute-guide .top-link {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 40;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08 !important;
+  text-decoration: none !important;
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  font-weight: 800;
+  box-shadow: 0 0 18px var(--glow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+#zroute-guide .top-link.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+#zroute-guide .top-link:hover {
+  filter: brightness(1.05);
+  text-decoration: none !important;
+}
 </style>
 <div id="zroute-guide" lang="ru" data-page="promo">
 <div class="wrap page" id="page-promo">
@@ -1042,12 +1071,45 @@ body.lightbox-open { overflow: hidden; }
     <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Закрыть">&times;</button>
     <img id="lightbox-img" alt="" />
   </div>
+<a class="top-link" href="#" id="top-link" aria-label="Up">↑</a>
 
   
 <script>
 (function () {
   var root = document.getElementById("zroute-guide");
   if (!root) return;
+
+  (function initTopLink() {
+    var btn = root.querySelector("#top-link") || document.getElementById("top-link");
+    if (!btn) return;
+    function scrollTopY() {
+      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    }
+    function guideAbsTop() {
+      return Math.max(0, root.getBoundingClientRect().top + scrollTopY());
+    }
+    function syncTopLink() {
+      var threshold = Math.max(window.innerHeight, 500);
+      btn.classList.toggle("is-visible", scrollTopY() >= guideAbsTop() + threshold);
+    }
+    function goTop(e) {
+      if (e) e.preventDefault();
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+      // Guide has padding-top: 80px — top sits under fixed header, content stays visible.
+      var target = guideAbsTop();
+      window.scrollTo({ top: target, left: 0, behavior: "smooth" });
+      setTimeout(function () {
+        if (Math.abs(scrollTopY() - target) > 2) window.scrollTo(0, target);
+        syncTopLink();
+      }, 400);
+    }
+    btn.addEventListener("click", goTop);
+    window.addEventListener("scroll", syncTopLink, { passive: true });
+    window.addEventListener("resize", syncTopLink);
+    syncTopLink();
+  })();
 
   var ASSET_BASE = "https://raw.githubusercontent.com/FireMyHeart/zroute/main/";
   var I18N = {
