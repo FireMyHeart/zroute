@@ -507,33 +507,14 @@
   max-width: 36rem;
 }
 
-#zroute-guide .eyebrow{
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-2);
-  margin-bottom: 0.65rem;
-}
-
-#zroute-guide .eyebrow::before{
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
-}
-
 #zroute-guide .hero h1{
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(2.4rem, 8vw, 4.2rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
+  /* Preserve former eyebrow row so the title does not jump up */
+  margin-top: calc(16px * 1.55 + 0.65rem);
   margin-bottom: 0.75rem;
   text-wrap: balance;
   color: #f3ebe3;
@@ -1010,7 +991,6 @@ body.lightbox-open { overflow: hidden; }
       </div>
 
       <div class="hero-content">
-        <div class="eyebrow" data-i18n="fmtEyebrow">Гайд · Форматирование текста</div>
         <h1 data-i18n="fmtHeroTitle">Форматирование текста</h1>
         <p data-i18n="fmtHeroLead">Чтобы применить форматирование текста в чате, перед текстом сообщения напишите подходящий тег.</p>
       </div>

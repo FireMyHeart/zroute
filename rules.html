@@ -158,25 +158,6 @@ body::before {
   padding: clamp(1.25rem, 4vw, 2.25rem);
   max-width: 40rem;
 }
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-2);
-  margin-bottom: 0.65rem;
-}
-.eyebrow::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
-}
 .hero h1 {
   color: #f3ebe3;
   font-family: var(--font-display);
@@ -184,6 +165,8 @@ body::before {
   font-size: clamp(2rem, 7vw, 3.4rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
+  /* Preserve former eyebrow row so the title does not jump up */
+  margin-top: calc(16px * 1.55 + 0.65rem);
   margin-bottom: 0.75rem;
   text-wrap: balance;
 }
@@ -444,7 +427,6 @@ html[data-theme="light"] .lg-new {
         </div>
       </div>
       <div class="hero-content">
-        <div class="eyebrow" id="page-eyebrow">Гайд · Правила</div>
         <h1 id="page-title">СОЮЗНОЕ СОГЛАШЕНИЕ СЕРВЕРА 98</h1>
         <p id="page-subtitle">Редакция 3.0. Полная и краткая версии правил, RU / EN. Изменения текущей версии подсвечены цветом.</p>
       </div>
@@ -537,7 +519,6 @@ function render() {
   document.documentElement.lang = state.lang;
   if (window.__zrouteApplyTheme) window.__zrouteApplyTheme(document.documentElement.getAttribute("data-theme") || "dark");
 
-  document.getElementById("page-eyebrow").textContent = ru ? "Гайд · Правила" : "Guide · Rules";
   document.getElementById("page-title").textContent = ru
     ? "СОЮЗНОЕ СОГЛАШЕНИЕ СЕРВЕРА 98"
     : "SERVER 98 ALLIANCE AGREEMENT";
