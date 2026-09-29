@@ -126,25 +126,6 @@ body.lightbox-open { overflow: hidden; }
   padding: clamp(1.25rem, 4vw, 2.25rem);
   max-width: 40rem;
 }
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-2);
-  margin-bottom: 0.65rem;
-}
-.eyebrow::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
-}
 .hero h1 {
   color: #f3ebe3;
   font-family: var(--font-display);
@@ -152,6 +133,8 @@ body.lightbox-open { overflow: hidden; }
   font-size: clamp(2rem, 7vw, 3.4rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
+  /* Preserve former eyebrow row so the title does not jump up */
+  margin-top: calc(16px * 1.55 + 0.65rem);
   margin-bottom: 0.75rem;
 }
 .hero p {
@@ -660,7 +643,6 @@ html[data-theme="light"] .info {
         </button>
       </div>
       <div class="hero-content">
-        <div class="eyebrow">Гайд · Сервер 98</div>
         <h1>Готовность к миссии</h1>
         <p>Короткий гайд по ГкМ: какие фазы закрывать, когда совмещать с VS и как не сливать ресурсы зря.</p>
       </div>
