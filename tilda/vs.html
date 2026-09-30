@@ -640,6 +640,31 @@ html[data-theme="light"] .info {
 }
 .acc-num { font-size: 1rem; }
 .acc-body li > strong:first-child { color: var(--accent); }
+.top-link {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 40;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  font-weight: 800;
+  box-shadow: 0 0 18px var(--glow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+.top-link.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.top-link:hover { filter: brightness(1.05); }
 .acc-body .shot.wide { width: 100%; max-width: 100%; }
   </style>
 </head>
@@ -961,6 +986,44 @@ html[data-theme="light"] .info {
   <footer>
     <div class="wrap">Неофициальный гайд сервера 98 · Z Route: Redemption</div>
   </footer>
+  <a class="top-link" href="#" id="top-link" aria-label="Up">↑</a>
+
+  <script>
+(function () {
+  var btn = document.getElementById("top-link");
+  if (!btn) return;
+  function scrollTopY() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
+  function syncTopLink() {
+    // Show only after roughly one full viewport of scroll (content below the fold).
+    var threshold = Math.max(window.innerHeight, 500);
+    btn.classList.toggle("is-visible", scrollTopY() >= threshold);
+  }
+  function goTop(e) {
+    if (e) e.preventDefault();
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    // Absolute top: body padding-top (80px) keeps content below the fixed header.
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    // Fallback if smooth scroll is interrupted / hash leftovers.
+    setTimeout(function () {
+      if (scrollTopY() > 0) window.scrollTo(0, 0);
+      syncTopLink();
+    }, 400);
+  }
+  btn.addEventListener("click", goTop);
+  window.addEventListener("scroll", syncTopLink, { passive: true });
+  window.addEventListener("resize", syncTopLink);
+  // Old #top hash scrolled content under the header and left the button visible.
+  if (window.location.hash === "#top") {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+    window.scrollTo(0, 0);
+  }
+  syncTopLink();
+})();
+  </script>
 
   <div class="lightbox" id="lightbox" hidden>
     <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Закрыть">&times;</button>
