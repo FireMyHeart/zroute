@@ -1,2 +1,0 @@
-# zroute
-free teleport guide
