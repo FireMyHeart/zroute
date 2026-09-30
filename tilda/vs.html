@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Состязание альянсов (VS) | Сервер 98 · Z Route: Redemption</title>
+  <meta name="description" content="Гайд по Состязанию альянсов (VS) на сервере 98: расписание недели, что копить и что тратить в каждый день." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #0b0d10;
+  --panel: rgba(22, 27, 34, 0.92);
+  --line: rgba(255, 140, 66, 0.22);
+  --text: #f3ebe3;
+  --muted: #a89a8d;
+  --text-soft: #d2c6ba;
+  --text-hint: #f0d8c2;
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 100, 40, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 20%, rgba(80, 40, 20, 0.25), transparent 50%),
+    linear-gradient(180deg, #0b0d10 0%, #10141a 40%, #0b0d10 100%);
+  --hint-bg: rgba(255, 140, 66, 0.08);
+  --chip-bg: rgba(0, 0, 0, 0.22);
+  --surface: rgba(0, 0, 0, 0.28);
+  --surface-2: rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+  --accent: #ff8c42;
+  --accent-2: #ffb347;
+  --ok: #3dd68c;
+  --glow: rgba(255, 140, 66, 0.35);
+  --radius: 18px;
+  --max: 920px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --font-display: "Oswald", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-size-body: 19px;
+}
+html[data-theme="light"] {
+  --bg: #f3eee7;
+  --bg-2: #e8e1d7;
+  --panel: rgba(255, 252, 248, 0.96);
+  --line: rgba(196, 95, 26, 0.28);
+  --text: #1a1410;
+  --muted: #6b5e52;
+  --text-soft: #4a4038;
+  --text-hint: #3d342c;
+  --accent: #e06a28;
+  --accent-2: #c45a1a;
+  --danger: #c73a2c;
+  --ok: #1f9a5b;
+  --glow: rgba(224, 106, 40, 0.28);
+  --shadow: 0 14px 36px rgba(60, 35, 15, 0.12);
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(224, 106, 40, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 15%, rgba(180, 120, 70, 0.12), transparent 50%),
+    linear-gradient(180deg, #f6f1ea 0%, #ebe4da 45%, #f6f1ea 100%);
+  --hint-bg: rgba(224, 106, 40, 0.1);
+  --chip-bg: rgba(255, 255, 255, 0.78);
+  --surface: rgba(28, 20, 14, 0.05);
+  --surface-2: rgba(28, 20, 14, 0.07);
+  --changed-bg: rgba(224, 106, 40, 0.12);
+  --changed-line: rgba(196, 95, 26, 0.65);
+  --new-bg: rgba(31, 154, 91, 0.12);
+  --new-line: rgba(31, 154, 91, 0.65);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  color: var(--text);
+  background: var(--page-bg);
+  min-height: 100vh;
+  line-height: 1.55;
+  padding-top: 80px !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.45), transparent 70%);
+  z-index: 0;
+}
+body.lightbox-open { overflow: hidden; }
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+}
+
+.hero {
+  margin-top: 1.25rem;
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: relative;
+  min-height: clamp(200px, 36vw, 320px);
+  background: #000 center / cover no-repeat;
+  background-image: url("https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/intro.webp");
+  display: flex;
+  align-items: flex-start;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,10,12,0.92) 0%, rgba(8,10,12,0.4) 60%, rgba(0,0,0,0.2) 100%),
+    linear-gradient(90deg, rgba(8,10,12,0.55), transparent 45%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  max-width: 40rem;
+}
+.hero h1 {
+  color: #f3ebe3;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  /* Preserve former eyebrow row so the title does not jump up */
+  margin-top: calc(16px * 1.55 + 0.65rem);
+  margin-bottom: 0.75rem;
+}
+.hero p {
+  color: #d9cfc4;
+  font-size: 1em;
+  max-width: 44ch;
+}
+
+main { padding: 1.35rem 0 3.5rem; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.1rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.55rem, 3.5vw, 2rem);
+  letter-spacing: 0.03em;
+  margin: 1.4rem 0 0.85rem;
+  color: var(--text);
+}
+.panel h2, .acc-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  letter-spacing: 0.03em;
+  color: var(--accent-2);
+  margin-bottom: 0.55rem;
+}
+.panel p, .acc-body p, .acc-body li {
+  color: var(--text-soft);
+  font-size: 1em;
+}
+.panel p + p, .acc-body p + p { margin-top: 0.55rem; }
+.panel ul, .acc-body ul {
+  margin: 0.55rem 0 0.2rem 1.1rem;
+  color: var(--text-soft);
+}
+.panel li, .acc-body li { margin: 0.28rem 0; }
+.panel ul.reward-lines {
+  margin: 0.35rem 0 0.15rem 0;
+  padding: 0;
+  list-style: none;
+}
+.panel ul.reward-lines li {
+  margin: 0.2rem 0;
+}
+
+.chips {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+.chip {
+  border: 1px solid rgba(255, 140, 66, 0.25);
+  border-radius: 14px;
+  padding: 0.7rem 0.95rem;
+  background: rgba(0, 0, 0, 0.22);
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--text-hint);
+  line-height: 1.45;
+}
+.chip small {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 800;
+  color: var(--accent-2);
+  margin-bottom: 0.35rem;
+}
+
+.hint {
+  margin-top: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 140, 66, 0.08);
+  border-radius: 0 10px 10px 0;
+  color: var(--text-hint);
+  font-size: 1em;
+}
+.hint.strong { border-left-color: var(--ok); background: rgba(61, 214, 140, 0.08); }
+
+.shots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+.shot {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.45rem;
+  cursor: zoom-in;
+  width: fit-content;
+  max-width: 100%;
+}
+.shot img {
+  display: block;
+  width: auto;
+  max-width: min(180px, 42vw);
+  height: auto;
+  border-radius: 8px;
+}
+.shot:hover, .shot:focus-within {
+  outline: 2px solid rgba(255, 140, 66, 0.45);
+  outline-offset: 2px;
+}
+.shot-caption {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+  max-width: min(180px, 42vw);
+}
+
+.shots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.shots-grid .shot {
+  width: 100%;
+  max-width: none;
+}
+.shots-grid .shot img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.shots-grid .shot-caption {
+  max-width: none;
+}
+
+.shots-featured {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.shots-featured .shot {
+  width: min(100%, 420px);
+  max-width: 100%;
+}
+.shots-featured .shot img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.shots-featured .shot-caption {
+  max-width: none;
+}
+
+/* Статичная картинка: чуть меньше исходника, без lightbox */
+.shot-static {
+  display: block;
+  width: fit-content;
+  max-width: min(72%, 560px);
+  margin: 0.95rem auto 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.45rem;
+  cursor: default;
+}
+.shot-static img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.shot-static .shot-caption {
+  max-width: none;
+}
+
+/* В аккордеоне — около половины ширины + клик для увеличения */
+.acc-body .shots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+.acc-body .shot {
+  width: min(50%, 420px);
+  max-width: 100%;
+  cursor: zoom-in;
+  padding: 0.45rem;
+  margin-inline: auto;
+}
+.acc-body .shot img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.acc-body .shot:hover,
+.acc-body .shot:focus-within {
+  outline: 2px solid rgba(255, 140, 66, 0.45);
+  outline-offset: 2px;
+}
+.acc-body .shot-caption {
+  max-width: none;
+}
+
+/* Accordion */
+.accordion { display: grid; gap: 0.75rem; margin-bottom: 1.1rem; }
+.acc {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.acc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem;
+  user-select: none;
+}
+.acc > summary::-webkit-details-marker { display: none; }
+.acc-num {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08;
+  box-shadow: 0 0 16px var(--glow);
+}
+.acc-summary-text { flex: 1; min-width: 0; }
+.acc-summary-text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: var(--accent-2);
+}
+.acc-summary-text span {
+  display: block;
+  font-size: 19px;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+.acc-chevron {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  display: grid;
+  place-items: center;
+  color: var(--accent-2);
+  transition: transform 0.2s ease;
+  font-size: 0.85rem;
+}
+.acc[open] > summary { border-bottom: 1px solid rgba(255, 140, 66, 0.14); }
+.acc[open] .acc-chevron { transform: rotate(180deg); }
+.acc-body { padding: 1rem 1.15rem 1.25rem; }
+.acc-body .nested {
+  margin-top: 0.85rem;
+  border: 1px solid rgba(255, 140, 66, 0.18);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+.acc-body .nested > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.75rem 0.9rem;
+  font-weight: 800;
+  color: var(--accent-2);
+  font-size: 0.92rem;
+}
+.acc-body .nested > summary::-webkit-details-marker { display: none; }
+.acc-body .nested-body { padding: 0 0.9rem 0.9rem; }
+.acc-body ul.lifehack-steps {
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-soft);
+}
+.acc-body ul.lifehack-steps li {
+  margin: 0.35rem 0;
+}
+
+.score-grid {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.75rem 0;
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 1em;
+}
+.score-row span { color: var(--text-soft); }
+.score-row strong { color: var(--accent-2); font-weight: 800; white-space: nowrap; }
+
+.score-example {
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 1em;
+  color: var(--text-soft);
+}
+.score-example > strong {
+  display: block;
+  color: var(--accent-2);
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+.score-example p {
+  margin: 0.2rem 0;
+  color: var(--text-soft);
+}
+.score-example .pts {
+  color: var(--accent-2);
+  font-weight: 800;
+}
+html[data-theme="light"] .score-example {
+  background: var(--surface);
+}
+
+.weekday {
+  display: grid;
+  gap: 0.55rem;
+}
+.weekday article {
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.weekday h3 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--accent-2);
+  margin-bottom: 0.25rem;
+}
+.weekday p { font-size: 1em; color: var(--text-soft); }
+
+.takeaway {
+  background:
+    linear-gradient(135deg, rgba(255, 140, 66, 0.12), rgba(255, 90, 69, 0.06)),
+    var(--panel);
+}
+.takeaway ul {
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-soft);
+}
+.takeaway li { margin: 0.4rem 0; }
+
+footer {
+  border-top: 1px solid rgba(255, 140, 66, 0.12);
+  padding: 1.4rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: calc(80px + 1.25rem) 1.25rem 1.25rem;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  display: block;
+  max-width: min(100%, 960px);
+  max-height: calc(100vh - 80px - 2.5rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+.lightbox-close {
+  position: fixed;
+  top: calc(80px + 0.85rem);
+  right: 0.85rem;
+  z-index: 1001;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(20, 14, 10, 0.85);
+  color: #fff;
+  font-size: 1.85rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lightbox-close:hover { background: #ff8c42; }
+
+@media (max-width: 560px) {
+  .wrap { width: min(100% - 1.25rem, var(--max)); }
+  .acc > summary { padding: 0.85rem; }
+  .shot img, .shot-caption { max-width: min(150px, 46vw); }
+  .acc-body .shot { width: min(70%, 100%); }
+  .acc-body .shot img, .acc-body .shot-caption { max-width: 100%; }
+}
+
+.hero-controls {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.25rem, 4vw, 2.25rem);
+  right: clamp(1.25rem, 4vw, 2.25rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  max-width: calc(100% - 2.5rem);
+}
+.theme-toggle {
+  appearance: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffb347;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: rgba(255, 140, 66, 0.7);
+  box-shadow: 0 0 16px var(--glow);
+}
+html[data-theme="light"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  color: #c45a1a;
+  border-color: rgba(196, 95, 26, 0.35);
+}
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+@media (max-width: 560px) {
+  .hero-controls { top: 0.85rem; right: 0.85rem; }
+  .hero-content { padding-top: 3.25rem; }
+}
+html[data-theme="light"] .chip { background: var(--chip-bg); }
+html[data-theme="light"] .hint {
+  background: var(--hint-bg);
+  color: var(--text-hint);
+}
+html[data-theme="light"] .shot { background: var(--surface-2); }
+html[data-theme="light"] .acc { background: var(--panel); }
+html[data-theme="light"] .score-row,
+html[data-theme="light"] .weekday article {
+  background: var(--surface);
+}
+html[data-theme="light"] .info {
+  color: var(--text-hint);
+}
+.panel a, .acc-body a {
+  color: var(--accent-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.acc-num { font-size: 1rem; }
+.acc-body .shot.wide { width: 100%; max-width: 100%; }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <section class="hero">
+      <div class="hero-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Тема" title="Тема">
+          <span class="icon-moon" aria-hidden="true">&#9790;</span>
+          <span class="icon-sun" aria-hidden="true">&#9728;</span>
+        </button>
+      </div>
+      <div class="hero-content">
+        <h1>Состязание альянсов</h1>
+        <p>Расписание недели: что копить, что тратить и в какой день, чтобы забирать все сундуки и тащить альянс в топ.</p>
+      </div>
+    </section>
+
+    <main>
+      <section class="panel" id="begin">
+        <h2>Как побеждать в VS? Почему это важно?</h2>
+        <p><strong>Гонка альянсов (VS)</strong> — это не просто соревнование, это ваш главный социальный лифт в игре.</p>
+        <div class="chips">
+          <div class="chip">
+            <small>🚀 Максимальный буст</small>
+            Вы растёте в 2–3 раза быстрее тех, кто тратит ресурсы хаотично.
+          </div>
+          <div class="chip">
+            <small>🎁 Личные награды</small>
+            Забираете все 9 сундуков этапа каждый день.
+          </div>
+          <div class="chip">
+            <small>🛡 Сила альянса</small>
+            Помогаете клану занять топовые места в рейтинге сервера.
+          </div>
+        </div>
+        <div class="hint">
+          💡 <strong>Золотое правило:</strong> не тратьте ускорения и ресурсы просто так. Дождитесь нужного дня, используйте их по инструкции ниже и забирайте <strong>максимальный профит!</strong>
+        </div>
+      </section>
+
+      <h2 class="section-title">📅 Расписание недели</h2>
+      <section class="panel">
+        <div class="weekday">
+          <article>
+            <h3>ВС — Подготовка</h3>
+            <p>📡 Копим радар · 🚚 Отряды на ночной сбор</p>
+          </article>
+          <article>
+            <h3>ПН — Радар, сбор, самолёт</h3>
+            <p>📡 Радар · 🚚 Сбор весь день · ✈️ Чипы, части, выносливость · ⭐ Немного опыта героя</p>
+          </article>
+          <article>
+            <h3>ВТ — Строительство</h3>
+            <p>🏗 Галочки зданий · ⌚ Ускорения стройки · 🟠 Спецоперации · 🚛 Конвой</p>
+          </article>
+          <article>
+            <h3>СР — Технологии</h3>
+            <p>📡 Радар · 🔬 Исследования и ускорения · 📘 Научные данные · 📦 Сундуки бойца</p>
+          </article>
+          <article>
+            <h3>ЧТ — Герои</h3>
+            <p>🎫 Карты найма · 🧩 Фрагменты героев · ⭐ Опыт и книги навыков</p>
+          </article>
+          <article>
+            <h3>ПТ — Боеготовность</h3>
+            <p>📡 Радар · 🏗 Стройка · 🔬 Исследования · 🪖 Тренировка солдат и ускорения</p>
+          </article>
+          <article>
+            <h3>СБ — Рейд</h3>
+            <p>⌚ Все виды ускорений · ⚔️ ПВП · 🟠 Спецоперации · 🚛 Конвой · 🛡 Щит или снять гарнизон</p>
+          </article>
+        </div>
+        <div class="hint">💡 Многие дни VS совпадают с фазами <a href="/mission-ready">Готовности к миссии</a> — одна трата даёт очки сразу в двух событиях.</div>
+      </section>
+
+      <h2 class="section-title">Дни VS</h2>
+
+      <div class="accordion">
+        <details class="acc" id="sunday" open>
+          <summary>
+            <span class="acc-num">ВС</span>
+            <span class="acc-summary-text">
+              <strong>Воскресенье — Подготовка!</strong>
+              <span>Завтра начинается новая серия фаз</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p><strong>Бойцы</strong>, чтобы занять высокие места, начинаем подготовку уже сейчас:</p>
+            <ul>
+              <li><strong>📡 Радар:</strong> не используйте вызовы радара сегодня! Копим их на завтрашнее утро. Проходим задания без точек, иначе они исчезнут, но не нажимаем после.</li>
+              <li><strong>🚚 Ресурсы:</strong> отправляйте все свободные отряды на сбор ресурсов в ночь, чтобы завершение было не ранее <strong>05:00 МСК</strong> (00:00 по серверу).</li>
+            </ul>
+            <div class="hint strong">🔥 Завтра утром это даст нам отличный старт по очкам.</div>
+            <div class="shots">
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/sunday.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/sunday.webp" alt="Воскресенье: не трогать радар, поставить сбор на ночь" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="monday">
+          <summary>
+            <span class="acc-num">ПН</span>
+            <span class="acc-summary-text">
+              <strong>Понедельник — Радар, сбор, самолёт</strong>
+              <span>Фаза 1 · тратим накопленный радар и выносливость</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Сегодня зарабатываем очки следующими действиями:</p>
+            <ul>
+              <li><strong>📡 События радара:</strong> завершайте все накопленные миссии.</li>
+              <li><strong>✈️ Улучшение бойцов:</strong> используйте части бойцов, боевые чипы и выносливость (самолёт).</li>
+              <li><strong>🛩 Ведомый:</strong> открывайте сундуки ведомого (открывается на 82-й день сервера).</li>
+              <li><strong>⭐ Опыт героя:</strong> вливайте опыт (660 ед. = очки), но оставьте большую часть на четверг.</li>
+              <li><strong>🚚 Сбор:</strong> как только отряды вернутся с ночного сбора, сразу отправляйте их снова. Сбор может идти весь день!</li>
+            </ul>
+            <div class="hint">💡 <strong>Важно:</strong> готовим на завтра галочки построек, но не собираем их.</div>
+            <div class="hint strong">🔥 Понедельник совпадает с фазой бойца в ГкМ — чипы и части тратим именно сегодня.</div>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/monday.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/monday.webp" alt="Понедельник: радар, сбор, самолёт, опыт героя" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="tuesday">
+          <summary>
+            <span class="acc-num">ВТ</span>
+            <span class="acc-summary-text">
+              <strong>Вторник — Строительство</strong>
+              <span>Фаза 2 · фокус на развитии базы</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Очки начисляются за:</p>
+            <ul>
+              <li><strong>⌚ Ускорения:</strong> используйте минуты ускорения постройки.</li>
+              <li><strong>🏗 Мощь:</strong> очки дают только за завершённые объекты строительства (можно строить всю неделю, но не нажимать галочки).</li>
+              <li><strong>🟠 Спецоперации:</strong> выполняйте оранжевые миссии (используйте жетоны для обновления).</li>
+              <li><strong>🚛 Конвой:</strong> отправляйте Легендарный транспортник (используйте контракты).</li>
+            </ul>
+            <div class="hint">💡 <strong>Важно:</strong> вечером не трогайте радар — копим на завтра!</div>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/tuesday.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/tuesday.webp" alt="Вторник: не собирать радар, спецоперации, конвой, стройка" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="wednesday">
+          <summary>
+            <span class="acc-num">СР</span>
+            <span class="acc-summary-text">
+              <strong>Среда — Технологии</strong>
+              <span>Фаза 3 · день исследований и высоких технологий</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <ul>
+              <li><strong>📡 Радар:</strong> завершайте события радара, накопленные со вчерашнего вечера.</li>
+              <li><strong>🔬 Исследования:</strong> используйте ускорения и завершайте технологии в лаборатории.</li>
+              <li><strong>📘 Компоненты:</strong> тратьте научные данные (синие книги — ветки VS и Суперсолдаты) и открывайте сундуки с компонентами бойца.</li>
+            </ul>
+            <p>Очки за задания этапа:</p>
+            <div class="score-grid">
+              <div class="score-row"><span>📡 Задание радара</span><strong>26 250 очков</strong></div>
+              <div class="score-row"><span>📦 Сундук компонентов истребителя ур. 1</span><strong>2 310 очков</strong></div>
+              <div class="score-row"><span>📘 1 научные данные</span><strong>640 очков</strong></div>
+              <div class="score-row"><span>🔬 +10 мощи исследования</span><strong>247 очков</strong></div>
+              <div class="score-row"><span>⌚ 1 минута ускорения исследования</span><strong>137 очков</strong></div>
+              <div class="score-row"><span>💎 1 алмаз набора</span><strong>35 очков</strong></div>
+            </div>
+            <div class="hint strong">🔥 Знание — это сила и наши очки в рейтинге! Среда совпадает с фазой исследований в ГкМ.</div>
+            <div class="shots">
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/wednesday.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/wednesday.webp" alt="Среда: радар, исследования, научные данные, сундуки бойца" loading="lazy" />
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/wednesday-tasks.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/wednesday-tasks.webp" alt="Этап 3: Научные исследования" loading="lazy" />
+                <figcaption class="shot-caption">Этап 3: Научные исследования</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="thursday">
+          <summary>
+            <span class="acc-num">ЧТ</span>
+            <span class="acc-summary-text">
+              <strong>Четверг — Герои</strong>
+              <span>Фаза 4 · качаем наших лидеров</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <ul>
+              <li><strong>🎫 Найм:</strong> сначала используйте карты найма (есть шанс выбить фрагменты).</li>
+              <li><strong>🧩 Фрагменты:</strong> тратьте фрагменты героев (мифические, эпические, редкие).</li>
+              <li><strong>⭐ Опыт и навыки:</strong> используйте оставшийся опыт героя и книги навыков.</li>
+              <li><strong>📡 Подготовка:</strong> копим радар для завтрашней фазы.</li>
+            </ul>
+            <p>Очки за задания этапа:</p>
+            <div class="score-grid">
+              <div class="score-row"><span>🧩 1 ультраредкий фрагмент героя</span><strong>21 000 очков</strong></div>
+              <div class="score-row"><span>🧩 1 невероятно редкий фрагмент героя</span><strong>7 200 очков</strong></div>
+              <div class="score-row"><span>🎫 Нанять героя 1 раз</span><strong>3 919 очков</strong></div>
+              <div class="score-row"><span>🧩 1 суперредкий фрагмент героя</span><strong>2 100 очков</strong></div>
+              <div class="score-row"><span>📚 1 книга опыта навыков</span><strong>24 очка</strong></div>
+              <div class="score-row"><span>✨ 650 опыта героя</span><strong>2 очка</strong></div>
+              <div class="score-row"><span>💎 1 алмаз набора</span><strong>35 очков</strong></div>
+            </div>
+            <div class="hint strong">❗ Сначала карты найма, и только потом универсальные фрагменты на звёзды — из найма могут выпасть нужные персональные осколки.</div>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/thursday.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/thursday.webp" alt="Четверг: не собирать радар, нанять, возвысить, прокачать" loading="lazy" />
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/thursday-tasks.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/thursday-tasks.webp" alt="Этап 4: Тренировка героев" loading="lazy" />
+                <figcaption class="shot-caption">Этап 4: Тренировка героев</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="friday">
+          <summary>
+            <span class="acc-num">ПТ</span>
+            <span class="acc-summary-text">
+              <strong>Пятница — Боеготовность</strong>
+              <span>Фаза 5 · самый активный день перед выходными</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Очки дают почти за всё:</p>
+            <ul>
+              <li><strong>📡 Радар:</strong> закрываем утренние миссии.</li>
+              <li><strong>🏗 Стройка и технологии:</strong> добиваем постройки и исследования (используем ускорения).</li>
+              <li><strong>🪖 Армия:</strong> тренируйте солдат и используйте ускорения тренировок. Очки капают сразу после запуска таймера!</li>
+            </ul>
+            <p>Очки за задания этапа:</p>
+            <div class="score-grid">
+              <div class="score-row"><span>📡 Задание радара</span><strong>26 250 очков</strong></div>
+              <div class="score-row"><span>🔬 +10 мощи исследования</span><strong>258 очков</strong></div>
+              <div class="score-row"><span>🏗 +10 силы постройки</span><strong>247 очков</strong></div>
+              <div class="score-row"><span>⌚ 1 минута ускорения тренировок / постройки / исследования</span><strong>137 очков</strong></div>
+              <div class="score-row"><span>🪖 Обучить солдата T1</span><strong>75 очков</strong></div>
+              <div class="score-row"><span>💎 1 алмаз набора</span><strong>35 очков</strong></div>
+            </div>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/friday.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/friday.webp" alt="Пятница: собирать радар, строить, исследовать, тренировать, ускорять" loading="lazy" />
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/friday-tasks.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/friday-tasks.webp" alt="Этап 5: Полная военная подготовка" loading="lazy" />
+                <figcaption class="shot-caption">Этап 5: Полная военная подготовка</figcaption>
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="saturday">
+          <summary>
+            <span class="acc-num">СБ</span>
+            <span class="acc-summary-text">
+              <strong>Суббота — Рейд</strong>
+              <span>Фаза 6 · решающий день недели</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Максимизируем результат:</p>
+            <ul>
+              <li><strong>⌚ Ускорения:</strong> тратьте все виды ускорений (стройка, наука, тренировка, лечение).</li>
+              <li><strong>⚔️ ПВП:</strong> очки за убийство солдат противника.</li>
+              <li><strong>🟠 Спецоперации:</strong> выполняйте оранжевые миссии (используйте жетоны для обновления).</li>
+              <li><strong>🚛 Конвой:</strong> отправляйте Легендарный транспортник (используйте контракты).</li>
+            </ul>
+            <div class="hint">⚠️ <strong>Осторожно:</strong> очки тоже учитываются, но лучше побеждать! Покажем, на что способен наш альянс!</div>
+            <div class="hint strong">
+              🛡 Если снять гарнизон со стены (Линия обороны), солдаты не будут погибать при нападении на вас, но ваши ресурсы могут разграбить.<br>
+              ❗ Если не хотите сражаться или боитесь нападения, пока спите/работаете, — <strong>наденьте щит</strong>.
+            </div>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/saturday-garrison.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/saturday-garrison.webp" alt="Как убрать солдат с гарнизона" loading="lazy" />
+                <figcaption class="shot-caption">Как убрать солдат с гарнизона</figcaption>
+              </figure>
+            </div>
+            <p style="margin-top:0.75rem">Подробную тактику обсуждайте с лидером или R4 альянса.</p>
+          </div>
+        </details>
+      </div>
+
+      <section class="panel takeaway">
+        <h2>🔥 Самое главное</h2>
+        <ul>
+          <li><strong>Каждый день забираем все 9 сундуков этапа.</strong></li>
+          <li>📡 Радар копим с вечера и закрываем утром в ПН, СР и ПТ</li>
+          <li>🏗 Галочки построек готовим заранее и прожимаем во вторник</li>
+          <li>🔬 Исследования и научные данные — в среду</li>
+          <li>🎫 Сначала найм, потом фрагменты и опыт — в четверг</li>
+          <li>⌚ Ускорения не сливаем просто так — ждём нужного дня.</li>
+          <li>👉 Совмещайте с <a href="/mission-ready">Готовностью к миссии</a>: одна трата → ГкМ + VS → двойная выгода.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">Неофициальный гайд сервера 98 · Z Route: Redemption</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Закрыть">&times;</button>
+    <img id="lightbox-img" alt="" />
+  </div>
+
+  <script>
+(function () {
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  var lightboxClose = document.getElementById("lightbox-close");
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+  }
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lightboxImg.removeAttribute("src");
+    document.body.classList.remove("lightbox-open");
+  }
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+
+  document.querySelectorAll(".shot").forEach(function (box) {
+    box.addEventListener("click", function () {
+      var img = box.querySelector("img");
+      var src = box.getAttribute("data-full") || (img && (img.currentSrc || img.src));
+      if (src) openLightbox(src, img ? img.alt : "");
+    });
+  });
+})();
+  </script>
+
+<script>
+(function () {
+  function applyTheme(theme) {
+    var next = theme === "light" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("guide-theme", next); } catch (e) {}
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    var ru = (document.documentElement.lang || "ru") === "ru";
+    var label = next === "light"
+      ? (ru ? "Тёмная тема" : "Dark theme")
+      : (ru ? "Светлая тема" : "Light theme");
+    btn.setAttribute("aria-label", label);
+    btn.title = label;
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("guide-theme"); } catch (e) {}
+  if (!saved && window.matchMedia) {
+    saved = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  applyTheme(saved || "dark");
+  var btn = document.getElementById("theme-toggle");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      var cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      applyTheme(cur === "light" ? "dark" : "light");
+    });
+  }
+  window.__zrouteApplyTheme = applyTheme;
+})();
+</script>
+</body>
+</html>
