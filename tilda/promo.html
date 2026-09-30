@@ -1,6 +1,5 @@
 <!--
   Tilda HTML-блок: Актуальные промокоды.
-  Языки: RU / EN / ES / PL / CS (кнопки на hero, справа сверху).
   Картинки: GitHub raw (https://raw.githubusercontent.com/FireMyHeart/zroute/main/...).
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,10 +18,7 @@
 #zroute-guide .page {
   padding-top: 0.25rem;
 }
-/* Language + theme controls over hero */
-#zroute-guide .hero-lang {
-  justify-content: flex-end;
-}
+/* Theme control over hero */
 #zroute-guide .hero-controls{
   position: absolute;
   z-index: 2;
@@ -197,39 +193,6 @@
 
 
 
-#zroute-guide .lang{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  justify-content: flex-end;
-}
-
-#zroute-guide .lang button{
-  appearance: none;
-  border: 1px solid rgba(255, 140, 66, 0.25);
-  background: rgba(255, 255, 255, 0.03);
-  color: #a89a8d;
-  font: inherit;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 0.4rem 0.55rem;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-#zroute-guide .lang button:hover{
-  color: #f3ebe3;
-  border-color: rgba(255, 140, 66, 0.55);
-}
-
-#zroute-guide .lang button.active{
-  color: #1a0f08;
-  background: linear-gradient(135deg, #ffb347, #ff8c42);
-  border-color: transparent;
-  box-shadow: 0 0 18px rgba(255, 140, 66, 0.35);
-}
 
 
 
@@ -509,8 +472,9 @@
 
 #zroute-guide .hero h1{
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-weight: 600;
-  font-size: clamp(2.4rem, 8vw, 4.2rem);
+  font-size: clamp(2rem, 7vw, 3.4rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
   /* Preserve former eyebrow row so the title does not jump up */
@@ -553,6 +517,7 @@
 
 #zroute-guide .time-box h2{
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-weight: 600;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   letter-spacing: 0.03em;
@@ -591,6 +556,7 @@
 
 #zroute-guide .section-title{
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-weight: 600;
   font-size: clamp(1.7rem, 4vw, 2.2rem);
   letter-spacing: 0.03em;
@@ -879,6 +845,7 @@
 
 #zroute-guide .tip-box h2{
   font-family: var(--font-display);
+  text-transform: uppercase;
   font-weight: 600;
   font-size: clamp(1.45rem, 3.5vw, 1.85rem);
   letter-spacing: 0.03em;
@@ -912,7 +879,6 @@
 
 @media (max-width: 480px) {
   #zroute-guide .wrap{ width: min(100% - 1.25rem, var(--max)); }
-  #zroute-guide .lang button{ padding: 0.35rem 0.45rem; font-size: 0.68rem; }
   
   
   #zroute-guide .promo-grid{ grid-template-columns: 1fr 1fr; gap: 0.5rem; }
@@ -981,13 +947,6 @@ body.lightbox-open { overflow: hidden; }
           <span class="icon-moon" aria-hidden="true">&#9790;</span>
           <span class="icon-sun" aria-hidden="true">&#9728;</span>
         </button>
-        <div class="lang hero-lang" role="group" aria-label="Language">
-          <button type="button" data-lang="ru" class="active">RU</button>
-          <button type="button" data-lang="en">EN</button>
-          <button type="button" data-lang="es">ES</button>
-          <button type="button" data-lang="pl">PL</button>
-          <button type="button" data-lang="cs">CS</button>
-        </div>
       </div>
 
       <div class="hero-content">
@@ -1101,362 +1060,6 @@ body.lightbox-open { overflow: hidden; }
         copyCodeAria: "Скопировать код",
         themeToLight: "Светлая тема",
         themeToDark: "Тёмная тема"
-      },
-      en: {
-        themeToLight: "Light theme",
-        themeToDark: "Dark theme",
-        brandTitle: "Server 98",
-        brandSub: "Z Route: Redemption · Guides",
-        navTeleport: "Free teleport",
-        navFormat: "Text formatting",
-        navPromo: "Promo codes",
-        eyebrow: "Guide · Free teleport",
-        heroTitle: "Free teleport",
-        heroLead: "You can use the free teleport to align your base on your own server. Fly to the enemy on Saturday, and when you come back, pick a new spot for your base at no cost. Details below.",
-        whenTitle: "When it works",
-        whenText: "Flying to the enemy and returning home is free only during a special time window.",
-        chipServerLabel: "Server time",
-        chipServerValue: "Sat 00:00 — Sun 00:00",
-        chipMskLabel: "Moscow (MSK)",
-        chipMskValue: "Sat 05:00 — Sun 05:00",
-        stepsTitle: "Steps",
-        s1Title: "In the right vertical row, tap the VS icon (it is the last one in the list)",
-        s2Title: "Go to the third tab, <strong>Raid</strong>",
-        s3Title: "Tap the <strong>Forward</strong> button — this moves you to the enemy server",
-        s4Title: "Place your base on the enemy map",
-        s4Hint: "If you have a shield, the spot does not matter. Without a shield, place it far from enemy bases so you are not attacked right away.",
-        s5Title: "At the top center, on the “Combat Zone S…” bar, tap the back arrow icon — this moves you back to your own server",
-        s6Title: "Place your base on your own server map in the desired spot",
-        s6Text: "Your home server map opens. Place your base tight against the neighboring bases, aligning it horizontally and vertically with the others. For vertical alignment, the nameplates are a handy reference.",
-        s6Hint: "If your alliance does not have a strict formation yet, use the first columns as your reference — the last ones may be placed unevenly, and you would only continue the wrong layout.",
-        shotPlaceholder: "Screenshot placeholder — drop a file into assets/screenshots",
-        placeTitle: "How to pick a home spot",
-        placeBad: "Bad",
-        placeGood: "Good",
-        c1: "Tight against neighboring alliance bases",
-        c2: "Level horizontally and vertically with the other bases",
-        c3: "Use the first columns as your reference",
-        c4: "On the enemy server without a shield — stay away from their bases",
-        c5: "Remember to return home before the free time window ends",
-        burnTitle: "If your base was burned",
-        burnText: "When your base is burned to the ground, you are automatically moved to a random spot on the map. Follow the steps above to return to your previous place for free.",
-        burnHint: "To avoid this, put on a shield that is certain to last until Sun 05:00 MSK (Sun 00:00 server time).",
-        fmtEyebrow: "Guide · Text formatting",
-        fmtHeroTitle: "Text formatting",
-        fmtHeroLead: "To apply text formatting in chat, write the matching tag before your message text.",
-        fmtHowTitle: "How it works",
-        fmtHowText: "At the start of the message, put the tag code and then write your message text. To use the tags below quickly, press the “Copy” button.",
-        fmtListTitle: "Options",
-        fmtColorTitle: "1. Text color",
-        fmtColorText: "Make the message a specific color. Two ways to write it:",
-        fmtRainbowText: "You can use several tags in one message — for example, to make a gradient:",
-        fmtUTitle: "2. Underline",
-        fmtUText: "A tag at the start of the message underlines the text.",
-        fmtNTitle: "3. Line break",
-        fmtNText: "Insert \\n where you need a new line inside one message.",
-        fmtBoldTitle: "4. Bold",
-        fmtBoldText: "A tag at the start of the message makes the text bold.",
-        fmtItalicTitle: "5. Italic",
-        fmtItalicText: "A tag at the start of the message makes the text italic.",
-        fmtStrikeTitle: "6. Strikethrough",
-        fmtStrikeText: "A tag at the start of the message strikes through the text.",
-        fmtMentionTitle: "7. Mention a player",
-        fmtMentionText: "Type @ and then the player’s name right after it. This tags them in chat.",
-        fmtMoreTitle: "Found another tag?",
-        fmtMoreText: "If you discover other working formatting tags — tell us and we’ll add them to the guide.",
-        codeLabel: "Code",
-        copyBtn: "Copy",
-        copiedBtn: "Copied",
-        previewLabel: "Example",
-        previewColorDeep: "This week we raid trucks on server 97.",
-        previewColorSoft: "Anyone have S?",
-        previewUnderline: "Important! Don’t raid your own server!",
-        previewBreak1: "first line text",
-        previewBreak2: "second line text",
-        previewBold: "Bold message text",
-        previewItalic: "Italic message text",
-        previewStrike: "Strikethrough message text",
-        previewMention: "<span class=\"mention-tag\">@PlayerName</span> hey, join the rally!",
-        promoEyebrow: "Guide · Promo codes",
-        promoHeroTitle: "Current promo codes",
-        promoHeroLead: "Copy a code and enter it in the game to claim bonuses. Below is the list and a step-by-step guide.",
-        promoListTitle: "Current promo codes",
-        promoListHint: "New promo codes are added at the top of the list.",
-        promoHowTitle: "How to enter promo codes in Z Route: Redemption",
-        promoS1Text: "In the top-left corner of the screen, tap your profile icon",
-        promoS2Text: "Tap the menu item <strong>Settings</strong>.",
-        promoS3Text: "Tap <strong>Enter code</strong>.",
-        promoS4Text: "Enter the code and tap <strong>Confirm</strong>.",
-        promoS5Text: "If the promo code is valid, you will receive rewards and can continue playing.",
-        copyCodeAria: "Copy code",
-        footer: "Unofficial server 98 guide."
-      },
-      es: {
-        themeToLight: "Tema claro",
-        themeToDark: "Tema oscuro",
-        brandTitle: "Servidor 98",
-        brandSub: "Z Route: Redemption · Guías",
-        navTeleport: "Teletransporte gratis",
-        navFormat: "Formato de texto",
-        navPromo: "Códigos promo",
-        eyebrow: "Guía · Teletransporte gratis",
-        heroTitle: "Teletransporte gratis",
-        heroLead: "Puedes usar el teletransporte gratuito para alinear tu base en tu propio servidor. El sábado vuela al enemigo y, al volver, elige un nuevo sitio para tu base sin pagar nada. Más detalles abajo.",
-        whenTitle: "Cuándo funciona",
-        whenText: "Volar al enemigo y volver a casa es gratis solo durante una ventana de tiempo especial.",
-        chipServerLabel: "Hora del servidor",
-        chipServerValue: "sáb. 00:00 — dom. 00:00",
-        chipMskLabel: "Moscú (MSK)",
-        chipMskValue: "sáb. 05:00 — dom. 05:00",
-        stepsTitle: "Pasos",
-        s1Title: "En la fila vertical de la derecha, toca el icono VS (es el último de la lista)",
-        s2Title: "Ve a la tercera pestaña, <strong>Raid</strong>",
-        s3Title: "Pulsa el botón <strong>Adelante</strong>. Esto te llevará al servidor del enemigo",
-        s4Title: "Coloca la base en el mapa del enemigo",
-        s4Hint: "Si tienes escudo, el lugar no importa. Sin escudo, colócala lejos de las bases enemigas para que no te ataquen de inmediato.",
-        s5Title: "Arriba en el centro, en el rótulo «Zona de combate S…», toca el icono de flecha atrás. Esto te devolverá a tu servidor",
-        s6Title: "Coloca la base en el mapa de tu servidor en el lugar deseado",
-        s6Text: "Se abre el mapa del servidor de casa. Coloca tu base pegada a las bases vecinas, alineándola en horizontal y en vertical respecto a las demás. Para alinear en vertical es cómodo guiarse por las placas con los nombres.",
-        s6Hint: "Si tu alianza aún no tiene una formación estricta, guíate por las primeras columnas, porque las últimas pueden estar torcidas y solo continuarías la colocación incorrecta.",
-        shotPlaceholder: "Espacio para captura — pon el archivo en assets/screenshots",
-        placeTitle: "Cómo elegir el sitio en casa",
-        placeBad: "Mal",
-        placeGood: "Bien",
-        c1: "Pegada a las bases vecinas de la alianza",
-        c2: "Recta en horizontal y en vertical respecto a las demás bases",
-        c3: "Guíate por las primeras columnas",
-        c4: "En el servidor enemigo sin escudo — lejos de sus bases",
-        c5: "No olvides volver a casa antes de que termine la ventana gratuita",
-        burnTitle: "Si te queman la base",
-        burnText: "Cuando te queman la base por completo, se te traslada automáticamente a un punto aleatorio del mapa. Sigue los pasos de arriba para volver gratis a tu sitio anterior.",
-        burnHint: "Para evitarlo, ponte un escudo que aguante con seguridad hasta el dom. 05:00 MSK (dom. 00:00 hora del servidor).",
-        fmtEyebrow: "Guía · Formato de texto",
-        fmtHeroTitle: "Formato de texto",
-        fmtHeroLead: "Para aplicar formato de texto en el chat, escribe la etiqueta adecuada antes del texto del mensaje.",
-        fmtHowTitle: "Cómo funciona",
-        fmtHowText: "Al inicio del mensaje pon el código de la etiqueta y luego escribe el texto. Para usar rápido las etiquetas de la lista, pulsa el botón «Copiar».",
-        fmtListTitle: "Opciones",
-        fmtColorTitle: "1. Color del texto",
-        fmtColorText: "Un mensaje de un color concreto. Dos formas de escribirlo:",
-        fmtRainbowText: "Puedes usar varias etiquetas en un mismo mensaje, por ejemplo para hacer un degradado:",
-        fmtUTitle: "2. Subrayado",
-        fmtUText: "Una etiqueta al inicio del mensaje subraya el texto.",
-        fmtNTitle: "3. Salto de línea",
-        fmtNText: "Inserta \\n donde necesites una nueva línea dentro del mismo mensaje.",
-        fmtBoldTitle: "4. Negrita",
-        fmtBoldText: "Una etiqueta al inicio del mensaje pone el texto en negrita.",
-        fmtItalicTitle: "5. Cursiva",
-        fmtItalicText: "Una etiqueta al inicio del mensaje pone el texto en cursiva.",
-        fmtStrikeTitle: "6. Tachado",
-        fmtStrikeText: "Una etiqueta al inicio del mensaje tacha el texto.",
-        fmtMentionTitle: "7. Mención a un jugador",
-        fmtMentionText: "Escribe @ y justo después el nombre del jugador. Así lo etiquetas en el chat.",
-        fmtMoreTitle: "¿Encontraste otra etiqueta?",
-        fmtMoreText: "Si descubres otras etiquetas de formato que funcionen — avísanos y las añadiremos a la guía.",
-        codeLabel: "Código",
-        copyBtn: "Copiar",
-        copiedBtn: "Copiado",
-        previewLabel: "Ejemplo",
-        previewColorDeep: "Esta semana saqueamos camiones del servidor 97.",
-        previewColorSoft: "¿Alguien tiene S?",
-        previewUnderline: "¡Importante! No se puede saquear el propio servidor!",
-        previewBreak1: "texto de la primera línea",
-        previewBreak2: "texto de la segunda línea",
-        previewBold: "Texto del mensaje en negrita",
-        previewItalic: "Texto del mensaje en cursiva",
-        previewStrike: "Texto del mensaje tachado",
-        previewMention: "<span class=\"mention-tag\">@NombreJugador</span> hola, únete al rally!",
-        promoEyebrow: "Guía · Códigos promo",
-        promoHeroTitle: "Códigos promocionales actuales",
-        promoHeroLead: "Copia un código e introdúcelo en el juego para recibir bonificaciones. Abajo está la lista y la guía paso a paso.",
-        promoListTitle: "Códigos promocionales actuales",
-        promoListHint: "Los códigos nuevos se añaden al principio de la lista.",
-        promoHowTitle: "Cómo introducir códigos promo en Z Route: Redemption",
-        promoS1Text: "En la esquina superior izquierda de la pantalla, toca el icono de tu perfil",
-        promoS2Text: "Toca el elemento del menú <strong>Ajustes</strong>.",
-        promoS3Text: "Toca <strong>Introducir código</strong>.",
-        promoS4Text: "Introduce el código y pulsa <strong>Confirmar</strong>.",
-        promoS5Text: "Si el código promo es válido, recibirás recompensas y podrás seguir jugando.",
-        copyCodeAria: "Copiar código",
-        footer: "Guía no oficial del servidor 98."
-      },
-      pl: {
-        themeToLight: "Jasny motyw",
-        themeToDark: "Ciemny motyw",
-        brandTitle: "Serwer 98",
-        brandSub: "Z Route: Redemption · Poradniki",
-        navTeleport: "Darmowy teleport",
-        navFormat: "Formatowanie tekstu",
-        navPromo: "Kody promocyjne",
-        eyebrow: "Poradnik · Darmowy teleport",
-        heroTitle: "Darmowy teleport",
-        heroLead: "Możesz użyć darmowego teleportu, aby wyrównać bazę na swoim serwerze. W sobotę poleć do wroga, a po powrocie wybierz nowe miejsce dla bazy bez opłat. Szczegóły poniżej.",
-        whenTitle: "Kiedy to działa",
-        whenText: "Lot do wroga i powrót do domu są darmowe tylko w specjalnym okienku czasowym.",
-        chipServerLabel: "Czas serwera",
-        chipServerValue: "sob. 00:00 — nd. 00:00",
-        chipMskLabel: "Moskwa (MSK)",
-        chipMskValue: "sob. 05:00 — nd. 05:00",
-        stepsTitle: "Kroki",
-        s1Title: "W prawym pionowym rzędzie naciśnij ikonę VS (jest ostatnia na liście)",
-        s2Title: "Przejdź do trzeciej zakładki <strong>Rajd</strong>",
-        s3Title: "Naciśnij przycisk <strong>Do przodu</strong>. Przeniesie cię to na serwer przeciwnika",
-        s4Title: "Ustaw bazę na mapie przeciwnika",
-        s4Hint: "Jeśli masz tarczę, miejsce nie ma znaczenia. Bez tarczy stawiaj z daleka od baz wroga, żeby nie zaatakowali cię od razu.",
-        s5Title: "Na górze na środku, na napisie „Strefa bojowa S…”, naciśnij ikonę strzałki wstecz. Przeniesie cię to z powrotem na twój serwer",
-        s6Title: "Postaw bazę na mapie swojego serwera w wybranym miejscu",
-        s6Text: "Otworzy się mapa serwera domowego. Postaw bazę ciasno przy sąsiednich bazach, wyrównując ją w poziomie i w pionie względem pozostałych. Przy wyrównywaniu w pionie wygodnie orientować się po tabliczkach z nickami.",
-        s6Hint: "Jeśli w waszym sojuszu nie ma jeszcze ścisłego ustawienia, orientuj się na pierwsze kolumny, bo ostatnie mogą być postawione krzywo i tylko przedłużysz nieprawidłowe ustawienie baz.",
-        shotPlaceholder: "Miejsce na screenshot — wrzuć plik do assets/screenshots",
-        placeTitle: "Jak wybrać miejsce w domu",
-        placeBad: "Źle",
-        placeGood: "Dobrze",
-        c1: "Ciasno przy sąsiednich bazach sojuszu",
-        c2: "Równo w poziomie i w pionie względem innych baz",
-        c3: "Orientuj się na pierwsze kolumny",
-        c4: "Na serwerze wroga bez tarczy — z daleka od ich baz",
-        c5: "Nie zapomnij wrócić do domu przed końcem darmowego okienka",
-        burnTitle: "Jeśli bazę spalono",
-        burnText: "Gdy twoją bazę spalą do zera, zostajesz automatycznie przeniesiony w losowe miejsce na mapie. Skorzystaj z opisanych powyżej kroków, aby wrócić na dawne miejsce za darmo.",
-        burnHint: "Aby tego uniknąć, zakładaj tarczę tak, by na pewno trzymała do nd. 05:00 MSK (nd. 00:00 czasu serwera).",
-        fmtEyebrow: "Poradnik · Formatowanie tekstu",
-        fmtHeroTitle: "Formatowanie tekstu",
-        fmtHeroLead: "Aby zastosować formatowanie tekstu na czacie, przed tekstem wiadomości wpisz odpowiedni tag.",
-        fmtHowTitle: "Jak to działa",
-        fmtHowText: "Na początku wiadomości wstaw kod tagu, a potem napisz treść wiadomości. Aby szybko użyć wypisanych tagów, kliknij przycisk „Kopiuj”.",
-        fmtListTitle: "Możliwości",
-        fmtColorTitle: "1. Kolor tekstu",
-        fmtColorText: "Wiadomość w wybranym kolorze. Dwa sposoby zapisu:",
-        fmtRainbowText: "Można użyć kilku tagów w jednej wiadomości, na przykład zrobić gradient:",
-        fmtUTitle: "2. Podkreślenie",
-        fmtUText: "Tag na początku wiadomości podkreśla tekst.",
-        fmtNTitle: "3. Złamanie linii",
-        fmtNText: "Wstaw \\n tam, gdzie potrzebujesz nowej linii w jednej wiadomości.",
-        fmtBoldTitle: "4. Pogrubienie",
-        fmtBoldText: "Tag na początku wiadomości pogrubia tekst.",
-        fmtItalicTitle: "5. Kursywa",
-        fmtItalicText: "Tag na początku wiadomości robi tekst kursywą.",
-        fmtStrikeTitle: "6. Przekreślenie",
-        fmtStrikeText: "Tag na początku wiadomości przekreśla tekst.",
-        fmtMentionTitle: "7. Wzmianka o graczu",
-        fmtMentionText: "Napisz @ i zaraz po nim nick gracza. Tak oznaczysz go na czacie.",
-        fmtMoreTitle: "Znalazłeś kolejny tag?",
-        fmtMoreText: "Jeśli znajdziesz inne działające tagi formatowania — napisz, dodamy do poradnika.",
-        codeLabel: "Kod",
-        copyBtn: "Kopiuj",
-        copiedBtn: "Skopiowano",
-        previewLabel: "Przykład",
-        previewColorDeep: "W tym tygodniu grabimy ciężarówki serwera 97.",
-        previewColorSoft: "Czy ktoś ma S?",
-        previewUnderline: "Ważne! Własnego serwera nie wolno grabić!",
-        previewBreak1: "tekst pierwszej linii",
-        previewBreak2: "tekst drugiej linii",
-        previewBold: "Pogrubiony tekst wiadomości",
-        previewItalic: "Kursywa w wiadomości",
-        previewStrike: "Przekreślony tekst wiadomości",
-        previewMention: "<span class=\"mention-tag\">@NickGracza</span> hej, dołącz do zbiórki!",
-        promoEyebrow: "Poradnik · Kody promo",
-        promoHeroTitle: "Aktualne kody promocyjne",
-        promoHeroLead: "Skopiuj kod i wpisz go w grze, aby otrzymać bonusy. Poniżej lista i instrukcja krok po kroku.",
-        promoListTitle: "Aktualne kody promocyjne",
-        promoListHint: "Nowe kody promocyjne są dodawane na początku listy.",
-        promoHowTitle: "Jak wpisywać kody promocyjne w Z Route: Redemption",
-        promoS1Text: "W lewym górnym rogu ekranu naciśnij ikonę swojego profilu",
-        promoS2Text: "Naciśnij pozycję menu <strong>Ustawienia</strong>.",
-        promoS3Text: "Naciśnij <strong>Wprowadź kod</strong>.",
-        promoS4Text: "Wpisz kod i naciśnij przycisk <strong>Potwierdź</strong>.",
-        promoS5Text: "Jeśli kod promocyjny jest aktualny, otrzymasz nagrody i będziesz mógł kontynuować grę.",
-        copyCodeAria: "Kopiuj kod",
-        footer: "Nieoficjalny poradnik serwera 98."
-      },
-      cs: {
-        themeToLight: "Světlý režim",
-        themeToDark: "Tmavý režim",
-        brandTitle: "Server 98",
-        brandSub: "Z Route: Redemption · Návody",
-        navTeleport: "Teleport zdarma",
-        navFormat: "Formátování textu",
-        navPromo: "Promo kódy",
-        eyebrow: "Návod · Teleport zdarma",
-        heroTitle: "Teleport zdarma",
-        heroLead: "Teleport zdarma můžete využít k zarovnání základny na svém serveru. V sobotu zaletěte k nepříteli a při návratu si zdarma vyberte nové místo pro základnu. Podrobnosti níže.",
-        whenTitle: "Kdy to funguje",
-        whenText: "Let k nepříteli a návrat domů jsou zdarma jen ve zvláštním časovém okně.",
-        chipServerLabel: "Čas serveru",
-        chipServerValue: "so 00:00 — ne 00:00",
-        chipMskLabel: "Moskva (MSK)",
-        chipMskValue: "so 05:00 — ne 05:00",
-        stepsTitle: "Kroky",
-        s1Title: "V pravém svislém řádku klepněte na ikonu VS (je poslední v seznamu)",
-        s2Title: "Přejděte na třetí záložku <strong>Raid</strong>",
-        s3Title: "Stiskněte tlačítko <strong>Vpřed</strong>. Přesune vás to na server protivníka",
-        s4Title: "Postavte základnu na mapě protivníka",
-        s4Hint: "Pokud máte štít, na místě nezáleží. Bez štítu stavte dál od nepřátelských základen, ať vás hned nenapadnou.",
-        s5Title: "Nahoře uprostřed na nápisu „Bojová zóna S…“ klepněte na ikonu šipky zpět. Přesune vás to zpět na váš server",
-        s6Title: "Postavte základnu na mapě svého serveru na požadované místo",
-        s6Text: "Otevře se mapa domácího serveru. Postavte základnu těsně k sousedním základnám a zarovnávejte ji vodorovně i svisle vůči ostatním. Při svislém zarovnání je praktické orientovat se podle jmenovek.",
-        s6Hint: "Pokud ve vaší alianci ještě není přísné postavení, orientujte se podle prvních sloupců, protože poslední mohou být postavené nerovně a vy byste jen pokračovali v nesprávném rozestavení.",
-        shotPlaceholder: "Místo pro screenshot — vložte soubor do assets/screenshots",
-        placeTitle: "Jak vybrat místo doma",
-        placeBad: "Špatně",
-        placeGood: "Dobře",
-        c1: "Těsně u sousedních základen aliance",
-        c2: "Rovně vodorovně i svisle vůči ostatním základnám",
-        c3: "Orientujte se podle prvních sloupců",
-        c4: "Na nepřátelském serveru bez štítu — dál od jejich základen",
-        c5: "Nezapomeňte se vrátit domů před koncem bezplatného okna",
-        burnTitle: "Když základnu spálí",
-        burnText: "Když vaši základnu spálí do základů, budete automaticky přesunuti na náhodné místo na mapě. Použijte výše popsaný postup a vraťte se na původní místo zdarma.",
-        burnHint: "Abyste tomu předešli, nasaďte štít tak, aby spolehlivě vydržel do ne 05:00 MSK (ne 00:00 serverového času).",
-        fmtEyebrow: "Návod · Formátování textu",
-        fmtHeroTitle: "Formátování textu",
-        fmtHeroLead: "Chcete-li v chatu použít formátování textu, napište před text zprávy odpovídající tag.",
-        fmtHowTitle: "Jak to funguje",
-        fmtHowText: "Na začátek zprávy vložte kód tagu a pak napište text zprávy. Pro rychlé použití uvedených tagů klepněte na tlačítko „Kopírovat“.",
-        fmtListTitle: "Možnosti",
-        fmtColorTitle: "1. Barva textu",
-        fmtColorText: "Zpráva v určité barvě. Dva způsoby zápisu:",
-        fmtRainbowText: "V jedné zprávě můžete použít několik tagů, například vytvořit přechod:",
-        fmtUTitle: "2. Podtržení",
-        fmtUText: "Tag na začátku zprávy text podtrhne.",
-        fmtNTitle: "3. Zalomení řádku",
-        fmtNText: "Vložte \\n tam, kde potřebujete nový řádek v jedné zprávě.",
-        fmtBoldTitle: "4. Tučné",
-        fmtBoldText: "Tag na začátku zprávy udělá text tučný.",
-        fmtItalicTitle: "5. Kurzíva",
-        fmtItalicText: "Tag na začátku zprávy udělá text kurzívou.",
-        fmtStrikeTitle: "6. Přeškrtnutí",
-        fmtStrikeText: "Tag na začátku zprávy text přeškrtne.",
-        fmtMentionTitle: "7. Zmínka hráče",
-        fmtMentionText: "Napište @ a hned za ní jméno hráče. Tak ho označíte v chatu.",
-        fmtMoreTitle: "Našli jste další tag?",
-        fmtMoreText: "Pokud objevíte další funkční formátovací tagy — napište, přidáme je do návodu.",
-        codeLabel: "Kód",
-        copyBtn: "Kopírovat",
-        copiedBtn: "Zkopírováno",
-        previewLabel: "Příklad",
-        previewColorDeep: "Tento týden drancujeme náklaďáky serveru 97.",
-        previewColorSoft: "Má někdo S?",
-        previewUnderline: "Důležité! Vlastní server se nesmí drancovat!",
-        previewBreak1: "text prvního řádku",
-        previewBreak2: "text druhého řádku",
-        previewBold: "Tučný text zprávy",
-        previewItalic: "Kurzíva ve zprávě",
-        previewStrike: "Přeškrtnutý text zprávy",
-        previewMention: "<span class=\"mention-tag\">@JmenoHrace</span> ahoj, připoj se ke sběru!",
-        promoEyebrow: "Návod · Promo kódy",
-        promoHeroTitle: "Aktuální promo kódy",
-        promoHeroLead: "Zkopírujte kód a zadejte ho ve hře — získáte bonusy. Níže je seznam a návod krok za krokem.",
-        promoListTitle: "Aktuální promo kódy",
-        promoListHint: "Nové promo kódy se přidávají na začátek seznamu.",
-        promoHowTitle: "Jak zadávat promo kódy v Z Route: Redemption",
-        promoS1Text: "V levém horním rohu obrazovky klepněte na ikonu svého profilu",
-        promoS2Text: "Klepněte na položku nabídky <strong>Nastavení</strong>.",
-        promoS3Text: "Klepněte na <strong>Zadat kód</strong>.",
-        promoS4Text: "Zadejte kód a klepněte na <strong>Potvrdit</strong>.",
-        promoS5Text: "Pokud je promo kód platný, získáte odměny a můžete pokračovat ve hře.",
-        copyCodeAria: "Kopírovat kód",
-        footer: "Neoficiální návod serveru 98."
       }
     };
 
@@ -1501,14 +1104,10 @@ body.lightbox-open { overflow: hidden; }
       var key = el.getAttribute("data-i18n-html");
       if (dict[key] != null) el.innerHTML = dict[key];
     });
-    root.querySelectorAll(".lang button").forEach(function (btn) {
-      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
-    });
     root.querySelectorAll(".promo-copy.icon-only").forEach(function (btn) {
       btn.setAttribute("aria-label", dict.copyCodeAria || "Copy code");
     });
     applyPlaceAlts(dict);
-    try { localStorage.setItem("guide-lang", lang); } catch (e) {}
     refreshCopyButtons(dict);
     applyTheme(root.getAttribute("data-theme") || "dark");
   }
@@ -1545,9 +1144,7 @@ body.lightbox-open { overflow: hidden; }
   });
 
   async function copyText(text, btn) {
-    var lang = "ru";
-    try { lang = localStorage.getItem("guide-lang") || "ru"; } catch (e) {}
-    var dict = I18N[lang] || I18N.ru;
+    var dict = I18N.ru;
     var iconOnly = btn.classList.contains("icon-only");
     try {
       if (navigator.clipboard && window.isSecureContext) {
@@ -1578,12 +1175,6 @@ body.lightbox-open { overflow: hidden; }
   root.querySelectorAll(".copy-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       copyText(btn.getAttribute("data-copy") || "", btn);
-    });
-  });
-
-  root.querySelectorAll(".lang button").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      applyLang(btn.getAttribute("data-lang"));
     });
   });
 
@@ -1645,10 +1236,7 @@ body.lightbox-open { overflow: hidden; }
   }
 
   seedRuFromDom();
-  var saved = null;
-  try { saved = localStorage.getItem("guide-lang"); } catch (e) {}
-  var prefer = saved && I18N[saved] ? saved : "ru";
-  applyLang(prefer);
+  applyLang("ru");
 
   var PROMO_CODES = [
     "DC75KJDR", "VK110KQBR", "ZRTSML09", "OKTOBER26", "ZRR6666", "ZRR999", "ZR26PLAY",
@@ -1661,9 +1249,7 @@ body.lightbox-open { overflow: hidden; }
   function renderPromoCodes() {
     var grid = root.querySelector("#promo-grid");
     if (!grid || grid.childElementCount) return;
-    var lang = "ru";
-    try { lang = localStorage.getItem("guide-lang") || "ru"; } catch (e) {}
-    var dict = I18N[lang] || I18N.ru;
+    var dict = I18N.ru;
     var frag = document.createDocumentFragment();
     PROMO_CODES.forEach(function (code) {
       var item = document.createElement("div");
