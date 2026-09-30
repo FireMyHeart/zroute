@@ -109,6 +109,7 @@ body.lightbox-open { overflow: hidden; }
   min-height: clamp(200px, 36vw, 320px);
   background: #000 center / cover no-repeat;
   background-image: url("https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/vs/intro.webp");
+  background-position: center top;
   display: flex;
   align-items: flex-start;
 }
@@ -117,8 +118,8 @@ body.lightbox-open { overflow: hidden; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(8,10,12,0.92) 0%, rgba(8,10,12,0.4) 60%, rgba(0,0,0,0.2) 100%),
-    linear-gradient(90deg, rgba(8,10,12,0.55), transparent 45%);
+    linear-gradient(180deg, rgba(8,10,12,0.6) 0%, rgba(8,10,12,0.3) 60%, rgba(0,0,0,0.15) 100%),
+    linear-gradient(90deg, rgba(8,10,12,0.6), transparent 55%);
 }
 .hero-content {
   position: relative;
@@ -137,6 +138,7 @@ body.lightbox-open { overflow: hidden; }
   margin-top: calc(16px * 1.55 + 0.65rem);
   margin-bottom: 0.75rem;
 }
+.hero h1, .hero p { text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85); }
 .hero p {
   color: #d9cfc4;
   font-size: 1em;
