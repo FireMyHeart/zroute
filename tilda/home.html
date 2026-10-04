@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сервер 98 · Z Route: Redemption</title>
+  <meta name="description" content="Неофициальные гайды сервера 98 по Z Route: Redemption — правила, лайфхаки, VS, события, промокоды и полезные инструменты." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #0b0d10;
+  --panel: rgba(22, 27, 34, 0.92);
+  --line: rgba(255, 140, 66, 0.22);
+  --text: #f3ebe3;
+  --muted: #a89a8d;
+  --text-soft: #d2c6ba;
+  --text-hint: #f0d8c2;
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 100, 40, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 20%, rgba(80, 40, 20, 0.25), transparent 50%),
+    linear-gradient(180deg, #0b0d10 0%, #10141a 40%, #0b0d10 100%);
+  --hint-bg: rgba(255, 140, 66, 0.08);
+  --surface: rgba(0, 0, 0, 0.28);
+  --surface-2: rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+  --accent: #ff8c42;
+  --accent-2: #ffb347;
+  --glow: rgba(255, 140, 66, 0.35);
+  --radius: 18px;
+  --max: 920px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --font-display: "Oswald", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-size-body: 19px;
+}
+html[data-theme="light"] {
+  --bg: #f3eee7;
+  --panel: rgba(255, 252, 248, 0.96);
+  --line: rgba(196, 95, 26, 0.28);
+  --text: #1a1410;
+  --muted: #6b5e52;
+  --text-soft: #4a4038;
+  --text-hint: #3d342c;
+  --accent: #e06a28;
+  --accent-2: #c45a1a;
+  --glow: rgba(224, 106, 40, 0.28);
+  --shadow: 0 14px 36px rgba(60, 35, 15, 0.12);
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(224, 106, 40, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 15%, rgba(180, 120, 70, 0.12), transparent 50%),
+    linear-gradient(180deg, #f6f1ea 0%, #ebe4da 45%, #f6f1ea 100%);
+  --hint-bg: rgba(224, 106, 40, 0.1);
+  --surface: rgba(28, 20, 14, 0.05);
+  --surface-2: rgba(28, 20, 14, 0.07);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  color: var(--text);
+  background: var(--page-bg);
+  min-height: 100vh;
+  line-height: 1.55;
+  padding-top: 80px !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.45), transparent 70%);
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+}
+
+.hero {
+  margin-top: 1.25rem;
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: relative;
+  min-height: clamp(260px, 42vw, 420px);
+  background: #000 center / cover no-repeat;
+  background-image: url("https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/hero-banner.jpg");
+  background-position: center 30%;
+  display: flex;
+  align-items: flex-end;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,10,12,0.35) 0%, rgba(8,10,12,0.55) 45%, rgba(0,0,0,0.78) 100%),
+    linear-gradient(90deg, rgba(8,10,12,0.55), transparent 60%);
+}
+.hero-controls {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.25rem, 4vw, 2.25rem);
+  right: clamp(1.25rem, 4vw, 2.25rem);
+}
+.theme-toggle {
+  appearance: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffb347;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: 0.2s ease;
+}
+.theme-toggle:hover {
+  border-color: rgba(255, 140, 66, 0.7);
+  box-shadow: 0 0 16px var(--glow);
+}
+html[data-theme="light"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  color: #c45a1a;
+  border-color: rgba(196, 95, 26, 0.35);
+}
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  max-width: 36rem;
+  animation: heroIn 0.7s ease both;
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-brand {
+  display: block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 9vw, 4.4rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: #f3ebe3;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
+  margin-bottom: 0.55rem;
+}
+.hero h1 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+  line-height: 1.35;
+  color: #f0d8c2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 0.55rem;
+}
+.hero p {
+  color: #d9cfc4;
+  font-size: 1em;
+  max-width: 40ch;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+  margin-bottom: 1.1rem;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.72rem 1.15rem;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.18s ease, filter 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+.btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08;
+  box-shadow: 0 0 18px var(--glow);
+  border: 0;
+}
+.btn-ghost {
+  background: rgba(0, 0, 0, 0.4);
+  color: #f3ebe3;
+  border: 1px solid rgba(255, 140, 66, 0.4);
+}
+html[data-theme="light"] .btn-ghost {
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--text);
+  border-color: rgba(196, 95, 26, 0.35);
+}
+
+main { padding: 1.35rem 0 3.5rem; }
+
+.section-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: clamp(1.55rem, 3.5vw, 2rem);
+  letter-spacing: 0.03em;
+  margin: 1.4rem 0 0.85rem;
+  color: var(--text);
+}
+.section-lead {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin: -0.35rem 0 0.9rem;
+}
+
+.start-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 0.4rem;
+}
+.start-link {
+  display: block;
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  animation: riseIn 0.55s ease both;
+}
+.start-link:nth-child(1) { animation-delay: 0.05s; }
+.start-link:nth-child(2) { animation-delay: 0.12s; }
+.start-link:nth-child(3) { animation-delay: 0.19s; }
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.start-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 140, 66, 0.55);
+  box-shadow: 0 0 22px var(--glow);
+}
+.start-link strong {
+  display: block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.15rem;
+  color: var(--accent-2);
+  margin-bottom: 0.25rem;
+}
+.start-link span {
+  display: block;
+  color: var(--text-soft);
+  font-size: 0.92em;
+  line-height: 1.4;
+}
+
+.hub-list {
+  display: grid;
+  gap: 0.45rem;
+}
+.hub-link {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(255, 140, 66, 0.12);
+  background: transparent;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.hub-link:hover {
+  background: var(--surface);
+  border-color: rgba(255, 140, 66, 0.28);
+  transform: translateX(3px);
+}
+.hub-ico {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(255, 179, 71, 0.22), rgba(255, 140, 66, 0.12));
+  border: 1px solid rgba(255, 140, 66, 0.28);
+  font-size: 1.15rem;
+}
+.hub-text strong {
+  display: block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.2rem;
+  color: var(--accent-2);
+  font-weight: 600;
+}
+.hub-text span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9em;
+  margin-top: 0.1rem;
+}
+.hub-arrow {
+  color: var(--accent);
+  font-size: 1.25rem;
+  opacity: 0.7;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.hub-link:hover .hub-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.hub-group + .hub-group { margin-top: 1.6rem; }
+
+footer {
+  border-top: 1px solid rgba(255, 140, 66, 0.12);
+  padding: 1.4rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.top-link {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 40;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  font-weight: 800;
+  box-shadow: 0 0 18px var(--glow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+.top-link.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.top-link:hover { filter: brightness(1.05); }
+
+@media (max-width: 700px) {
+  .start-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .wrap { width: min(100% - 1.25rem, var(--max)); }
+  .hero-controls { top: 0.85rem; right: 0.85rem; }
+  .hero-content { padding-top: 3.4rem; }
+  .hub-link { gap: 0.65rem; padding: 0.8rem 0.75rem; }
+}
+html[data-theme="light"] .start-link,
+html[data-theme="light"] .hub-link:hover {
+  background: var(--panel);
+}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <section class="hero">
+      <div class="hero-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Тема" title="Тема">
+          <span class="icon-moon" aria-hidden="true">&#9790;</span>
+          <span class="icon-sun" aria-hidden="true">&#9728;</span>
+        </button>
+      </div>
+      <div class="hero-content">
+        <p class="hero-brand">Сервер 98</p>
+        <h1>Гайды Z Route: Redemption</h1>
+        <p>Правила, лайфхаки, VS, события и полезные инструменты — всё в одном месте.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/lifehack">Начать с лайфхаков</a>
+          <a class="btn btn-ghost" href="/rules">Правила сервера</a>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <h2 class="section-title">С чего начать</h2>
+      <p class="section-lead">Три шага, если вы только зашли на сервер.</p>
+      <div class="start-row">
+        <a class="start-link" href="/rules">
+          <strong>Правила</strong>
+          <span>Соглашение альянсов и порядок на сервере</span>
+        </a>
+        <a class="start-link" href="/lifehack">
+          <strong>Лайфхаки</strong>
+          <span>База, исследования, герои, экипировка</span>
+        </a>
+        <a class="start-link" href="/vs">
+          <strong>VS</strong>
+          <span>Что копить и тратить по дням недели</span>
+        </a>
+      </div>
+
+      <div class="hub-group">
+        <h2 class="section-title">Гайды</h2>
+        <nav class="hub-list" aria-label="Гайды">
+          <a class="hub-link" href="/rules">
+            <span class="hub-ico" aria-hidden="true">📜</span>
+            <span class="hub-text">
+              <strong>Правила</strong>
+              <span>Союзное соглашение сервера 98</span>
+            </span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="hub-link" href="/lifehack">
+            <span class="hub-ico" aria-hidden="true">💡</span>
+            <span class="hub-text">
+              <strong>Лайфхаки</strong>
+              <span>Быстрый старт и рост без лишних потерь</span>
+            </span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="hub-link" href="/vs">
+            <span class="hub-ico" aria-hidden="true">⚔️</span>
+            <span class="hub-text">
+              <strong>Состязание альянсов</strong>
+              <span>Расписание недели VS</span>
+            </span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="hub-link" href="/mission-ready">
+            <span class="hub-ico" aria-hidden="true">🎯</span>
+            <span class="hub-text">
+              <strong>Готовность к миссии</strong>
+              <span>Фазы ГкМ и как совмещать с VS</span>
+            </span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="hub-link" href="/events">
+            <span class="hub-ico" aria-hidden="true">🔥</span>
+            <span class="hub-text">
+              <strong>События</strong>
+              <span>Безумная жила и другие ивенты</span>
+            </span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="hub-group">
+        <h2 class="section-title">Инструменты</h2>
+        <nav class="hub-list" aria-label="Инструменты">
+          <a class="hub-link" href="/teleport">
+            <span class="hub-ico" aria-hidden="true">🚀</span>
+            <span class="hub-text">
+              <strong>Бесплатный телепорт</strong>
+              <span>Как выровнять базу без затрат</span>
+            </span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="hub-link" href="/promo">
+            <span class="hub-ico" aria-hidden="true">🎁</span>
+            <span class="hub-text">
+              <strong>Промокоды</strong>
+              <span>Актуальные коды и как их вводить</span>
+            </span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="hub-link" href="/format">
+            <span class="hub-ico" aria-hidden="true">✏️</span>
+            <span class="hub-text">
+              <strong>Форматирование текста</strong>
+              <span>Цвет и оформление сообщений в игре</span>
+            </span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </a>
+        </nav>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">Неофициальный гайд сервера 98 · Z Route: Redemption</div>
+  </footer>
+  <a class="top-link" href="#" id="top-link" aria-label="Up">↑</a>
+
+  <script>
+(function () {
+  var btn = document.getElementById("top-link");
+  if (!btn) return;
+  function scrollTopY() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
+  function syncTopLink() {
+    var threshold = Math.max(window.innerHeight, 500);
+    btn.classList.toggle("is-visible", scrollTopY() >= threshold);
+  }
+  function goTop(e) {
+    if (e) e.preventDefault();
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    setTimeout(function () {
+      if (scrollTopY() > 0) window.scrollTo(0, 0);
+      syncTopLink();
+    }, 400);
+  }
+  btn.addEventListener("click", goTop);
+  window.addEventListener("scroll", syncTopLink, { passive: true });
+  window.addEventListener("resize", syncTopLink);
+  if (window.location.hash === "#top") {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+    window.scrollTo(0, 0);
+  }
+  syncTopLink();
+})();
+  </script>
+
+<script>
+(function () {
+  function applyTheme(theme) {
+    var next = theme === "light" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("guide-theme", next); } catch (e) {}
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    var label = next === "light" ? "Тёмная тема" : "Светлая тема";
+    btn.setAttribute("aria-label", label);
+    btn.title = label;
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("guide-theme"); } catch (e) {}
+  if (!saved && window.matchMedia) {
+    saved = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  applyTheme(saved || "dark");
+  var btn = document.getElementById("theme-toggle");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      var cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      applyTheme(cur === "light" ? "dark" : "light");
+    });
+  }
+})();
+</script>
+</body>
+</html>
