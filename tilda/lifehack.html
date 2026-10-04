@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Лайфхаки | Сервер 98 · Z Route: Redemption</title>
+  <meta name="description" content="Лайфхаки сервера 98: быстрый старт, постройки, исследования, герои, экипировка, грабежи, VIP и донат." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #0b0d10;
+  --panel: rgba(22, 27, 34, 0.92);
+  --line: rgba(255, 140, 66, 0.22);
+  --text: #f3ebe3;
+  --muted: #a89a8d;
+  --text-soft: #d2c6ba;
+  --text-hint: #f0d8c2;
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 100, 40, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 20%, rgba(80, 40, 20, 0.25), transparent 50%),
+    linear-gradient(180deg, #0b0d10 0%, #10141a 40%, #0b0d10 100%);
+  --hint-bg: rgba(255, 140, 66, 0.08);
+  --chip-bg: rgba(0, 0, 0, 0.22);
+  --surface: rgba(0, 0, 0, 0.28);
+  --surface-2: rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+  --accent: #ff8c42;
+  --accent-2: #ffb347;
+  --ok: #3dd68c;
+  --glow: rgba(255, 140, 66, 0.35);
+  --radius: 18px;
+  --max: 920px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --font-display: "Oswald", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-size-body: 19px;
+}
+html[data-theme="light"] {
+  --bg: #f3eee7;
+  --bg-2: #e8e1d7;
+  --panel: rgba(255, 252, 248, 0.96);
+  --line: rgba(196, 95, 26, 0.28);
+  --text: #1a1410;
+  --muted: #6b5e52;
+  --text-soft: #4a4038;
+  --text-hint: #3d342c;
+  --accent: #e06a28;
+  --accent-2: #c45a1a;
+  --danger: #c73a2c;
+  --ok: #1f9a5b;
+  --glow: rgba(224, 106, 40, 0.28);
+  --shadow: 0 14px 36px rgba(60, 35, 15, 0.12);
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(224, 106, 40, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 15%, rgba(180, 120, 70, 0.12), transparent 50%),
+    linear-gradient(180deg, #f6f1ea 0%, #ebe4da 45%, #f6f1ea 100%);
+  --hint-bg: rgba(224, 106, 40, 0.1);
+  --chip-bg: rgba(255, 255, 255, 0.78);
+  --surface: rgba(28, 20, 14, 0.05);
+  --surface-2: rgba(28, 20, 14, 0.07);
+  --changed-bg: rgba(224, 106, 40, 0.12);
+  --changed-line: rgba(196, 95, 26, 0.65);
+  --new-bg: rgba(31, 154, 91, 0.12);
+  --new-line: rgba(31, 154, 91, 0.65);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  color: var(--text);
+  background: var(--page-bg);
+  min-height: 100vh;
+  line-height: 1.55;
+  padding-top: 80px !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.45), transparent 70%);
+  z-index: 0;
+}
+body.lightbox-open { overflow: hidden; }
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+}
+
+.hero {
+  margin-top: 1.25rem;
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: relative;
+  min-height: clamp(200px, 36vw, 360px);
+  background: #000 center / cover no-repeat;
+  background-image: url("https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/hero-banner.jpg");
+  background-position: center;
+  display: flex;
+  align-items: flex-start;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,10,12,0.6) 0%, rgba(8,10,12,0.3) 60%, rgba(0,0,0,0.15) 100%),
+    linear-gradient(90deg, rgba(8,10,12,0.6), transparent 55%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  max-width: 40rem;
+}
+.hero h1 {
+  color: #f3ebe3;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  /* Preserve former eyebrow row so the title does not jump up */
+  margin-top: calc(16px * 1.55 + 0.65rem);
+  margin-bottom: 0.75rem;
+}
+.hero h1, .hero p { text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85); }
+.hero p {
+  color: #d9cfc4;
+  font-size: 1em;
+  max-width: 44ch;
+}
+
+main { padding: 1.35rem 0 3.5rem; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.1rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: clamp(1.55rem, 3.5vw, 2rem);
+  letter-spacing: 0.03em;
+  margin: 1.4rem 0 0.85rem;
+  color: var(--text);
+}
+.panel h2, .acc-title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  letter-spacing: 0.03em;
+  color: var(--accent-2);
+  margin-bottom: 0.55rem;
+}
+.panel p, .acc-body p, .acc-body li {
+  color: var(--text-soft);
+  font-size: 1em;
+}
+.panel p + p, .acc-body p + p { margin-top: 0.55rem; }
+.panel ul, .acc-body ul {
+  margin: 0.55rem 0 0.2rem 1.1rem;
+  color: var(--text-soft);
+}
+.panel li, .acc-body li { margin: 0.28rem 0; }
+.panel ul.reward-lines {
+  margin: 0.35rem 0 0.15rem 0;
+  padding: 0;
+  list-style: none;
+}
+.panel ul.reward-lines li {
+  margin: 0.2rem 0;
+}
+
+.chips {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+.chip {
+  border: 1px solid rgba(255, 140, 66, 0.25);
+  border-radius: 14px;
+  padding: 0.7rem 0.95rem;
+  background: rgba(0, 0, 0, 0.22);
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--text-hint);
+  line-height: 1.45;
+}
+.chip small {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 800;
+  color: var(--accent-2);
+  margin-bottom: 0.35rem;
+}
+
+.hint {
+  margin-top: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 140, 66, 0.08);
+  border-radius: 0 10px 10px 0;
+  color: var(--text-hint);
+  font-size: 1em;
+}
+.hint.strong { border-left-color: var(--ok); background: rgba(61, 214, 140, 0.08); }
+
+.shots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+.shot {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.45rem;
+  cursor: zoom-in;
+  width: fit-content;
+  max-width: 100%;
+}
+.shot img {
+  display: block;
+  width: auto;
+  max-width: min(180px, 42vw);
+  height: auto;
+  border-radius: 8px;
+}
+.shot:hover, .shot:focus-within {
+  outline: 2px solid rgba(255, 140, 66, 0.45);
+  outline-offset: 2px;
+}
+.shot-caption {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+  max-width: min(180px, 42vw);
+}
+
+.shots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.shots-grid .shot {
+  width: 100%;
+  max-width: none;
+}
+.shots-grid .shot img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.shots-grid .shot-caption {
+  max-width: none;
+}
+
+.shots-featured {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.shots-featured .shot {
+  width: min(100%, 420px);
+  max-width: 100%;
+}
+.shots-featured .shot img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.shots-featured .shot-caption {
+  max-width: none;
+}
+
+/* Статичная картинка: чуть меньше исходника, без lightbox */
+.shot-static {
+  display: block;
+  width: fit-content;
+  max-width: min(72%, 560px);
+  margin: 0.95rem auto 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.45rem;
+  cursor: default;
+}
+.shot-static img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.shot-static .shot-caption {
+  max-width: none;
+}
+
+/* В аккордеоне — около половины ширины + клик для увеличения */
+.acc-body .shots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+.acc-body .shot {
+  width: min(50%, 420px);
+  max-width: 100%;
+  cursor: zoom-in;
+  padding: 0.45rem;
+  margin-inline: auto;
+}
+.acc-body .shot img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.acc-body .shot:hover,
+.acc-body .shot:focus-within {
+  outline: 2px solid rgba(255, 140, 66, 0.45);
+  outline-offset: 2px;
+}
+.acc-body .shot-caption {
+  max-width: none;
+}
+
+/* Accordion */
+.accordion { display: grid; gap: 0.75rem; margin-bottom: 1.1rem; }
+.acc {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.acc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem;
+  user-select: none;
+}
+.acc > summary::-webkit-details-marker { display: none; }
+.acc-num {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08;
+  box-shadow: 0 0 16px var(--glow);
+}
+.acc-summary-text { flex: 1; min-width: 0; }
+.acc-summary-text strong {
+  display: block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: var(--accent-2);
+}
+.acc-summary-text span {
+  display: block;
+  font-size: 19px;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+.acc-chevron {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  display: grid;
+  place-items: center;
+  color: var(--accent-2);
+  transition: transform 0.2s ease;
+  font-size: 0.85rem;
+}
+.acc[open] > summary { border-bottom: 1px solid rgba(255, 140, 66, 0.14); }
+.acc[open] .acc-chevron { transform: rotate(180deg); }
+.acc-body { padding: 1rem 1.15rem 1.25rem; }
+.acc-body .nested {
+  margin-top: 0.85rem;
+  border: 1px solid rgba(255, 140, 66, 0.18);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+.acc-body .nested > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.75rem 0.9rem;
+  font-weight: 800;
+  color: var(--accent-2);
+  font-size: 0.92rem;
+}
+.acc-body .nested > summary::-webkit-details-marker { display: none; }
+.acc-body .nested-body { padding: 0 0.9rem 0.9rem; }
+.acc-body ul.lifehack-steps {
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-soft);
+}
+.acc-body ul.lifehack-steps li {
+  margin: 0.35rem 0;
+}
+
+.score-grid {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.75rem 0;
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 1em;
+}
+.score-row span { color: var(--text-soft); }
+.score-row strong { color: var(--accent-2); font-weight: 800; white-space: nowrap; }
+
+.score-example {
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 1em;
+  color: var(--text-soft);
+}
+.score-example > strong {
+  display: block;
+  color: var(--accent-2);
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+.score-example p {
+  margin: 0.2rem 0;
+  color: var(--text-soft);
+}
+.score-example .pts {
+  color: var(--accent-2);
+  font-weight: 800;
+}
+html[data-theme="light"] .score-example {
+  background: var(--surface);
+}
+
+.weekday {
+  display: grid;
+  gap: 0.55rem;
+}
+.weekday article {
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.weekday h3 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--accent-2);
+  margin-bottom: 0.25rem;
+}
+.weekday p { font-size: 1em; color: var(--text-soft); }
+
+.takeaway {
+  background:
+    linear-gradient(135deg, rgba(255, 140, 66, 0.12), rgba(255, 90, 69, 0.06)),
+    var(--panel);
+}
+.takeaway ul {
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-soft);
+}
+.takeaway li { margin: 0.4rem 0; }
+
+footer {
+  border-top: 1px solid rgba(255, 140, 66, 0.12);
+  padding: 1.4rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: calc(80px + 1.25rem) 1.25rem 1.25rem;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  display: block;
+  max-width: min(100%, 960px);
+  max-height: calc(100vh - 80px - 2.5rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+.lightbox-close {
+  position: fixed;
+  top: calc(80px + 0.85rem);
+  right: 0.85rem;
+  z-index: 1001;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(20, 14, 10, 0.85);
+  color: #fff;
+  font-size: 1.85rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lightbox-close:hover { background: #ff8c42; }
+
+@media (max-width: 560px) {
+  .wrap { width: min(100% - 1.25rem, var(--max)); }
+  .acc > summary { padding: 0.85rem; }
+  .shot img, .shot-caption { max-width: min(150px, 46vw); }
+  .acc-body .shot { width: min(70%, 100%); }
+  .acc-body .shot img, .acc-body .shot-caption { max-width: 100%; }
+}
+
+.hero-controls {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.25rem, 4vw, 2.25rem);
+  right: clamp(1.25rem, 4vw, 2.25rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  max-width: calc(100% - 2.5rem);
+}
+.theme-toggle {
+  appearance: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffb347;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: 0.2s ease;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: rgba(255, 140, 66, 0.7);
+  box-shadow: 0 0 16px var(--glow);
+}
+html[data-theme="light"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  color: #c45a1a;
+  border-color: rgba(196, 95, 26, 0.35);
+}
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: inline; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+@media (max-width: 560px) {
+  .hero-controls { top: 0.85rem; right: 0.85rem; }
+  .hero-content { padding-top: 3.25rem; }
+}
+html[data-theme="light"] .chip { background: var(--chip-bg); }
+html[data-theme="light"] .hint {
+  background: var(--hint-bg);
+  color: var(--text-hint);
+}
+html[data-theme="light"] .shot { background: var(--surface-2); }
+html[data-theme="light"] .acc { background: var(--panel); }
+html[data-theme="light"] .score-row,
+html[data-theme="light"] .weekday article {
+  background: var(--surface);
+}
+html[data-theme="light"] .info {
+  color: var(--text-hint);
+}
+.panel a, .acc-body a {
+  color: var(--accent-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.acc-num { font-size: 1rem; }
+.acc-body li > strong:first-child { color: var(--accent); }
+
+.code-block{
+  margin-top: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+}
+.code-block-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 140, 66, 0.14);
+}
+.code-label{
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.copy-btn{
+  appearance: none;
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  background: transparent;
+  color: var(--accent-2);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.copy-btn:hover{ filter: brightness(1.08); }
+.copy-btn.copied{
+  color: #0d2818;
+  background: linear-gradient(135deg, var(--ok), #2bb673);
+  border-color: transparent;
+}
+.code-block pre{
+  margin: 0;
+  padding: 0.85rem 0.95rem;
+  overflow-x: auto;
+}
+.code-block code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  color: var(--text-hint);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
+
+.top-link {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 40;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #1a0f08;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  font-weight: 800;
+  box-shadow: 0 0 18px var(--glow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+.top-link.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.top-link:hover { filter: brightness(1.05); }
+.acc-body .shot.wide { width: 100%; max-width: 100%; }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <section class="hero">
+      <div class="hero-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Тема" title="Тема">
+          <span class="icon-moon" aria-hidden="true">&#9790;</span>
+          <span class="icon-sun" aria-hidden="true">&#9728;</span>
+        </button>
+      </div>
+      <div class="hero-content">
+        <h1>Лайфхаки</h1>
+        <p>Короткие советы для старта и роста: куда качать базу, как не сливать ресурсы и где брать максимум выгоды.</p>
+      </div>
+    </section>
+
+    <main>
+      <section class="panel" id="begin">
+        <h2>Основные моменты</h2>
+        <p>Раздел помогает быстрее войти в игру и не тратить ресурсы впустую. Ниже — приоритеты по постройкам, исследованиям, героям, экипировке, грабежам, VIP и донату.</p>
+        <div class="hint">💡 Многие советы работают лучше, если совмещать их с <a href="/vs">VS</a> и <a href="/mission-ready">Готовностью к миссии</a>.</div>
+      </section>
+
+      <h2 class="section-title">Разделы</h2>
+
+      <div class="accordion">
+        <details class="acc" id="start" open>
+          <summary>
+            <span class="acc-num">1</span>
+            <span class="acc-summary-text">
+              <strong>Быстрый старт</strong>
+              <span>Качаем уровень базы, а не всё подряд</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Ваша главная задача — улучшать постройки, которые повышают <strong>уровень базы</strong>. С каждым новым уровнем для улучшений нужно всё больше ресурсов, поэтому важно распоряжаться ими разумно и не тратить на второстепенные цели.</p>
+            <div class="hint strong">🔥 При быстрой прокачке не нужно улучшать все здания и героев одновременно. Сначала — ключевые постройки.</div>
+          </div>
+        </details>
+
+        <details class="acc" id="buildings">
+          <summary>
+            <span class="acc-num">2</span>
+            <span class="acc-summary-text">
+              <strong>Какие постройки качать первыми</strong>
+              <span>Приоритеты на старте и таблицы улучшений</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>В первую очередь:</p>
+            <ul>
+              <li>🔹 <strong>База</strong></li>
+              <li>🔹 <strong>Отдел альфа-исследований</strong></li>
+              <li>🔹 <strong>Центр обучения воинов</strong> — поначалу фокус на танках, потом тактики и штурм</li>
+              <li>🔹 <strong>Полигоны и тренировочные лагеря</strong> солдат</li>
+              <li>🔹 <strong>Госпитали</strong> — сначала сосредоточьтесь на одном</li>
+              <li>🔹 <strong>Центр альянса</strong> — помощь на стройку и исследования</li>
+              <li>🔹 <strong>Инженерный отдел</strong> — часто забывают, а на старте сильно режет время стройки</li>
+            </ul>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/build-priority.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/build-priority.webp" alt="Приоритет построек на старте" loading="lazy" />
+              </figure>
+            </div>
+            <p>Шахты, фермы, нефтяные качалки и прочие ресурсные здания — <strong>в последнюю очередь</strong>. Основной поток ресурсов идёт от активности: охота, события, грабежи.</p>
+            <p>Из ресурсных зданий можно выделить:</p>
+            <ul>
+              <li>🔹 Фабрика по обработке сплавов</li>
+              <li>🔹 Фабрика материалов снаряжения</li>
+            </ul>
+            <p>Также не забывайте качать:</p>
+            <ul>
+              <li>🔹 Сторожевую башню</li>
+              <li>🔹 Дрон разведки</li>
+            </ul>
+            <h3 class="acc-title" style="margin-top:1rem">Таблицы улучшений базы</h3>
+            <div class="shots shots-grid">
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/base-table-1.png">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/base-table-1.png" alt="Таблица улучшений базы 1" loading="lazy" />
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/base-table-2.png">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/base-table-2.png" alt="Таблица улучшений базы 2" loading="lazy" />
+              </figure>
+            </div>
+            <div class="shots shots-featured">
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/base-table-3.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/base-table-3.webp" alt="Таблица улучшений базы 3" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="research">
+          <summary>
+            <span class="acc-num">3</span>
+            <span class="acc-summary-text">
+              <strong>Прокачка исследований</strong>
+              <span>Приоритетные ветки, научные данные и PvP</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Приоритет в исследованиях:</p>
+            <ul>
+              <li>🔹 Разработать</li>
+              <li>🔹 Отряд 1</li>
+              <li>🔹 VS</li>
+              <li>🔹 Герой — для начала стоит прокачать ветку героев</li>
+              <li>🔹 Полное развитие</li>
+              <li>🔹 Супер солдаты</li>
+            </ul>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/research-branches.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/research-branches.webp" alt="Приоритетные ветки исследований" loading="lazy" />
+              </figure>
+            </div>
+            <p><strong>Где брать ресурс для веток Союзного состава и Супер солдат?</strong></p>
+            <div class="shots shots-grid">
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/scientific-data.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/scientific-data.webp" alt="Научные данные" loading="lazy" />
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/research-extra-1.png">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/research-extra-1.png" alt="Источники научных данных" loading="lazy" />
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/research-extra-2.png">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/research-extra-2.png" alt="Магазин: книги и шестерни" loading="lazy" />
+              </figure>
+            </div>
+            <p>Больше всего <strong>научных данных</strong> можно заработать в VS (строго по расписанию) и в ивенте «День до». На монеты в магазине в первую очередь берите эти книги и шестерни для прокачки самолёта.</p>
+            <div class="hint strong">🔥 Всегда старайтесь придержать ускорители исследований и постройки до VS или «Готовности к миссии».</div>
+            <p style="margin-top:0.75rem"><strong>Для PvP между серверами</strong> обязательно прокачайте:</p>
+            <ul>
+              <li>🔹 Отряд 1 — нижний навык «Инстинкт убийцы»</li>
+              <li>🔹 Полное развитие — нижний навык «Боевой медик»</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="acc" id="heroes">
+          <summary>
+            <span class="acc-num">4</span>
+            <span class="acc-summary-text">
+              <strong>Герои</strong>
+              <span>Опыт, осколки и сундуки под VS</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Не тратьте опыт героев впустую. До <strong>100 уровня</strong> героев отлично прокачает «Испытание Славы» в Сторожевой башне.</p>
+            <ul>
+              <li>Копите предметы опыта для прокачки с 100 до 150 уровня.</li>
+              <li>Копите универсальные осколки для звёзд героям, которых обычно берут за донат — это большая экономия.</li>
+              <li>Копите сундуки с героями — они пригодятся для VS.</li>
+            </ul>
+            <div class="hint strong">🔥 В начале игры универсальные осколки тратьте исключительно на <strong>Монро</strong>.</div>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/heroes.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/heroes.webp" alt="Прокачка героев и осколки" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="gear">
+          <summary>
+            <span class="acc-num">5</span>
+            <span class="acc-summary-text">
+              <strong>Экипировка</strong>
+              <span>Только UR и правильный порядок кратности</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Не тратьте ресурсы на прокачку оружия и брони ниже <strong>UR (золотого)</strong> качества. В будущем у вас будет только UR, а всё остальное станет мусором.</p>
+            <div class="shots shots-grid">
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-ur.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-ur.webp" alt="Экипировка UR" loading="lazy" />
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-compare.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-compare.webp" alt="Сравнение экипировки" loading="lazy" />
+              </figure>
+            </div>
+            <p>Принцип на старте простой — качаем что-то одно, доводя кратность до 10:</p>
+            <ol style="margin:0.55rem 0 0.2rem 1.1rem;color:var(--text-soft)">
+              <li>Монро пушка 40, остальное по 20</li>
+              <li>Шлем Арнольду до 40, остальное по 20</li>
+              <li>Монро прицел 40</li>
+              <li>Арнольду броник 40</li>
+            </ol>
+            <p>У остальных — по ситуации. На старте важно поскорее прокачать пушку Монро до 40, даже если придётся пожертвовать другим снаряжением.</p>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-priority.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-priority.webp" alt="Приоритет прокачки экипировки" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="raids">
+          <summary>
+            <span class="acc-num">6</span>
+            <span class="acc-summary-text">
+              <strong>Ресурсы и грабежи</strong>
+              <span>Дойные коровы, радар и наблюдатели</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <div class="hint strong">🔥 Главное правило: <strong>не разрушайте базы до конца</strong> и грабьте только базы <strong>без альянса</strong>. Хорошим тоном будет написать тому, кого грабите — так вы бьёте брошенные аккаунты, а не живых игроков.</div>
+            <ul>
+              <li>Найдите 5–8 хороших баз с ресурсами от 50 млн+.</li>
+              <li>Отправьте разведку и добавьте в избранное.</li>
+              <li>Оставляйте базе около <strong>1000 ХП</strong>. Если снести до 0 — она телепортируется, и вы потеряете «дойную корову».</li>
+              <li>Подстраивайте грабёж под ивент бойца в ГкМ, когда дают очки за энергию.</li>
+              <li>Прокачку самолёта оставляйте на понедельник — не тратьте чипы и шестерни только ради ГкМ.</li>
+            </ul>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/raids.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/raids.webp" alt="Грабежи и избранные базы" loading="lazy" />
+              </figure>
+            </div>
+            <p>Наблюдатель может выпасть как миссия радара. Для выполнения можно убить любого наблюдателя — ищите именно <strong>100 лвл</strong>. Миссия также засчитывается при присоединении к сбору на электрика.</p>
+            <div class="hint">💡 Пока не ходите на наблюдателей выше уровнем — потеряете солдат. Если случайно задели сильного, попросите другого игрока начать сбор атаки на него и сразу отменить: атака на вашу базу снимется.</div>
+          </div>
+        </details>
+
+        <details class="acc" id="vip">
+          <summary>
+            <span class="acc-num">7</span>
+            <span class="acc-summary-text">
+              <strong>Для чего нужен VIP</strong>
+              <span>Как быстрее поднять VIP и ускорить стройку</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>Как быстрее поднять <strong>11 VIP</strong> и ускорить стройку примерно на 50%:</p>
+            <ul>
+              <li>Обязательно покупайте VIP-пропуск — выгоднее всего на месяц за 10к алмазов.</li>
+              <li>Пропуск даёт бонусы к стройке, исследованиям, сбору и другим активностям.</li>
+              <li>Прокачка VIP зависит от ежедневного входа и открытия подарков альянса — в том числе за убийство элитных клоунов. В «Подарке альянса» с шансом падают кредиты для пропуска.</li>
+            </ul>
+            <div class="hint strong">🔥 VIP-пропуск — одно из самых полезных вложений для ускорения аккаунта.</div>
+            <div class="shots">
+              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/vip.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/vip.webp" alt="VIP-пропуск" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="acc" id="donate">
+          <summary>
+            <span class="acc-num">8</span>
+            <span class="acc-summary-text">
+              <strong>Донат</strong>
+              <span>На что тратить на старте и как стыковать с ГкМ</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>На начальном этапе разумнее всего:</p>
+            <ul>
+              <li>Монро</li>
+              <li>2–3–4 очереди стройки (чем дальше, тем важнее — стройка становится очень долгой)</li>
+              <li>2-я очередь исследований</li>
+              <li>Месячный VIP-пропуск</li>
+              <li>Фонд роста (до 50 000 алмазов при повышении уровня базы)</li>
+              <li>Акционные наборы уровня базы и акционные наборы в VS</li>
+            </ul>
+            <p>Также выгодны акции внутри героев. Если донатите регулярно — подстраивайте траты под ГкМ: <strong>стройка</strong> и <strong>исследования</strong>. Эти фазы закрывать сложнее всего из‑за большого числа ускорений. Сами ускоры лучше оставлять на VS.</p>
+            <div class="hint">💡 Например, донат на Монро можно делать в дни ГкМ по исследованиям или стройке. Если делаете 2 доната — распределяйте на 2 ивента.</div>
+          </div>
+        </details>
+
+        <details class="acc" id="servers">
+          <summary>
+            <span class="acc-num">9</span>
+            <span class="acc-summary-text">
+              <strong>Переход на другие серверы</strong>
+              <span>Ссылка для разведки и грабежей</span>
+            </span>
+            <span class="acc-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="acc-body">
+            <p>R5 или R4 могут разместить HTML-код со ссылкой на другой сервер в объявлениях альянса — так участникам проще грабить внешние серверы.</p>
+            <div class="hint strong">🔥 Внутрисерверные грабежи контейнеров спецопераций и грузовиков запрещены.</div>
+            <p>Пример ссылки для 97-го сервера (ссылку обновляем каждую неделю):</p>
+            <div class="code-block">
+              <div class="code-block-head">
+                <span class="code-label">Код</span>
+                <button type="button" class="copy-btn" data-copy="<color=#01AF0C><u><link=500&amp;500&amp;97>ГРАБИМ ТОЛЬКО ЭТОТ СЕРВЕР</link></u>">Копировать</button>
+              </div>
+              <pre><code>&lt;color=#01AF0C&gt;&lt;u&gt;&lt;link=500&amp;500&amp;97&gt;ГРАБИМ ТОЛЬКО ЭТОТ СЕРВЕР&lt;/link&gt;&lt;/u&gt;</code></pre>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <section class="panel takeaway">
+        <h2>🔥 Самое главное</h2>
+        <ul>
+          <li><strong>Сначала уровень базы и ключевые постройки — не размазывайте ресурсы.</strong></li>
+          <li>🔬 Исследования и ускорения копим под VS / ГкМ</li>
+          <li>⭐ Герои: Испытание Славы до 100, универсальные осколки — на Монро</li>
+          <li>🛡 Экипировку ниже UR не качаем</li>
+          <li>💰 Грабим базы без альянса и не сносим их до 0</li>
+          <li>👉 VIP и точечный донат ускоряют рост сильнее хаотичных трат</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">Неофициальный гайд сервера 98 · Z Route: Redemption</div>
+  </footer>
+  <a class="top-link" href="#" id="top-link" aria-label="Up">↑</a>
+
+  <script>
+(function () {
+  var btn = document.getElementById("top-link");
+  if (!btn) return;
+  function scrollTopY() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
+  function syncTopLink() {
+    // Show only after roughly one full viewport of scroll (content below the fold).
+    var threshold = Math.max(window.innerHeight, 500);
+    btn.classList.toggle("is-visible", scrollTopY() >= threshold);
+  }
+  function goTop(e) {
+    if (e) e.preventDefault();
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    // Absolute top: body padding-top (80px) keeps content below the fixed header.
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    // Fallback if smooth scroll is interrupted / hash leftovers.
+    setTimeout(function () {
+      if (scrollTopY() > 0) window.scrollTo(0, 0);
+      syncTopLink();
+    }, 400);
+  }
+  btn.addEventListener("click", goTop);
+  window.addEventListener("scroll", syncTopLink, { passive: true });
+  window.addEventListener("resize", syncTopLink);
+  // Old #top hash scrolled content under the header and left the button visible.
+  if (window.location.hash === "#top") {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+    window.scrollTo(0, 0);
+  }
+  syncTopLink();
+})();
+  </script>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Закрыть">&times;</button>
+    <img id="lightbox-img" alt="" />
+  </div>
+
+  <script>
+(function () {
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  var lightboxClose = document.getElementById("lightbox-close");
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+  }
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lightboxImg.removeAttribute("src");
+    document.body.classList.remove("lightbox-open");
+  }
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+
+  document.querySelectorAll(".shot").forEach(function (box) {
+    box.addEventListener("click", function () {
+      var img = box.querySelector("img");
+      var src = box.getAttribute("data-full") || (img && (img.currentSrc || img.src));
+      if (src) openLightbox(src, img ? img.alt : "");
+    });
+  });
+})();
+  </script>
+
+<script>
+(function () {
+  function applyTheme(theme) {
+    var next = theme === "light" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("guide-theme", next); } catch (e) {}
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    var ru = (document.documentElement.lang || "ru") === "ru";
+    var label = next === "light"
+      ? (ru ? "Тёмная тема" : "Dark theme")
+      : (ru ? "Светлая тема" : "Light theme");
+    btn.setAttribute("aria-label", label);
+    btn.title = label;
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("guide-theme"); } catch (e) {}
+  if (!saved && window.matchMedia) {
+    saved = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  applyTheme(saved || "dark");
+  var btn = document.getElementById("theme-toggle");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      var cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      applyTheme(cur === "light" ? "dark" : "light");
+    });
+  }
+  window.__zrouteApplyTheme = applyTheme;
+})();
+</script>
+
+<script>
+(function () {
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    btn.addEventListener("click", async function () {
+      var text = btn.getAttribute("data-copy") || "";
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+        }
+        var prev = btn.textContent;
+        btn.classList.add("copied");
+        btn.textContent = "Скопировано";
+        clearTimeout(btn._t);
+        btn._t = setTimeout(function () {
+          btn.classList.remove("copied");
+          btn.textContent = prev;
+        }, 1600);
+      } catch (e) {}
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
