@@ -148,41 +148,37 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: clamp(1.4rem, 4vw, 2.4rem);
-  max-width: 36rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  max-width: 40rem;
   animation: heroIn 0.7s ease both;
 }
 @keyframes heroIn {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.hero-brand {
-  display: block;
+.hero h1 {
+  color: #f3ebe3;
   font-family: var(--font-display);
   text-transform: uppercase;
-  font-weight: 700;
-  font-size: clamp(2.6rem, 9vw, 4.4rem);
-  line-height: 0.92;
+  font-weight: 600;
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  line-height: 0.95;
   letter-spacing: 0.02em;
-  color: #f3ebe3;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
-  margin-bottom: 0.55rem;
-}
-.hero h1 {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(1.05rem, 2.8vw, 1.25rem);
-  line-height: 1.35;
-  color: #f0d8c2;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
-  text-transform: none;
-  letter-spacing: 0;
-  margin-bottom: 0.55rem;
+  margin-top: calc(16px * 1.55 + 0.65rem);
+  margin-bottom: 0.75rem;
+  text-wrap: balance;
+}
+.hero h1 .hero-line {
+  display: block;
+}
+.hero h1 .hero-line-nowrap {
+  white-space: nowrap;
 }
 .hero p {
   color: #d9cfc4;
   font-size: 1em;
-  max-width: 40ch;
+  max-width: 42ch;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
   margin-bottom: 1.1rem;
 }
@@ -388,6 +384,7 @@ footer {
   .wrap { width: min(100% - 1.25rem, var(--max)); }
   .hero-controls { top: 0.85rem; right: 0.85rem; }
   .hero-content { padding-top: 3.4rem; }
+  .hero h1 { font-size: clamp(1.45rem, 7.2vw, 2rem); }
   .hub-link { gap: 0.65rem; padding: 0.8rem 0.75rem; }
 }
 html[data-theme="light"] .start-link,
@@ -406,8 +403,10 @@ html[data-theme="light"] .hub-link:hover {
         </button>
       </div>
       <div class="hero-content">
-        <p class="hero-brand">Сервер 98</p>
-        <h1>Гайды Z Route: Redemption</h1>
+        <h1>
+          <span class="hero-line">Сервер 98</span>
+          <span class="hero-line hero-line-nowrap">Гайды Z&nbsp;Route: Redemption</span>
+        </h1>
         <p>Правила, лайфхаки, VS, события и полезные инструменты — всё в одном месте.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="/lifehack">Начать с лайфхаков</a>
