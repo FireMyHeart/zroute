@@ -529,6 +529,68 @@ main { padding: 1.35rem 0 3.5rem; }
   margin-inline: 0;
   padding: 0.35rem;
 }
+
+/* Ряд качества экипировки: галочка / крестики */
+.gear-quality-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+  margin: 0.85rem 0 1rem;
+}
+.gear-quality {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  flex: 0 0 auto;
+}
+.gear-quality img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gear-quality .gear-mark {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  line-height: 1;
+  font-weight: 900;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+}
+.gear-quality.ok .gear-mark {
+  right: 4px;
+  bottom: 2px;
+  color: #3dd68c;
+  font-size: 1.85rem;
+}
+.gear-quality.no::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 8, 8, 0.28);
+  z-index: 1;
+}
+.gear-quality.no .gear-mark {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #ff4d4d;
+  font-size: 4.2rem;
+  opacity: 0.95;
+}
+@media (max-width: 560px) {
+  .gear-quality {
+    width: 92px;
+    height: 92px;
+  }
+  .gear-quality.no .gear-mark { font-size: 3.4rem; }
+  .gear-quality.ok .gear-mark { font-size: 1.55rem; }
+}
 @media (max-width: 560px) {
   .research-skills { grid-template-columns: 1fr; }
   .research-head .research-card {
@@ -1304,13 +1366,19 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
           </summary>
           <div class="acc-body">
             <p>Не тратьте ресурсы на прокачку оружия и брони ниже <strong>UR (золотого)</strong> качества. В будущем у вас будет только UR, а всё остальное станет мусором.</p>
-            <div class="shots shots-grid">
-              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-ur.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-ur.webp" alt="Экипировка UR" loading="lazy" />
-              </figure>
-              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-compare.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-compare.webp" alt="Сравнение экипировки" loading="lazy" />
-              </figure>
+            <div class="gear-quality-row" aria-label="Качество экипировки">
+              <div class="gear-quality ok">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-ur-gold.webp?v=1" alt="UR — золотое качество" loading="lazy" />
+                <span class="gear-mark" aria-hidden="true">✓</span>
+              </div>
+              <div class="gear-quality no">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-sr-purple.webp?v=1" alt="Ниже UR — не качаем" loading="lazy" />
+                <span class="gear-mark" aria-hidden="true">✕</span>
+              </div>
+              <div class="gear-quality no">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-r-blue.webp?v=1" alt="Ниже UR — не качаем" loading="lazy" />
+                <span class="gear-mark" aria-hidden="true">✕</span>
+              </div>
             </div>
             <p>Принцип на старте простой — качаем что-то одно, доводя кратность до 10:</p>
             <ol style="margin:0.55rem 0 0.2rem 1.1rem;color:var(--text-soft)">
