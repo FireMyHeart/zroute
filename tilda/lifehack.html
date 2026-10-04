@@ -635,14 +635,15 @@ main { padding: 1.35rem 0 3.5rem; }
   background: transparent;
 }
 .gear-workshop-photos .gear-workshop-icon {
-  width: 96px;
-  height: 96px;
+  width: 144px;
+  height: 144px;
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--line);
   background: rgba(0, 0, 0, 0.35);
   display: block;
-  flex: 0 0 96px;
+  flex: 0 0 144px;
+  cursor: default;
 }
 .gear-workshop-text {
   flex: 1 1 200px;
@@ -650,6 +651,128 @@ main { padding: 1.35rem 0 3.5rem; }
   color: var(--text-soft);
   font-size: 0.98em;
   line-height: 1.45;
+}
+.gear-dismantle {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem 1.1rem;
+  margin: 0.15rem 0 1.1rem;
+  flex-wrap: wrap;
+}
+.acc-body .gear-dismantle .shot {
+  display: block;
+  width: 220px;
+  max-width: 48vw;
+  margin: 0;
+  padding: 0.4rem;
+  cursor: zoom-in;
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+}
+.acc-body .gear-dismantle .shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none !important;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+}
+.gear-dismantle-side {
+  flex: 1 1 220px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.gear-dismantle-side p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.98em;
+  line-height: 1.45;
+}
+.gear-dismantle-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+}
+.gear-dismantle-actions img {
+  width: 108px;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  display: block;
+}
+.gear-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.55rem 0.65rem;
+  margin: 0.85rem 0 0.35rem;
+}
+.gear-flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 140px;
+  text-align: center;
+}
+.gear-flow-step img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  display: block;
+  padding: 0.35rem;
+}
+.gear-flow-step span {
+  font-size: 0.82em;
+  line-height: 1.3;
+  color: var(--text-soft);
+}
+.gear-flow-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 220px;
+  text-align: center;
+}
+.gear-flow-pair-photos {
+  display: flex;
+  gap: 0.45rem;
+}
+.gear-flow-pair-photos img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  display: block;
+  padding: 0.3rem;
+}
+.gear-flow-pair span {
+  font-size: 0.82em;
+  line-height: 1.3;
+  color: var(--text-soft);
+}
+.gear-flow-arrow {
+  align-self: center;
+  color: var(--accent-2);
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 1.6rem;
+  flex: 0 0 auto;
 }
 @media (max-width: 560px) {
   .gear-quality {
@@ -664,9 +787,31 @@ main { padding: 1.35rem 0 3.5rem; }
     max-width: 180px;
   }
   .gear-workshop-photos .gear-workshop-icon {
-    width: 80px;
-    height: 80px;
-    flex-basis: 80px;
+    width: 120px;
+    height: 120px;
+    flex-basis: 120px;
+  }
+  .acc-body .gear-dismantle .shot {
+    width: min(200px, 70vw);
+    max-width: 70vw;
+  }
+  .gear-dismantle-actions img {
+    width: 96px;
+  }
+  .gear-flow {
+    gap: 0.45rem 0.4rem;
+  }
+  .gear-flow-step img {
+    width: 78px;
+    height: 78px;
+  }
+  .gear-flow-pair-photos img {
+    width: 72px;
+    height: 72px;
+  }
+  .gear-flow-arrow {
+    font-size: 1.35rem;
+    margin-top: 1.2rem;
   }
 }
 @media (max-width: 560px) {
@@ -1467,6 +1612,18 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
               </div>
               <p class="gear-workshop-text">Вся экипировка создается в здании <strong>Мастерская снаряжения</strong>.</p>
             </div>
+            <div class="gear-dismantle">
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-merge-materials.webp?v=1" tabindex="0" role="button" aria-label="Увеличить: слияние материалов">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-merge-materials.webp?v=1" alt="Слияние материалов снаряжения" loading="lazy" />
+              </figure>
+              <div class="gear-dismantle-side">
+                <p>Разбирайте ненужное снаряжение на компоненты и сливайте их до золотого элемента.</p>
+                <div class="gear-dismantle-actions">
+                  <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-action-dismantle.webp?v=1" alt="Разобрать" loading="lazy" />
+                  <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-action-merge.webp?v=1" alt="Слияние" loading="lazy" />
+                </div>
+              </div>
+            </div>
             <p>Принцип на старте простой — качаем что-то одно, доводя кратность до 10:</p>
             <ol style="margin:0.55rem 0 0.2rem 1.1rem;color:var(--text-soft)">
               <li>Монро пушка 40, остальное по 20</li>
@@ -1475,10 +1632,24 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
               <li>Арнольду броник 40</li>
             </ol>
             <p>У остальных — по ситуации. На старте важно поскорее прокачать пушку Монро до 40, даже если придётся пожертвовать другим снаряжением.</p>
-            <div class="shots">
-              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-priority.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/gear-priority.webp" alt="Приоритет прокачки экипировки" loading="lazy" />
-              </figure>
+            <div class="gear-flow" aria-label="Порядок прокачки экипировки">
+              <div class="gear-flow-step">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-item-scopes.webp?v=1" alt="Бинокль" loading="lazy" />
+                <span>Сначала Бинокль (дает скорость)</span>
+              </div>
+              <div class="gear-flow-arrow" aria-hidden="true">→</div>
+              <div class="gear-flow-step">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-item-rifle.webp?v=1" alt="Оружие" loading="lazy" />
+                <span>Потом Оружие (дает силу)</span>
+              </div>
+              <div class="gear-flow-arrow" aria-hidden="true">→</div>
+              <div class="gear-flow-pair">
+                <div class="gear-flow-pair-photos">
+                  <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-item-helmet.webp?v=1" alt="Каска" loading="lazy" />
+                  <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-item-armor.webp?v=1" alt="Броня" loading="lazy" />
+                </div>
+                <span>Затем Каска и Броня</span>
+              </div>
             </div>
           </div>
         </details>
