@@ -274,10 +274,12 @@ main { padding: 1.35rem 0 3.5rem; }
 }
 .shots-grid.shots-grid-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 0.85rem;
+  align-items: stretch;
 }
-@media (max-width: 640px) {
+@media (max-width: 560px) {
   .shots-grid.shots-grid-3 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 }
 .shots-grid .shot {
@@ -290,6 +292,46 @@ main { padding: 1.35rem 0 3.5rem; }
   height: auto;
 }
 .shots-grid .shot-caption {
+  max-width: none;
+}
+.shots-grid.shots-grid-3 .shot {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+.shots-grid.shots-grid-3 .shot img {
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  background: transparent;
+}
+.shots-grid.shots-grid-3 .shot:hover,
+.shots-grid.shots-grid-3 .shot:focus-within {
+  outline: none;
+}
+.shots-grid.shots-grid-3 .shot img:hover {
+  outline: 2px solid rgba(255, 140, 66, 0.45);
+  outline-offset: 2px;
+}
+.shot-subtitle {
+  display: block;
+  margin-top: auto;
+  padding-top: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--accent-2);
   max-width: none;
 }
 
@@ -348,13 +390,23 @@ main { padding: 1.35rem 0 3.5rem; }
   padding: 0.45rem;
   margin-inline: auto;
 }
-.acc-body .shots-grid {
+.acc-body .shots.shots-grid {
+  display: grid;
   width: 100%;
+  justify-content: stretch;
 }
 .acc-body .shots-grid .shot {
   width: 100%;
   max-width: none;
   margin-inline: 0;
+}
+.acc-body .shots-grid.shots-grid-3 .shot {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  overflow: visible;
 }
 .acc-body .shot img {
   width: 100%;
@@ -645,6 +697,7 @@ html[data-theme="light"] .hint {
   color: var(--text-hint);
 }
 html[data-theme="light"] .shot { background: var(--surface-2); }
+html[data-theme="light"] .shots-grid.shots-grid-3 .shot { background: transparent; }
 html[data-theme="light"] .acc { background: var(--panel); }
 html[data-theme="light"] .score-row,
 html[data-theme="light"] .weekday article {
@@ -804,29 +857,29 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
               <li>🔹 <strong>Инженерный отдел</strong> — часто забывают, а на старте сильно режет время стройки</li>
             </ul>
             <div class="shots shots-grid shots-grid-3">
-              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-base.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-base.webp" alt="База" loading="lazy" />
-                <figcaption class="shot-caption">База (главная постройка)</figcaption>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-base.webp?v=3">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-base.webp?v=3" alt="База" loading="lazy" />
+                <figcaption class="shot-subtitle">База (главная постройка)</figcaption>
               </figure>
-              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-hospital.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-hospital.webp" alt="Госпиталь" loading="lazy" />
-                <figcaption class="shot-caption">Госпиталь</figcaption>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-hospital.webp?v=3">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-hospital.webp?v=3" alt="Госпиталь" loading="lazy" />
+                <figcaption class="shot-subtitle">Госпиталь</figcaption>
               </figure>
-              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-training-center.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-training-center.webp" alt="Центр обучения воинов" loading="lazy" />
-                <figcaption class="shot-caption">Центр обучения воинов</figcaption>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-training-center.webp?v=3">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-training-center.webp?v=3" alt="Центр обучения воинов" loading="lazy" />
+                <figcaption class="shot-subtitle">Центр обучения воинов</figcaption>
               </figure>
-              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alliance-center.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alliance-center.webp" alt="Центр альянса" loading="lazy" />
-                <figcaption class="shot-caption">Центр альянса</figcaption>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alliance-center.webp?v=3">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alliance-center.webp?v=3" alt="Центр альянса" loading="lazy" />
+                <figcaption class="shot-subtitle">Центр альянса</figcaption>
               </figure>
-              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-polygon.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-polygon.webp" alt="Полигон" loading="lazy" />
-                <figcaption class="shot-caption">Полигон</figcaption>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-polygon.webp?v=3">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-polygon.webp?v=3" alt="Полигон" loading="lazy" />
+                <figcaption class="shot-subtitle">Полигон</figcaption>
               </figure>
-              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alpha-research.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alpha-research.webp" alt="Отдел альфа-исследований" loading="lazy" />
-                <figcaption class="shot-caption">Отдел альфа-исследований</figcaption>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alpha-research.webp?v=3">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alpha-research.webp?v=3" alt="Отдел альфа-исследований" loading="lazy" />
+                <figcaption class="shot-subtitle">Отдел альфа-исследований</figcaption>
               </figure>
             </div>
             <p>Шахты, фермы, нефтяные качалки и прочие ресурсные здания — <strong>в последнюю очередь</strong>. Основной поток ресурсов идёт от активности: охота, события, грабежи.</p>
