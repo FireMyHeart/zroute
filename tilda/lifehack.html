@@ -474,6 +474,10 @@ main { padding: 1.35rem 0 3.5rem; }
   background: rgba(0, 0, 0, 0.35);
   display: block;
 }
+.research-head .research-card.research-card-lg {
+  width: 162px;
+  flex-basis: 162px;
+}
 .research-head-text {
   flex: 1 1 auto;
   min-width: 0;
@@ -824,6 +828,10 @@ main { padding: 1.35rem 0 3.5rem; }
   .research-head .research-card {
     width: 88px;
     flex-basis: 88px;
+  }
+  .research-head .research-card.research-card-lg {
+    width: 132px;
+    flex-basis: 132px;
   }
   .research-inline .research-skills {
     grid-template-columns: repeat(3, max-content);
@@ -1184,7 +1192,8 @@ html[data-theme="light"] .info {
 }
 .acc-num { font-size: 1rem; }
 .acc-body li > strong,
-.acc-body p strong {
+.acc-body p strong,
+.acc-body .hint strong {
   color: var(--accent);
   font-weight: 800;
 }
@@ -1680,7 +1689,7 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
             <div class="research-notes" style="margin-top:0.85rem">
               <section class="research-note">
                 <div class="research-head">
-                  <img class="research-card" src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/watcher.webp?v=1" alt="Наблюдатель" loading="lazy" />
+                  <img class="research-card research-card-lg" src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/watcher.webp?v=1" alt="Наблюдатель" loading="lazy" />
                   <div class="research-head-text">
                     <h4 class="research-note-lg">Наблюдатель и миссия в радаре с ним</h4>
                     <p>Раз в день необходимо каждому игроку убить наблюдателя. Дают выжившего (либо монеты для улучшения выживших).</p>
@@ -1689,7 +1698,7 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
               </section>
             </div>
             <p>Наблюдатель может выпасть как миссия радара. Для выполнения можно убить любого наблюдателя — ищите именно <strong>100 лвл</strong>. Миссия также засчитывается при присоединении к сбору на электрика.</p>
-            <div class="hint">💡 Пока не ходите на наблюдателей выше уровнем — потеряете солдат. Если случайно задели сильного, попросите другого игрока начать сбор атаки на него и сразу отменить: атака на вашу базу снимется.</div>
+            <div class="hint">💡 Миссия радара может переслать хоть к 150 наблюдателю, но там нет разницы какого убить. Пока что на наблюдателей выше уровнем не ходим, только солдат потеряете. Если случайно задели сильного, <strong>попросите другого игрока начать сбор атаки на него и сразу отменить</strong>: атака на вашу базу снимется.</div>
           </div>
         </details>
 
@@ -1703,11 +1712,11 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </summary>
           <div class="acc-body">
-            <p>Как быстрее поднять <strong>11 VIP</strong> и ускорить стройку примерно на 50%:</p>
+            <p>Как быстрее поднять <strong>11 VIP</strong> и ускорить стройку на 50%:</p>
             <ul>
               <li>🔹 Обязательно покупайте VIP-пропуск — выгоднее всего на месяц за 10к алмазов.</li>
               <li>🔹 Пропуск даёт бонусы к стройке, исследованиям, сбору и другим активностям.</li>
-              <li>🔹 Прокачка VIP зависит от ежедневного входа и открытия подарков альянса — в том числе за убийство элитных клоунов. В «Подарке альянса» с шансом падают кредиты для пропуска.</li>
+              <li>🔹 Прокачка VIP зависит от ежедневного входа в игру и открытия подарков альянса — в том числе за убийство элитных клоунов. За них во вкладке <strong>Подарок альянса</strong> дают сундуки и с определённым шансом есть возможность получить кредиты для пропуска.</li>
             </ul>
             <div class="hint strong">🔥 VIP-пропуск — одно из самых полезных вложений для ускорения аккаунта.</div>
             <div class="shots">
@@ -1737,7 +1746,7 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
               <li>🔹 Фонд роста (до 50 000 алмазов при повышении уровня базы)</li>
               <li>🔹 Акционные наборы уровня базы и акционные наборы в VS</li>
             </ul>
-            <p>Также выгодны акции внутри героев. Если донатите регулярно — подстраивайте траты под ГкМ: <strong>стройка</strong> и <strong>исследования</strong>. Эти фазы закрывать сложнее всего из‑за большого числа ускорений. Сами ускоры лучше оставлять на VS.</p>
+            <p>Также выгодны акции внутри героев. Если донатите регулярно — подстраивайте траты под <strong>ГкМ</strong>: <strong>Строительство базы</strong> и <strong>Исследования</strong>. Эти фазы закрывать сложнее всего из‑за большого числа ускорений. Сами ускоры лучше оставлять на <strong>VS</strong>.</p>
             <div class="hint">💡 Например, донат на Монро можно делать в дни ГкМ по исследованиям или стройке. Если делаете 2 доната — распределяйте на 2 ивента.</div>
           </div>
         </details>
