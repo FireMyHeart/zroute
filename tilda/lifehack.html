@@ -734,9 +734,14 @@ main { padding: 1.35rem 0 3.5rem; }
   padding: 0.35rem;
 }
 .gear-flow-step span {
-  font-size: 0.82em;
-  line-height: 1.3;
+  font-size: 0.95em;
+  line-height: 1.35;
   color: var(--text-soft);
+}
+.gear-flow-step span strong,
+.gear-flow-pair span strong {
+  color: var(--accent);
+  font-weight: 800;
 }
 .gear-flow-pair {
   display: flex;
@@ -761,8 +766,8 @@ main { padding: 1.35rem 0 3.5rem; }
   padding: 0.3rem;
 }
 .gear-flow-pair span {
-  font-size: 0.82em;
-  line-height: 1.3;
+  font-size: 0.95em;
+  line-height: 1.35;
   color: var(--text-soft);
 }
 .gear-flow-arrow {
@@ -1635,12 +1640,12 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
             <div class="gear-flow" aria-label="Порядок прокачки экипировки">
               <div class="gear-flow-step">
                 <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-item-scopes.webp?v=1" alt="Бинокль" loading="lazy" />
-                <span>Сначала Бинокль (дает скорость)</span>
+                <span>Сначала <strong>Бинокль</strong> (дает скорость)</span>
               </div>
               <div class="gear-flow-arrow" aria-hidden="true">→</div>
               <div class="gear-flow-step">
                 <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-item-rifle.webp?v=1" alt="Оружие" loading="lazy" />
-                <span>Потом Оружие (дает силу)</span>
+                <span>Потом <strong>Оружие</strong> (дает силу)</span>
               </div>
               <div class="gear-flow-arrow" aria-hidden="true">→</div>
               <div class="gear-flow-pair">
@@ -1648,7 +1653,7 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
                   <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-item-helmet.webp?v=1" alt="Каска" loading="lazy" />
                   <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/gear-item-armor.webp?v=1" alt="Броня" loading="lazy" />
                 </div>
-                <span>Затем Каска и Броня</span>
+                <span>Затем <strong>Каска</strong> и <strong>Броня</strong></span>
               </div>
             </div>
           </div>
@@ -1668,14 +1673,20 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
             <ul>
               <li>🔹 Найдите 5–8 хороших баз с ресурсами от 50 млн+.</li>
               <li>🔹 Отправьте разведку и добавьте в избранное.</li>
-              <li>🔹 Оставляйте базе около <strong>1000 ХП</strong>. Если снести до 0 — она телепортируется, и вы потеряете «дойную корову».</li>
-              <li>🔹 Подстраивайте грабёж под ивент бойца в ГкМ, когда дают очки за энергию.</li>
-              <li>🔹 Прокачку самолёта оставляйте на понедельник — не тратьте чипы и шестерни только ради ГкМ.</li>
+              <li>🔹 Оставляйте базе около <strong>1000 ХП</strong>. Если снести до 0 — она телепортируется в случайное место, и вы потеряете «дойную корову». Если оставить базу в живых, она со временем восстановится и завтра вы сможете ограбить её снова.</li>
+              <li>🔹 <strong>Подстраивайте грабёж под ивент бойца в ГкМ</strong>, когда дают очки за трату энергии.</li>
+              <li>🔹 Прокачку самолёта оставляйте на понедельник. Не тратьте чипы и шестерни только ради ГкМ.</li>
             </ul>
-            <div class="shots">
-              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/raids.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/raids.webp" alt="Грабежи и избранные базы" loading="lazy" />
-              </figure>
+            <div class="research-notes" style="margin-top:0.85rem">
+              <section class="research-note">
+                <div class="research-head">
+                  <img class="research-card" src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/watcher.webp?v=1" alt="Наблюдатель" loading="lazy" />
+                  <div class="research-head-text">
+                    <h4 class="research-note-lg">Наблюдатель и миссия в радаре с ним</h4>
+                    <p>Раз в день необходимо каждому игроку убить наблюдателя. Дают выжившего (либо монеты для улучшения выживших).</p>
+                  </div>
+                </div>
+              </section>
             </div>
             <p>Наблюдатель может выпасть как миссия радара. Для выполнения можно убить любого наблюдателя — ищите именно <strong>100 лвл</strong>. Миссия также засчитывается при присоединении к сбору на электрика.</p>
             <div class="hint">💡 Пока не ходите на наблюдателей выше уровнем — потеряете солдат. Если случайно задели сильного, попросите другого игрока начать сбор атаки на него и сразу отменить: атака на вашу базу снимется.</div>
