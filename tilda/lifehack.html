@@ -272,6 +272,14 @@ main { padding: 1.35rem 0 3.5rem; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
 }
+.shots-grid.shots-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 640px) {
+  .shots-grid.shots-grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .shots-grid .shot {
   width: 100%;
   max-width: none;
@@ -339,6 +347,14 @@ main { padding: 1.35rem 0 3.5rem; }
   cursor: zoom-in;
   padding: 0.45rem;
   margin-inline: auto;
+}
+.acc-body .shots-grid {
+  width: 100%;
+}
+.acc-body .shots-grid .shot {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
 }
 .acc-body .shot img {
   width: 100%;
@@ -787,9 +803,30 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
               <li>🔹 <strong>Центр альянса</strong> — помощь на стройку и исследования</li>
               <li>🔹 <strong>Инженерный отдел</strong> — часто забывают, а на старте сильно режет время стройки</li>
             </ul>
-            <div class="shots">
-              <figure class="shot wide" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/build-priority.webp">
-                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/build-priority.webp" alt="Приоритет построек на старте" loading="lazy" />
+            <div class="shots shots-grid shots-grid-3">
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-base.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-base.webp" alt="База" loading="lazy" />
+                <figcaption class="shot-caption">База (главная постройка)</figcaption>
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-hospital.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-hospital.webp" alt="Госпиталь" loading="lazy" />
+                <figcaption class="shot-caption">Госпиталь</figcaption>
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-training-center.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-training-center.webp" alt="Центр обучения воинов" loading="lazy" />
+                <figcaption class="shot-caption">Центр обучения воинов</figcaption>
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alliance-center.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alliance-center.webp" alt="Центр альянса" loading="lazy" />
+                <figcaption class="shot-caption">Центр альянса</figcaption>
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-polygon.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-polygon.webp" alt="Полигон" loading="lazy" />
+                <figcaption class="shot-caption">Полигон</figcaption>
+              </figure>
+              <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alpha-research.webp">
+                <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-alpha-research.webp" alt="Отдел альфа-исследований" loading="lazy" />
+                <figcaption class="shot-caption">Отдел альфа-исследований</figcaption>
               </figure>
             </div>
             <p>Шахты, фермы, нефтяные качалки и прочие ресурсные здания — <strong>в последнюю очередь</strong>. Основной поток ресурсов идёт от активности: охота, события, грабежи.</p>
