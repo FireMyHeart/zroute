@@ -612,16 +612,24 @@ main { padding: 1.35rem 0 3.5rem; }
   flex: 0 0 auto;
 }
 .acc-body .gear-workshop-photos .shot {
-  width: min(220px, 42vw);
-  max-width: 220px;
+  display: block;
+  width: 200px;
+  max-width: 42vw;
   margin: 0;
   padding: 0.4rem;
   cursor: zoom-in;
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
 }
 .acc-body .gear-workshop-photos .shot img {
+  display: block;
   width: 100%;
   height: auto;
-  max-width: none;
+  max-width: none !important;
+  aspect-ratio: 1 / 1;
   object-fit: contain;
   border-radius: 12px;
   background: transparent;
@@ -1452,10 +1460,10 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
             </div>
             <div class="gear-workshop">
               <div class="gear-workshop-photos">
-                <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-gear-workshop.webp?v=1" tabindex="0" role="button" aria-label="Увеличить: Мастерская снаряжения">
-                  <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-gear-workshop.webp?v=1" alt="Мастерская снаряжения" loading="lazy" />
+                <figure class="shot" data-full="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-gear-workshop.webp?v=2" tabindex="0" role="button" aria-label="Увеличить: Мастерская снаряжения">
+                  <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/building-gear-workshop.webp?v=2" alt="Мастерская снаряжения" loading="lazy" />
                 </figure>
-                <img class="gear-workshop-icon" src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-gear-workshop.webp?v=1" alt="Мастерская снаряжения" loading="lazy" />
+                <img class="gear-workshop-icon" src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-gear-workshop.webp?v=2" alt="Иконка мастерской снаряжения" loading="lazy" />
               </div>
               <p class="gear-workshop-text">Вся экипировка создается в здании <strong>Мастерская снаряжения</strong>.</p>
             </div>
