@@ -444,9 +444,9 @@ main { padding: 1.35rem 0 3.5rem; }
   min-width: 0;
 }
 .research-skills img {
-  width: 52px;
-  height: 52px;
-  flex: 0 0 52px;
+  width: 78px;
+  height: 78px;
+  flex: 0 0 78px;
   border-radius: 50%;
   object-fit: cover;
   background: rgba(0, 0, 0, 0.35);
@@ -487,6 +487,7 @@ main { padding: 1.35rem 0 3.5rem; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem 1rem;
 }
 .research-inline .research-card {
@@ -498,10 +499,13 @@ main { padding: 1.35rem 0 3.5rem; }
   display: block;
 }
 .research-inline .research-skills {
-  flex: 1 1 220px;
+  flex: 0 1 auto;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
   grid-template-columns: repeat(3, max-content);
-  justify-content: start;
-  gap: 0.55rem;
+  justify-content: center;
+  gap: 0.75rem;
 }
 .research-inline .research-skills li {
   flex-direction: column;
@@ -509,9 +513,9 @@ main { padding: 1.35rem 0 3.5rem; }
   text-align: center;
 }
 .research-inline .research-skills img {
-  width: 64px;
-  height: 64px;
-  flex-basis: 64px;
+  width: 96px;
+  height: 96px;
+  flex-basis: 96px;
 }
 .research-inline .research-skills span {
   font-size: 0.72em;
@@ -530,13 +534,16 @@ main { padding: 1.35rem 0 3.5rem; }
     flex-basis: 88px;
   }
   .research-inline .research-skills {
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
   }
   .research-inline .research-skills img {
-    width: 56px;
-    height: 56px;
-    flex-basis: 56px;
+    width: 84px;
+    height: 84px;
+    flex-basis: 84px;
   }
 }
 
@@ -1159,20 +1166,24 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
                     <span>Скорость строительства</span>
                   </li>
                   <li>
-                    <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-hospital.png?v=1" alt="" loading="lazy" />
-                    <span>Вместимость войск</span>
-                  </li>
-                  <li>
                     <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-flask.png?v=1" alt="" loading="lazy" />
                     <span>Скорость исследований</span>
+                  </li>
+                  <li>
+                    <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-training-camp.png?v=1" alt="" loading="lazy" />
+                    <span>Лимит тренировки солдат</span>
                   </li>
                   <li>
                     <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-survivor.png?v=1" alt="" loading="lazy" />
                     <span>Скорость обучения солдат</span>
                   </li>
                   <li>
-                    <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-training-camp.png?v=1" alt="" loading="lazy" />
-                    <span>Скорость обучения солдат</span>
+                    <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-hospital.png?v=1" alt="" loading="lazy" />
+                    <span>Вместимость госпиталя</span>
+                  </li>
+                  <li>
+                    <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/icon-hammer.png?v=1" alt="" loading="lazy" />
+                    <span>Уменьшение стоимости ресурсов на строительство и исследования</span>
                   </li>
                 </ul>
               </section>
@@ -1201,11 +1212,13 @@ html[data-theme="light"] .code-block{ background: rgba(28, 20, 14, 0.06); }
               </section>
 
               <section class="research-note">
-                <h4>Супер солдаты</h4>
-                <p>Прокачка раздела важна для развития аккаунта, в том числе героев и солдат.</p>
-                <figure class="shot-static">
-                  <img src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/research-card-super.webp?v=1" alt="Ветка «Супер солдаты»" loading="lazy" />
-                </figure>
+                <div class="research-head">
+                  <img class="research-card" src="https://raw.githubusercontent.com/FireMyHeart/zroute/main/assets/screenshots/lifehack/icons/research-card-super.webp?v=1" alt="Супер солдаты" loading="lazy" />
+                  <div class="research-head-text">
+                    <h4 class="research-note-lg">Супер солдаты</h4>
+                    <p>Прокачка данного раздела играет важную роль в развитии вашего аккаунта, а также прокачивает ваших героев и солдат.</p>
+                  </div>
+                </div>
               </section>
             </div>
             <p><strong>Где брать ресурс для веток Союзного состава и Супер солдат?</strong></p>
