@@ -74,8 +74,12 @@
 #zroute-guide[data-theme="light"] .hint{
   background: var(--hint-bg);
   color: var(--text-hint);
+  border-color: rgba(196, 95, 26, 0.35);
 }
-#zroute-guide[data-theme="light"] .tip-box .hint{ background: var(--hint-danger-bg); }
+#zroute-guide[data-theme="light"] .tip-box .hint{
+  background: var(--hint-danger-bg);
+  border-color: rgba(199, 58, 44, 0.4);
+}
 #zroute-guide[data-theme="light"] .code-block{ background: var(--code-bg); }
 #zroute-guide[data-theme="light"] .shot{ background: var(--surface-2); }
 #zroute-guide[data-theme="light"] footer .game{ color: var(--text-soft); }
@@ -597,9 +601,9 @@
 #zroute-guide .hint{
   margin: 0 0 0.85rem;
   padding: 0.7rem 0.85rem;
-  border-left: 3px solid var(--accent);
+  border: 1px solid rgba(255, 140, 66, 0.4);
   background: rgba(255, 140, 66, 0.08);
-  border-radius: 0 10px 10px 0;
+  border-radius: 14px;
   color: var(--text-hint);
   font-size: 1em;
 }
@@ -857,9 +861,9 @@
 #zroute-guide .tip-box .hint{
   margin-top: 0.7rem;
   padding: 0.7rem 0.85rem;
-  border-left: 3px solid var(--danger);
+  border: 1px solid rgba(255, 90, 69, 0.45);
   background: rgba(255, 90, 69, 0.08);
-  border-radius: 0 10px 10px 0;
+  border-radius: 14px;
   color: var(--text-hint);
   font-size: 1em;
 }

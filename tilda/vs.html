@@ -223,13 +223,16 @@ main { padding: 1.35rem 0 3.5rem; }
 .hint {
   margin-top: 0.75rem;
   padding: 0.7rem 0.85rem;
-  border-left: 3px solid var(--accent);
+  border: 1px solid rgba(255, 140, 66, 0.4);
   background: rgba(255, 140, 66, 0.08);
-  border-radius: 0 10px 10px 0;
+  border-radius: 14px;
   color: var(--text-hint);
   font-size: 1em;
 }
-.hint.strong { border-left-color: var(--ok); background: rgba(61, 214, 140, 0.08); }
+.hint.strong {
+  border-color: rgba(61, 214, 140, 0.45);
+  background: rgba(61, 214, 140, 0.08);
+}
 
 .shots {
   display: flex;
@@ -627,6 +630,11 @@ html[data-theme="light"] .chip { background: var(--chip-bg); }
 html[data-theme="light"] .hint {
   background: var(--hint-bg);
   color: var(--text-hint);
+  border-color: rgba(196, 95, 26, 0.35);
+}
+html[data-theme="light"] .hint.strong {
+  background: rgba(31, 154, 91, 0.1);
+  border-color: rgba(31, 154, 91, 0.4);
 }
 html[data-theme="light"] .shot { background: var(--surface-2); }
 html[data-theme="light"] .acc { background: var(--panel); }
